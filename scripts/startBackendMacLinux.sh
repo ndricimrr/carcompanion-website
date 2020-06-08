@@ -21,7 +21,7 @@ mongod --fork  --logpath ./mongodlogs --dbpath ./data
 echo -e "\e[1;42m Database server is running in the background \e[0m"
 
 # sleep a little to wait for DB setup
-echo -e "\e[1;42m Sleeping for 5 seconds to wait for db full initialization  \e[0m"
+echo -e "\e[1;42m Sleeping for 8 seconds to wait for db full initialization  \e[0m"
 sleep 8
 
 # Create all database schemes and import data to begin with
