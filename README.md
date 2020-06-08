@@ -21,4 +21,4 @@ Just for the backend application:
     ```
       npm run start
     ``` 
-    ...This will give you all the instructions you need to run the app
+    ...This will give you all the instructions you need to run the app, both backend and frontend
