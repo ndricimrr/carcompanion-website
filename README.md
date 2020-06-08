@@ -1,7 +1,5 @@
 ## TEAM 38 - CAR COMPANION
 
-# How to setup
-
 # Prerequisites
  Install Prerequisites on your Machine 
  Both for the back end and front end application check
