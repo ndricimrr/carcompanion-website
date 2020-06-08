@@ -2,7 +2,7 @@
 
 echo -e "\e[1;92m\n\n INSTRUCTIONS: \e[0m\n"
 
-echo -e "\e[1;91m\n\n Step 0: Install Prerequisites: Control/Command + Click this link:\n https://github.com/ndricimrr/carcompanion-website#readme \e[0m\n"
+echo -e "\e[1;91m\n\n Step 0: Install Prerequisites: Control/Command + Click this link:\n https://github.com/ndricimrr/carcompanion-website/blob/master/README.md#prerequisites \e[0m\n"
 
 echo -e "\e[1;93m Note: All following steps are done from \e[0m \e[30m\e[107m this root folder  \e[0m  \e[0m\n"
 
