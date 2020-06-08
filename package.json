@@ -3,5 +3,14 @@
   "private": true,
   "devDependencies": {
     "lerna": "^3.22.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd scripts && start.sh",
+    "bootstrap": "lerna bootstrap",
+    "backend": "cd scripts && startBackend.sh ",
+    "start-backend": "cd scripts && startBackendWindows1.sh",
+    "finish-backend": "cd scripts && startBackendWindows2.sh",
+    "frontend": "cd scripts && startFrontend.sh"
   }
 }
