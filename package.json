@@ -2,13 +2,15 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.22.0"
+    "lerna": "^3.22.0",
+    "concurrently": "^5.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd scripts && start.sh",
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
     "bootstrap": "lerna bootstrap",
     "backend": "cd scripts && startBackend.sh ",
+    "backendWindows": "concurrently \"npm run start-backend\" \"npm run finish-backend\"",
     "start-backend": "cd scripts && startBackendWindows1.sh",
     "finish-backend": "cd scripts && startBackendWindows2.sh",
     "frontend": "cd scripts && startFrontend.sh"
