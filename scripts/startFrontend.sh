@@ -20,3 +20,4 @@ if [ $machine == 'Mac' ] || [ $machine == 'Linux' ]; then
 elif [ $machine == 'Windows' ]; then
     npm run start
 fi
+sleep 15
