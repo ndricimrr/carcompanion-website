@@ -9,10 +9,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"npm run backend\" \"npm run frontend\"",
     "bootstrap": "lerna bootstrap",
-    "backend": "cd scripts && startBackend.sh ",
+    "backend": "cd scripts && \"./startBackend.sh\"",
     "backendWindows": "concurrently \"npm run start-backend\" \"npm run finish-backend\"",
-    "start-backend": "cd scripts && startBackendWindows1.sh",
-    "finish-backend": "cd scripts && startBackendWindows2.sh",
-    "frontend": "cd scripts && startFrontend.sh"
+    "start-backend": "cd scripts && \"./startBackendWindows1.sh\"",
+    "finish-backend": "cd scripts && \"./startBackendWindows2.sh\"",
+    "frontend": "cd scripts && \"./startFrontend.sh\""
   }
 }

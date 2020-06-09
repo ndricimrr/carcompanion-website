@@ -12,9 +12,11 @@ esac
 echo "Machine = ${machine}"
 
 if [ $machine == 'Mac' ] || [ $machine == 'Linux' ]; then
-    bash ./killProcessPorts.sh  
+    bash ./killProcessPortsMac.sh
     echo -e "\e[1;92m Starting backend in MacOS \e[0m"
-    bash ./startBackendMacLinux.sh
+    # bash ./startBackendMacLinux.sh
+    cd ..
+    npm run backendWindows
 elif [ $machine == 'Windows' ]; then
     bash ./killProcessPorts.sh  
     echo -e "\e[1;92m Starting backend in Windows\e[0m"

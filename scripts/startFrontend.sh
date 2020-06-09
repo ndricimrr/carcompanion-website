@@ -2,12 +2,21 @@
 echo "Current directory FRONTEND 1=${PWD}"
 sleep 15
 cd ../frontend
-echo "Current directory FRONTEND 2=${PWD}"
+echo "Starting the FRONTEND: =${PWD}"
 
-npm run start
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Windows;;
+    MINGW*)     machine=Windows;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
 
-# echo "Current directory FRONTEND 2=${PWD}"
-#     read -p "222Press 'Enter' to close instructions..." input
-#     case $input in
-#         * ) exit;;
-#     esac
+echo "Machine = ${machine}"
+
+if [ $machine == 'Mac' ] || [ $machine == 'Linux' ]; then
+    npm run startMac
+elif [ $machine == 'Windows' ]; then
+    npm run start
+fi
