@@ -9,9 +9,9 @@ Both for the back end and front end application check
 
 Just for the backend application:
 
-- mongodb [official installation guide](https://docs.mongodb.org/manual/administration/install-community/)
+- mongodb [official installation guide](https://docs.mongodb.org/manual/administration/install-community/) **Hint**: Make sure to follow all the installation guide, especially in Windows where you need to set the Environment Variables for mongod
 
-- **Only** if you are on Windows : Git Bash for Windows [Installation Guide](https://gitforwindows.org/)
+- Git Bash (for Windows users only) [Installation Guide](https://gitforwindows.org/). **Hint**: You might need to open Git Bash as Administrator
 
 # First Time Setup
 
