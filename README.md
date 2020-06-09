@@ -33,7 +33,7 @@ Just for the backend application:
    ```
      npm run start
    ```
-   ...**This wonderful script** is developed precisely to run the whole project in only one single command will give you all the instructions you need to run the app, both backend and frontend
+   ...**This wonderful script** is developed precisely to run the whole project in only one single command. It runs the backend and front end as well. Works with MacOS and Windows. Linux not tested yet.
 
 # Contribution Rules
 
