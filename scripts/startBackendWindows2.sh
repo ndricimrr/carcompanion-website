@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
-
+sleep 10
 echo -e "\e[1;42m Database Setup : PART 2 \e[0m"
-sleep 4
+
 # go into the backend folder
 echo -e "\e[1;42m Going into 'backend' folder \e[0m"
 cd ../backend 
 
 # Create all database schemes and import data to begin with
 echo -e "\e[1;42m Create all database schemes and import data to begin with \e[0m"
+mkdir dump
 mongorestore dump/
 
 # Set environment variables
