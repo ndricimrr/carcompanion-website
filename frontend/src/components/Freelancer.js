@@ -31,6 +31,14 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 1,  
     position: 'relative'
   },
+  badge: {
+      zIndex:10, 
+      position: 'absolute',
+      backgroundColor: "red",
+      color: "white",
+      padding: 5,
+      borderRadius: '5px!important'
+  },
   name: {
       color: "black",
       fontWeight: "bold",
