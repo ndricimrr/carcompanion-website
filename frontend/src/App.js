@@ -51,6 +51,7 @@ export default class App extends React.Component {
         return(
             <div>
                <Freelancer />
+               <image src="../assets/images/mechanic.png"/>
             </div>
         );
     }
