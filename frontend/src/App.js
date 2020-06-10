@@ -50,7 +50,7 @@ export default class App extends React.Component {
     render() {
         return(
             <div>
-               <Freelancer />
+               <Freelancer bedge="TOP RATED" name="JOHN SMITH" role="MECHANIC" inspections="328" rating={5}/>
                <image src="../assets/images/mechanic.png"/>
             </div>
         );
