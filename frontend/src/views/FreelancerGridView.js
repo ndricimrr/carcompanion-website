@@ -5,8 +5,19 @@
 // Imports
 import React from 'react';
 import Freelancer from '../components/Freelancer'
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+
+// Component styles
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+}));
 
 const FreelanceGridView = (props) => {
+
+    const classes = useStyles();
 
     var freelancers = [
         {
@@ -51,26 +62,22 @@ const FreelanceGridView = (props) => {
         },
     ]
 
-    const freelancerComponents = freelancers.map((freelancer) => 
-        <Freelancer 
-            image={freelancer.image}
-            bedge={freelancer.bedge}
-            name={freelancer.name}
-            role={freelancer.role}
-            inspections={freelancer.inspections}
-            rating={freelancer.rating}/>)
-
     return(
-        <div>
-            <Freelancer 
-                image= "https://www.auto.edu/wp-content/uploads/ATI-May-7-734x550.png"
-                bedge= "TOP RATED"
-                name= "JOHN SMITH"
-                role= "MECHANIC"
-                inspections= "328"
-                rating= "5"/>
-            {freelancerComponents}
-        </div>
+        <React.Fragment>
+            <Grid container justify="center" spacing={4}>
+                {freelancers.map((freelancer) => (
+                    <Grid key={freelancer.name} item>
+                        <Freelancer 
+                            image={freelancer.image}
+                            bedge={freelancer.bedge}
+                            name={freelancer.name}
+                            role={freelancer.role}
+                            inspections={freelancer.inspections}
+                            rating={freelancer.rating}/>
+                    </Grid>
+                ))}
+            </Grid>
+        </React.Fragment>
     );
 }
 
