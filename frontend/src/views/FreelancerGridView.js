@@ -19,6 +19,7 @@ const FreelanceGridView = (props) => {
 
     const classes = useStyles();
 
+    // dummy data for freelancers !!!! to be taken from database
     var freelancers = [
         {
             image: "https://www.auto.edu/wp-content/uploads/ATI-May-7-734x550.png",
