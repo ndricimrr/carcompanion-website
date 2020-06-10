@@ -60,7 +60,7 @@ const Freelancer = (props) => {
             {/* Image of the card */}
             <CardMedia
                 className={classes.media}
-                image="https://www.auto.edu/wp-content/uploads/ATI-May-7-734x550.png"
+                image={props.image}
             />
             {/* Freelancer details */}
             <CardContent>
