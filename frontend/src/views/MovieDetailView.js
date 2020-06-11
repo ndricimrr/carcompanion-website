@@ -3,6 +3,7 @@
 import React from 'react';
 import Example from './Example'
 import QuestionForm from './QuestionForm'
+import SellCarForm from './SellCarForm'
 
 import { MovieDetail } from '../components/MovieDetail';
 
@@ -63,7 +64,8 @@ export class MovieDetailView extends React.Component {
             <div>
               <MovieDetail movie={this.state.movie} onDelete={(id) => this.deleteMovie(id)}/>
                 {/* <Example/> */}
-                <QuestionForm/>
+                {/* <QuestionForm/> */}
+                {/* <SellCarForm/> */}
             </div>
         );
     }
