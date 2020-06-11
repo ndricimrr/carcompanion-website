@@ -6,13 +6,23 @@
 import React from 'react';
 import FreelancerGridView from './FreelancerGridView'
 import FreelancerSpecificationView from './FreelancerSpecificationView'
+import { makeStyles } from '@material-ui/core/styles';
 
-const FreelancersPageView = (props) => {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "row"
+  },
+}));
+
+const FreelancersPageView = (props) => {    
+    const classes = useStyles();
+
     return (
-        <React.Fragment>
+        <div className={classes.root}>
             <FreelancerSpecificationView />
             <FreelancerGridView />
-        </React.Fragment>
+        </div>
     );
 }
 

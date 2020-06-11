@@ -61,6 +61,46 @@ const FreelanceGridView = (props) => {
             inspections: "188",
             rating: "5",
         },
+        {
+            image: "https://www.auto.edu/wp-content/uploads/ATI-May-7-734x550.png",
+            bedge: "TOP RATED",
+            name: "JOHN SMITH",
+            role: "MECHANIC",
+            inspections: "328",
+            rating: "5",
+        },
+        {
+            image: "https://professional-mechanic.com/wp-content/uploads/2020/02/new-slider-img.jpg",
+            bedge: "NEW",
+            name: "MANUEL KRAUSE",
+            role: "TIRE TECHNICIAN",
+            inspections: "18",
+            rating: "4",
+        },
+        {
+            image: "https://www.careergirls.org/wp-content/uploads/2018/05/Automotive_Mechanic_1920x1080.jpg",
+            bedge: "-30%",
+            name: "MARIE SCHEDL",
+            role: "MECHANIC",
+            inspections: "108",
+            rating: "4",
+        },
+        {
+            image: "https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555290065/shape/mentalfloss/istock-486895782.jpg",
+            bedge: "",
+            name: "SELIM AKSOY",
+            role: "ELECTRICIAN EXPERT",
+            inspections: "88",
+            rating: "3",
+        },
+        {
+            image: "https://miro.medium.com/max/6000/1*yYrKqnVE8khRe9qaeJ-heA.jpeg",
+            bedge: "TOP RATED",
+            name: "BLAKE SMITH",
+            role: "MECHANIC",
+            inspections: "188",
+            rating: "5",
+        },
     ]
 
     return(

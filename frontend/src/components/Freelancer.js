@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     // Styles of elements
     root: {
         maxWidth: 345,
-        width: 250,
+        width: 230,
         zIndex: 1,  
         position: 'relative'
     },

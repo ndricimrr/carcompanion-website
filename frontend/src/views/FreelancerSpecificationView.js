@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 280,
+    width: 300,
     backgroundColor: "#b6cef2"
   },
   buttons: {

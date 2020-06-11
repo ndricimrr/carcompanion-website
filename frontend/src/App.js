@@ -4,7 +4,7 @@ import React from 'react';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import { MovieListView } from './views/MovieListView';
-import FreelancersPageView from './views/FreelancersPageView'
+import FreelancerGridView from './views/FreelancerGridView'
 import { MovieDetailView }   from './views/MovieDetailView';
 import { MovieFormView }   from './views/MovieFormView';
 import { UserLoginView } from "./views/UserLoginView";
@@ -50,8 +50,11 @@ export default class App extends React.Component {
     render() {
         return(
             <div>
-               <FreelancersPageView/>
-               <image src="../assets/images/mechanic.png"/>
+                <Router>
+                    <Switch>
+                        {this.state.routes.map((route, i) => (<Route key={i} {...route}/>) )}
+                    </Switch>
+                </Router>
             </div>
         );
     }
