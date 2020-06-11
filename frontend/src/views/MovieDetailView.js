@@ -1,6 +1,8 @@
 "use strict";
 
 import React from 'react';
+import Example from './Example'
+import QuestionForm from './QuestionForm'
 
 import { MovieDetail } from '../components/MovieDetail';
 
@@ -57,7 +59,12 @@ export class MovieDetailView extends React.Component {
         }
 
         return (
-            <MovieDetail movie={this.state.movie} onDelete={(id) => this.deleteMovie(id)}/>
+            
+            <div>
+              <MovieDetail movie={this.state.movie} onDelete={(id) => this.deleteMovie(id)}/>
+                {/* <Example/> */}
+                <QuestionForm/>
+            </div>
         );
     }
 }
