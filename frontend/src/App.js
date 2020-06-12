@@ -8,7 +8,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { MovieListView } from "./views/MovieListView";
+import { HomePage } from "./views/HomePage";
 import { FreelancersPageView } from "./views/FreelancersPageView";
 import { MovieDetailView } from "./views/MovieDetailView";
 import { MovieFormView } from "./views/MovieFormView";
@@ -29,7 +29,7 @@ export default class App extends React.Component {
         { component: FindCarView, path: "/findcar", exact: true },
         { component: SellAdvertiseView, path: "/sell-advertise", exact: true },
         { component: CommunityView, path: "/community", exact: true },
-        { component: MovieListView, path: "/", exact: true },
+        { component: HomePage, path: "/", exact: true },
         { component: FreelancersPageView, path: "/freelancers", exact: true },
         { component: MovieDetailView, path: "/show/:id" },
         {
