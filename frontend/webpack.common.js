@@ -47,6 +47,12 @@ module.exports = {
                     fallback: "style-loader",
                     use: "css-loader"
                 })
+            },
+            {
+                test: /\.(jpg|jpeg|png)$/,
+                use: {
+                loader: 'url-loader'
+                }
             }
 
         ]
