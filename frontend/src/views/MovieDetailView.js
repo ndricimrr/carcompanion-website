@@ -1,63 +1,69 @@
 "use strict";
 
-import React from 'react';
+import React from "react";
 
-import { MovieDetail } from '../components/MovieDetail';
+import { MovieDetail } from "../components/MovieDetail";
 
-import MovieService from '../services/MovieService';
+import MovieService from "../services/MovieService";
 
+import FreelancersPageView from "./FreelancersPageView";
 
 export class MovieDetailView extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-    constructor(props) {
-        super(props);
-    }
+  componentWillMount(props) {
+    this.setState({
+      loading: true,
+    });
 
-    componentWillMount(props){
+    let id = this.props.match.params.id;
+
+    (async () => {
+      try {
+        let movie = await MovieService.getMovie(id);
         this.setState({
-            loading: true
+          movie: movie,
+          loading: false,
         });
+      } catch (err) {
+        console.error(err);
+      }
+    })();
 
-        let id = this.props.match.params.id;
+    // MovieService.getMovie(id).then((data) => {
+    //     this.setState({
+    //         movie: data,
+    //         loading: false
+    //     });
+    // }).catch((e) => {
+    //     console.error(e);
+    // });
+  }
 
-        (async () => {
-            try {
-                let movie = await MovieService.getMovie(id);
-                this.setState({
-                    movie: movie,
-                    loading: false
-                });
-            } catch(err) {
-                console.error(err);
-            }
-        })();
+  async deleteMovie(id) {
+    try {
+      let ret = await MovieService.deleteMovie(id);
+      this.props.history.push("/");
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
-        // MovieService.getMovie(id).then((data) => {
-        //     this.setState({
-        //         movie: data,
-        //         loading: false
-        //     });
-        // }).catch((e) => {
-        //     console.error(e);
-        // });
+  render() {
+    if (this.state.loading) {
+      return <h2>Loading...</h2>;
     }
 
-    async deleteMovie(id) {
-        try {
-            let ret = await MovieService.deleteMovie(id);
-            this.props.history.push('/');
-        } catch(err) {
-            console.error(err);
-        }
-    }
-
-    render() {
-        if (this.state.loading) {
-            return (<h2>Loading...</h2>);
-        }
-
-        return (
-            <MovieDetail movie={this.state.movie} onDelete={(id) => this.deleteMovie(id)}/>
-        );
-    }
+    return (
+      <div>
+        <MovieDetail
+          movie={this.state.movie}
+          onDelete={(id) => this.deleteMovie(id)}
+        />
+        {/* <FreelancersPageView /> */}
+      </div>
+    );
+  }
 }

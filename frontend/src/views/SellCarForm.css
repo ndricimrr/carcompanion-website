@@ -1,0 +1,11 @@
+:local(.formControl) {
+  margin: 10;
+  width: 300px;
+  padding: 10px;
+  height: 50px;
+  padding-right: 20px;
+}
+
+:local(.selectEmpty) {
+  margin-top: 20;
+}

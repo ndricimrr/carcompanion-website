@@ -81,7 +81,24 @@ const specs = [
     ],
   },
   {
-    label: "Problem Area",
+    label: "Mileage",
+    values: [
+      {
+        key: "mechanic",
+        val: "Mechanic",
+      },
+      {
+        key: "tire",
+        val: "Tire",
+      },
+      {
+        key: "electrical",
+        val: "Electrical",
+      },
+    ],
+  },
+  {
+    label: "Fuel",
     values: [
       {
         key: "mechanic",
@@ -99,7 +116,7 @@ const specs = [
   },
 ];
 
-const FreelancerSpecificationView = (props) => {
+const FindCarSpecificationView = (props) => {
   const classes = useStyles();
 
   return (
@@ -135,4 +152,4 @@ const FreelancerSpecificationView = (props) => {
   );
 };
 
-export default FreelancerSpecificationView;
+export default FindCarSpecificationView;

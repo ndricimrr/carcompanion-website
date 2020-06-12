@@ -15,13 +15,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FreelanceGridView = (props) => {
+const FindCarGridView = (props) => {
   const classes = useStyles();
 
   // dummy data for freelancers !!!! to be taken from database
   var freelancers = [
     {
-      image: "https://www.auto.edu/wp-content/uploads/ATI-May-7-734x550.png",
+      image:
+        "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       bedge: "TOP RATED",
       name: "JOHN SMITH",
       role: "MECHANIC",
@@ -30,7 +31,7 @@ const FreelanceGridView = (props) => {
     },
     {
       image:
-        "https://professional-mechanic.com/wp-content/uploads/2020/02/new-slider-img.jpg",
+        "https://images.pexels.com/photos/136872/pexels-photo-136872.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       bedge: "NEW",
       name: "MANUEL KRAUSE",
       role: "TIRE TECHNICIAN",
@@ -39,7 +40,7 @@ const FreelanceGridView = (props) => {
     },
     {
       image:
-        "https://www.careergirls.org/wp-content/uploads/2018/05/Automotive_Mechanic_1920x1080.jpg",
+        "https://images.pexels.com/photos/794435/pexels-photo-794435.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       bedge: "-30%",
       name: "MARIE SCHEDL",
       role: "MECHANIC",
@@ -48,7 +49,7 @@ const FreelanceGridView = (props) => {
     },
     {
       image:
-        "https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555290065/shape/mentalfloss/istock-486895782.jpg",
+        "https://images.pexels.com/photos/977003/pexels-photo-977003.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       bedge: "",
       name: "SELIM AKSOY",
       role: "ELECTRICIAN EXPERT",
@@ -56,7 +57,8 @@ const FreelanceGridView = (props) => {
       rating: "3",
     },
     {
-      image: "https://miro.medium.com/max/6000/1*yYrKqnVE8khRe9qaeJ-heA.jpeg",
+      image:
+        "https://images.pexels.com/photos/898336/pexels-photo-898336.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       bedge: "TOP RATED",
       name: "BLAKE SMITH",
       role: "MECHANIC",
@@ -64,7 +66,8 @@ const FreelanceGridView = (props) => {
       rating: "5",
     },
     {
-      image: "https://www.auto.edu/wp-content/uploads/ATI-May-7-734x550.png",
+      image:
+        "https://images.pexels.com/photos/112475/pexels-photo-112475.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       bedge: "TOP RATED",
       name: "JOHN SMITHs",
       role: "MECHANIC",
@@ -73,7 +76,7 @@ const FreelanceGridView = (props) => {
     },
     {
       image:
-        "https://professional-mechanic.com/wp-content/uploads/2020/02/new-slider-img.jpg",
+        "https://images.pexels.com/photos/3729464/pexels-photo-3729464.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
       bedge: "NEW",
       name: "MANUEL RAUSE",
       role: "TIRE TECHNICIAN",
@@ -82,7 +85,7 @@ const FreelanceGridView = (props) => {
     },
     {
       image:
-        "https://www.careergirls.org/wp-content/uploads/2018/05/Automotive_Mechanic_1920x1080.jpg",
+        "https://images.pexels.com/photos/757185/pexels-photo-757185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       bedge: "-30%",
       name: "MARIo SCHEDL",
       role: "MECHANIC",
@@ -91,7 +94,7 @@ const FreelanceGridView = (props) => {
     },
     {
       image:
-        "https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555290065/shape/mentalfloss/istock-486895782.jpg",
+        "https://images.pexels.com/photos/2684218/pexels-photo-2684218.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       bedge: "",
       name: "SELIM ALtay",
       role: "ELECTRICIAN EXPERT",
@@ -99,7 +102,8 @@ const FreelanceGridView = (props) => {
       rating: "3",
     },
     {
-      image: "https://miro.medium.com/max/6000/1*yYrKqnVE8khRe9qaeJ-heA.jpeg",
+      image:
+        "https://images.pexels.com/photos/4056598/pexels-photo-4056598.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       bedge: "TOP RATED",
       name: "JIMMU SMITH",
       role: "MECHANIC",
@@ -128,4 +132,4 @@ const FreelanceGridView = (props) => {
   );
 };
 
-export default FreelanceGridView;
+export default FindCarGridView;

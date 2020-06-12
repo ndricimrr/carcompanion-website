@@ -1,16 +1,15 @@
 /*
- * This view will show freelancers page
+ * This view will show find a car  page
  */
 
 // Imports
 import React from "react";
-import FreelancerGridView from "./FreelancerGridView";
-import FreelancerSpecificationView from "./FreelancerSpecificationView";
-import { makeStyles } from "@material-ui/core/styles";
+import FindCarGridView from "./FindCarGridView";
+import FindCarSpecificationView from "./FindCarSpecificationView";
 import styles from "./FreelancersPageView.css";
 import Page from "../components/Page";
 
-export class FreelancersPageView extends React.Component {
+export class FindCarView extends React.Component {
   constructor(props) {
     super(props);
 
@@ -29,12 +28,10 @@ export class FreelancersPageView extends React.Component {
     return (
       <Page>
         <div className={styles.container}>
-          <FreelancerSpecificationView />
-          <FreelancerGridView />
+          <FindCarSpecificationView />
+          <FindCarGridView />
         </div>
       </Page>
     );
   }
 }
-
-// export default FreelancersPageView;
