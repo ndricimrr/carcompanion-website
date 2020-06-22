@@ -15,7 +15,7 @@ export class TextFillForm extends React.Component {
       images: "",
     };
   }
-  //add handleChange to post into api
+  //add handleChange when submitting to post into api
 
   render() {
     return(
@@ -28,6 +28,8 @@ export class TextFillForm extends React.Component {
         }}
       >
         <br />
+        <br />
+        <h1>{this.props.title}</h1>
         <br />
         <br />
         <form>
