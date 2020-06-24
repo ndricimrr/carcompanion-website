@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { TextFillForm } from "./AskQuestionForm";
 import Page from "../components/Page";
-import ImageUploadView from "./ImageUploadView";
+//import ImageUploadView from "./ImageUploadView";
 
 //TODO: add ImageUploadView to the page
 export class CommunityView extends Component {
@@ -9,7 +9,6 @@ export class CommunityView extends Component {
     return (
       <Page>
         <TextFillForm title={"Ask a Question"} />
-        <ImageUploadView/>
       </Page>
     );
   }

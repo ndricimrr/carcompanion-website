@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
+import styles from "./AskQuestionForm.css";
 import classes from "./AskQuestionForm.css";
 
 
@@ -38,7 +38,8 @@ export class TextFillForm extends React.Component {
           label="Title" 
           onChange={(event) => this.setState({ title: event.target.value })}
           variant="outlined"
-          color="secondary" 
+          color="secondary"
+          style={{width: 500}} 
           />
           <br />
           <br />
@@ -49,6 +50,7 @@ export class TextFillForm extends React.Component {
           onChange={(event) => this.setState({ areas: event.target.value })}
           variant="outlined"
           color="secondary" 
+          style={{width: 500}}
           />
           <br />
           <br />
@@ -62,6 +64,7 @@ export class TextFillForm extends React.Component {
           onChange={(event) => this.setState({ content: event.target.value })}
           variant="outlined"
           color="secondary"
+          style={{width: 500}}
         />
         </form>
       </div>

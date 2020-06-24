@@ -9,3 +9,8 @@
   :local(.selectEmpty) {
     margin-top: 20;
   }
+
+  :local(.container) {
+    display: flex;
+    flex-direction: row;
+  }
