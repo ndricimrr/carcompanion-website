@@ -16,5 +16,8 @@
     "start-backend": "cd scripts && \"./startBackendWindows1.sh\"",
     "finish-backend": "cd scripts && \"./startBackendWindows2.sh\"",
     "frontend": "cd scripts && \"./startFrontend.sh\""
+  },
+  "dependencies": {
+    "axios": "^0.19.2"
   }
 }

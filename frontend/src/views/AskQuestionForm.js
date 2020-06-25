@@ -1,8 +1,6 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import styles from "./AskQuestionForm.css";
-import classes from "./AskQuestionForm.css";
 
 
 export class TextFillForm extends React.Component {
@@ -59,7 +57,7 @@ export class TextFillForm extends React.Component {
           id="questionContent"
           label="Content"
           multiline
-          rows={4}
+          rows={5}
           //defaultValue="Add your question content ..."
           onChange={(event) => this.setState({ content: event.target.value })}
           variant="outlined"

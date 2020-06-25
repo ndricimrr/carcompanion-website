@@ -31,6 +31,7 @@ export class ImageUploadView extends React.Component {
   
       reader.readAsDataURL(file)
     }
+    //it is possible to make the preview with a fixed size? it looks much better :D
   
     render() {
       let {imagePreviewUrl} = this.state;
