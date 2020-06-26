@@ -42,25 +42,41 @@ Just for the backend application:
    ```
      git checkout develop
    ```
+   
+2. If you haven't done so make sure you first pull the latest changes so you have the latest version locally
 
-2. Create a new branch IN_description where IN = **I**ssue **N**umber ex:
+   ```
+     git pull 
+   ```
+   
+3. After pulling from develop it is reccomended that you install any packages that were added, into your local machine:
+   ```
+     npm run bootstrap // in root folder
+   ```
+   or
+   ```
+     npm install // in /frontend folder
+     npm install // in /backend folder
+   ```
+
+4. Create a new branch IN_description where IN = **I**ssue **N**umber ex:
    ```
      git checkout -b 12_add_dropdown_box
    ```
-3. Write your amazing code
+5. Write your amazing code
 
-4. Commit your changes
+6. Commit your changes
 
    ```
      git commit -am 'Wrote amazing code'
    ```
 
-5. Push your changes
+7. Push your changes
    ```
      git push
    ```
-6. [Create a pull request](https://github.com/ndricimrr/carcompanion-website/compare?expand=1)
+8. [Create a pull request](https://github.com/ndricimrr/carcompanion-website/compare?expand=1)
 
-7. Wait for reviews & review if necessary
+9. Wait for reviews & review if necessary
 
-8. Merge to `develop` after reviewed
+10. Merge to `develop` after reviewed
