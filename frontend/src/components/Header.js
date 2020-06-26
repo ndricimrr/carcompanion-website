@@ -1,5 +1,3 @@
-"use strict";
-
 import React from "react";
 import { Toolbar, Button } from "react-md";
 import { withRouter } from "react-router-dom";
@@ -7,6 +5,7 @@ import styles from "./Header.css";
 import KebabMenu from "./KebabMenu";
 // import logo from "../assets/logo.png";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 class Header extends React.Component {
   constructor(props) {
@@ -34,11 +33,7 @@ class Header extends React.Component {
       <div className={navBarStyling}>
         <NavLink exact to={"/"} style={{ textDecoration: "none" }}>
           <div style={{ display: "flex", flexDirection: "row" }}>
-            <img
-              width={200}
-              src="https://i.ibb.co/8dSwPJL/logo.png"
-              alt="logo"
-            />
+            <img width={100} src={logo} alt="logo" />
           </div>
         </NavLink>
         <div className={styles.navigationLinks}>
