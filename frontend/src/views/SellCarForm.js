@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 
 const BootstrapInput = withStyles((theme) => ({
   root: {
-    width: 500,
+    width: 510,
     'label + &': {
       marginTop: theme.spacing(3),
     },
