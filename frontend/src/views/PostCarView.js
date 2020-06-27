@@ -50,7 +50,7 @@ class PostCarView extends Component {
       } catch (err) {
         console.error(err);
         this.setState(
-          Object.assign({}, this.state, { error: "Error while creating movie" })
+          Object.assign({}, this.state, { error: "Error while creating car" })
         );
       }
     } else {
