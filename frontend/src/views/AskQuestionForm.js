@@ -64,6 +64,10 @@ export class TextFillForm extends React.Component {
           color="secondary"
           style={{width: 500}}
         />
+        <br />
+        <br />
+        <br />
+        <ImageUploadView />
         </form>
       </div>
     );
