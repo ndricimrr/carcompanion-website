@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { ImageUploadView } from "./ImageUploadView";
 
 
 export class TextFillForm extends React.Component {
@@ -25,7 +26,6 @@ export class TextFillForm extends React.Component {
           alignItems: "center",
         }}
       >
-        <br />
         <br />
         <h1>{this.props.title}</h1>
         <br />
@@ -68,6 +68,9 @@ export class TextFillForm extends React.Component {
         <br />
         <br />
         <ImageUploadView />
+        <br />
+        <br />
+        <br />
         </form>
       </div>
     );
