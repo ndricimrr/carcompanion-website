@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { TextFillForm } from "./AskQuestionForm";
 import Page from "../components/Page";
-import { ImageUploadView } from "./ImageUploadView";
 import styles from "./CommunityView.css";
 
 export class CommunityView extends Component {
