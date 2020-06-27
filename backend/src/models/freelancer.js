@@ -5,20 +5,36 @@ const mongoose = require("mongoose");
 
 // Define the freelancer schema
 const FreelancerSchema = new mongoose.Schema({
-  brand: {
+  freelancerName: {
+    type: String,
+    required: true,
+  },
+  surname: {
+    type: String,
+    required: true,
+  },
+  age: {
+    type: Number,
+    required: true,
+  },
+  review: {
+    type: Number,
+    required: true,
+  },
+  inspections: {
+    type: Number,
+    required: true,
+  },
+  area: {
+    type: String,
+    required: true,
+  },
+  make: {
     type: String,
     required: true,
   },
   model: {
     type: String,
-    required: true,
-  },
-  year: {
-    type: Number,
-    required: true,
-  },
-  problemArea: {
-    type: Number,
     required: true,
   },
   images: {

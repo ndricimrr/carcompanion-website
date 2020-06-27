@@ -19,6 +19,7 @@ import { SellAdvertiseView } from "./views/SellAdvertiseView";
 import { FindCarView } from "./views/FindCarView";
 import UserService from "./services/UserService";
 import PostCarView from "./views/PostCarView";
+import AddFreelancerView from "./views/AddFreelancerView"
 
 export default class App extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ export default class App extends React.Component {
       title: "Car Companion App",
       routes: [
         { component: PostCarView, path: "/postcar", exact: true },
+        { component: AddFreelancerView, path: "/addfreelancer", exact: true },
         { component: FindCarView, path: "/findcar", exact: true },
         { component: SellAdvertiseView, path: "/sell-advertise", exact: true },
         { component: CommunityView, path: "/community", exact: true },

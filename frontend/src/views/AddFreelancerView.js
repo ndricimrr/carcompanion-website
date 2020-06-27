@@ -4,16 +4,16 @@ import Button from "@material-ui/core/Button";
 import styles from "./AddFreelancer.css";
 import FreelancerService from "../services/FreelancerService";
 
-class AddFreelancer extends Component {
+class AddFreelancerView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      freelancerName: "",
       surname: "",
       age: 0,
       review: 0,
       inspections: 0,
-      area: ""
+      area: "",
       make: "",
       model: ""
     };
@@ -33,7 +33,7 @@ class AddFreelancer extends Component {
   // call create freelancer service
   async handleAddFreelancer() {
     if (
-      this.state.name != "" &&
+      this.state.freelancerName != "" &&
       this.state.surname != "" &&
       this.state.age != 0 &&
       this.state.review != 0 &&
@@ -44,7 +44,7 @@ class AddFreelancer extends Component {
     ) {
       try {
         let freelancer = {
-          name: this.state.name,
+          freelancerName: this.state.freelancerName,
           surname: this.state.surname,
           age: this.state.age,
           review: this.state.review,
@@ -74,9 +74,9 @@ class AddFreelancer extends Component {
           InputProps={{ className: styles.inputField }}
           id="outlined-required"
           label="Name"
-          name="name"
+          name="freelancerName"
           onChange={this.handleChange}
-          value={this.state.name}
+          value={this.state.freelancerName}
           variant="outlined"
         />
         <TextField
@@ -157,4 +157,4 @@ class AddFreelancer extends Component {
   }
 }
 
-export default AddFreelancer;
+export default AddFreelancerView;
