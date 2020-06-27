@@ -1,7 +1,9 @@
 "use strict";
 
-const CarModel = require("../models/car");
+// Create freelancer model
+const FreelanceModel = require("../models/freelancer");
 
+// adds new freelancer
 const create = async (req, res) => {
   if (Object.keys(req.body).length === 0)
     return res.status(400).json({
@@ -10,9 +12,9 @@ const create = async (req, res) => {
     });
 
   try {
-    let car = await CarModel.create(req.body);
+    let freelancer = await FreelanceModel.create(req.body);
 
-    return res.status(201).json(car);
+    return res.status(201).json(freelancer);
   } catch (err) {
     return res.status(500).json({
       error: "Internal server error",
@@ -21,17 +23,18 @@ const create = async (req, res) => {
   }
 };
 
+// gets freelancer with specific id
 const read = async (req, res) => {
   try {
-    let car = await CarModel.findById(req.params.id).exec();
+    let freelancer = await FreelanceModel.findById(req.params.id).exec();
 
-    if (!car)
+    if (!freelancer)
       return res.status(404).json({
         error: "Not Found",
-        message: `Car not found`,
+        message: `Freelancer not found`,
       });
 
-    return res.status(200).json(car);
+    return res.status(200).json(freelancer);
   } catch (err) {
     return res.status(500).json({
       error: "Internal Server Error",
@@ -40,6 +43,7 @@ const read = async (req, res) => {
   }
 };
 
+// updates freelancer with specific id
 const update = async (req, res) => {
   if (Object.keys(req.body).length === 0) {
     return res.status(400).json({
@@ -49,12 +53,12 @@ const update = async (req, res) => {
   }
 
   try {
-    let car = await CarModel.findByIdAndUpdate(req.params.id, req.body, {
+    let freelancer = await FreelanceModel.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     }).exec();
 
-    return res.status(200).json(car);
+    return res.status(200).json(freelancer);
   } catch (err) {
     return res.status(500).json({
       error: "Internal server error",
@@ -63,13 +67,14 @@ const update = async (req, res) => {
   }
 };
 
+// removes freelancer with specific id
 const remove = async (req, res) => {
   try {
-    await CarModel.findByIdAndRemove(req.params.id).exec();
+    await FreelanceModel.findByIdAndRemove(req.params.id).exec();
 
     return res
       .status(200)
-      .json({ message: `Car with id${req.params.id} was deleted` });
+      .json({ message: `Freelancer with id${req.params.id} was deleted` });
   } catch (err) {
     return res.status(500).json({
       error: "Internal server error",
@@ -78,11 +83,12 @@ const remove = async (req, res) => {
   }
 };
 
+// lists all freelancers
 const list = async (req, res) => {
   try {
-    let cars = await CarModel.find({}).exec();
+    let freelancers = await FreelanceModel.find({}).exec();
 
-    return res.status(200).json(cars);
+    return res.status(200).json(freelancers);
   } catch (err) {
     return res.status(500).json({
       error: "Internal server error",
@@ -91,6 +97,7 @@ const list = async (req, res) => {
   }
 };
 
+// export
 module.exports = {
   create,
   read,
