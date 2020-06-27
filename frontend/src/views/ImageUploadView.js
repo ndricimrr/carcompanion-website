@@ -1,6 +1,8 @@
 import React from "react";
 import { DropzoneDialog } from "material-ui-dropzone";
 import Button from "@material-ui/core/Button";
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+
 export class ImageUploadView extends React.Component {
    constructor(props) {
     super(props);
@@ -32,14 +34,19 @@ export class ImageUploadView extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style = 
+        {{display: "flex",
+        flexDirection: "row",
+        width: "500px", 
+        justifyContent: "space-evenly"}}>
         <Button
-          variant="contained"
-          color="primary"
-          onClick={this.handleOpen.bind(this)}
-        >
-          Add Image
-        </Button>
+        variant="contained"
+        color="default"
+        startIcon={<CloudUploadIcon />}
+        onClick={this.handleOpen.bind(this)}
+      >
+        Add Image
+      </Button>
         <DropzoneDialog
           open={this.state.open}
           onSave={this.handleSave.bind(this)}

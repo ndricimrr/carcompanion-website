@@ -4,6 +4,7 @@ import { ImageUploadView } from "./ImageUploadView";
 import Button from "@material-ui/core/Button";
 import QuestionService from "../services/QuestionService";
 import SaveIcon from '@material-ui/icons/Save';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 export class TextFillForm extends React.Component {
@@ -40,6 +41,7 @@ export class TextFillForm extends React.Component {
           title: this.state.title,
           areas: this.state.areas,
           content: this.state.content,
+          date: Date()
         };
         let ret = await QuestionService.createQuestion(question);
         this.props.history.push("/");
@@ -115,15 +117,28 @@ export class TextFillForm extends React.Component {
         <br />
         <br />
         </form>
-        <Button
-        variant="contained"
-        color="primary"
-        size="large"
-        startIcon={<SaveIcon />}
-        onClick={this.handleCreateQuestion}
-      >
-        Submit
-      </Button>
+        <div style = 
+        {{display: "flex",
+         flexDirection: "row",
+         width: "500px", 
+         justifyContent: "space-evenly"}}> 
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            startIcon={<SaveIcon />}
+            onClick={this.handleCreateQuestion}
+            >
+            Submit
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            startIcon={<DeleteIcon />}
+            >
+            Cancel
+        </Button>
+      </div>
       </div>
     );
   }
