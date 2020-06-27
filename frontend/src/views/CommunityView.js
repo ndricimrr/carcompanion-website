@@ -10,7 +10,6 @@ export class CommunityView extends Component {
       <Page>
         <div className={styles.container}>
           <div className={styles.first}> <TextFillForm title={"Ask a Question"} /> </div>
-          <div className={styles.second}> <ImageUploadView/></div>
         </div>
       </Page>
     );
