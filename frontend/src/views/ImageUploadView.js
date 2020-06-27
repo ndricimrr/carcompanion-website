@@ -1,53 +1,53 @@
 import React from "react";
 
 export class ImageUploadView extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        file: '',
-        imagePreviewUrl: ''
-      };
-      this._handleImageChange = this._handleImageChange.bind(this);
-      this._handleSubmit = this._handleSubmit.bind(this);
-    }
-  
-    _handleSubmit(e) {
-      e.preventDefault();
-      // TODO: do something with -> this.state.file
-    }
-  
-    _handleImageChange(e) {
-      e.preventDefault();
-  
-      let reader = new FileReader();
-      let file = e.target.files[0];
-  
-      reader.onloadend = () => {
-        this.setState({
-          file: file,
-          imagePreviewUrl: reader.result
-        });
-      }
-  
-      reader.readAsDataURL(file)
-    }
-    //it is possible to make the preview with a fixed size? it looks much better :D
-  
-    render() {
-      let {imagePreviewUrl} = this.state;
-      let $imagePreview = null;
-      if (imagePreviewUrl) {
-        $imagePreview = (<img src={imagePreviewUrl} />);
-      }
-  
-      return (
-        <div>
-          <form onSubmit={this._handleSubmit}>
-            <input type="file" onChange={this._handleImageChange} />
-            <button type="submit" onClick={this._handleSubmit}>Upload Image</button>
-          </form>
-          {$imagePreview}
-        </div>
-      )
-   }
+   constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      files: [],
+    };
+  }
+
+  handleClose() {
+    this.setState({
+      open: false,
+    });
+  }
+
+  handleSave(files) {
+    //Saving files to state for further use and closing Modal.
+    this.setState({
+      files: files,
+      open: false,
+    });
+  }
+
+  handleOpen() {
+    this.setState({
+      open: true,
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={this.handleOpen.bind(this)}
+        >
+          Add Image
+        </Button>
+        <DropzoneDialog
+          open={this.state.open}
+          onSave={this.handleSave.bind(this)}
+          acceptedFiles={["image/jpeg", "image/png", "image/bmp"]}
+          showPreviews={true}
+          maxFileSize={5000000}
+          onClose={this.handleClose.bind(this)}
+        />
+      </div>
+    );
+  }
 }
