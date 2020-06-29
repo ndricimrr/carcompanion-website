@@ -60,7 +60,6 @@ const Freelancer = (props) => {
     badge: props.freelance.badge,
     image: props.freelance.image
   })
-  console.log(freelanceData)
   var rating = [];
   for (var i = 0; i < Number(freelanceData.rating); i++) {
     rating.push(<StarIcon key={i} color="primary" />);
