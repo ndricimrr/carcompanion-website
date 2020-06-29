@@ -63,7 +63,7 @@ const Freelancer = (props) => {
       <CardContent>
         <center>
           <div className={classes.lightText}>{props.role}</div>
-          <div className={classes.name}>{props.name}</div>
+          <div className={classes.name}>{props.name} {props.surname}</div>
           <div className={classes.numbers}>{props.inspections}</div>
           <div className={classes.lightText}>INSPECTIONS</div>
           <div>{rating}</div>

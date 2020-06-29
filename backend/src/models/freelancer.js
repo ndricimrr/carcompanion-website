@@ -17,7 +17,7 @@ const FreelancerSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  review: {
+  rating: {
     type: Number,
     required: true,
   },
@@ -25,7 +25,7 @@ const FreelancerSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  area: {
+  role: {
     type: String,
     required: true,
   },
@@ -37,10 +37,14 @@ const FreelancerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  images: {
-    thumbnail: String,
-    original: String,
+  image: {
+    type: String,
+    required: true,
   },
+  badge: {
+    type: String,
+    required: true,
+  }
 });
 
 FreelancerSchema.set("versionKey", false);
