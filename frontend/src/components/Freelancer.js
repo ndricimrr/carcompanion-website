@@ -3,7 +3,7 @@
  */
 "use strict";
 
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -48,23 +48,35 @@ const useStyles = makeStyles((theme) => ({
 const Freelancer = (props) => {
   const classes = useStyles();
   // Get rating of the inspector by rendering components in a loop
+  const [freelanceData, setFreelanceData] = useState({ 
+    name: props.freelance.freelancerName,
+    surname: props.freelance.surname,
+    age: props.freelance.age,
+    rating: props.freelance.rating,
+    inspections: props.freelance.inspections,
+    role: props.freelance.role,
+    make: props.freelance.make,
+    model: props.freelance.model,
+    badge: props.freelance.badge,
+    image: props.freelance.image
+  })
   var rating = [];
-  for (var i = 0; i < Number(props.rating); i++) {
+  for (var i = 0; i < Number(freelanceData.rating); i++) {
     rating.push(<StarIcon key={i} color="primary" />);
   }
   return (
     // Overall card of freelancer component
     <Card className={classes.root}>
       {/* Creating the bedge */}
-      <div className={classes.badge}>{props.bedge}</div>
+      <div className={classes.badge}>{freelanceData.badge}</div>
       {/* Image of the card */}
-      <CardMedia className={classes.media} image={props.image} />
+      <CardMedia className={classes.media} image={freelanceData.image} />
       {/* Freelancer details */}
       <CardContent>
         <center>
-          <div className={classes.lightText}>{props.role}</div>
-          <div className={classes.name}>{props.name}</div>
-          <div className={classes.numbers}>{props.inspections}</div>
+          <div className={classes.lightText}>{freelanceData.role}</div>
+          <div className={classes.name}>{freelanceData.name} {freelanceData.surname}</div>
+          <div className={classes.numbers}>{freelanceData.inspections}</div>
           <div className={classes.lightText}>INSPECTIONS</div>
           <div>{rating}</div>
         </center>

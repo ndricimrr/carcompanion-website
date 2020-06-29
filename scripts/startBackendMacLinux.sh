@@ -31,7 +31,7 @@ mongorestore dump/
 # Set environment variables
 echo -e "\e[1;42m Set necessary environment variables \e[0m"
 export PORT=3000
-export MONGODB_URI="mongodb://localhost:27017/moviedb"
+export MONGODB_URI="mongodb://localhost:27017/carcompaniondb"
 export JWT_SECRET="very secret secret"
 
 # Run Development

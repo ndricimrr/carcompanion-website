@@ -11,11 +11,13 @@ class AddFreelancerView extends Component {
       freelancerName: "",
       surname: "",
       age: 0,
-      review: 0,
+      rating: 0,
       inspections: 0,
-      area: "",
+      role: "",
       make: "",
-      model: ""
+      model: "",
+      badge: "",
+      image: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleAddFreelancer = this.handleAddFreelancer.bind(this);
@@ -35,23 +37,29 @@ class AddFreelancerView extends Component {
     if (
       this.state.freelancerName != "" &&
       this.state.surname != "" &&
-      this.state.age != 0 &&
-      this.state.review != 0 &&
-      this.state.inspections != 0 &&
-      this.state.area != "" &&
+      this.state.age > 18 &&
+      this.state.age < 90 &&
+      this.state.rating >= 0 &&
+      this.state.rating <= 5 &&
+      this.state.inspections > 0 &&
+      this.state.role != "" &&
       this.state.make != "" &&
-      this.state.model != "" 
+      this.state.badge != "" &&
+      this.state.model != "" &&
+      this.state.image != ""
     ) {
       try {
         let freelancer = {
           freelancerName: this.state.freelancerName,
           surname: this.state.surname,
           age: this.state.age,
-          review: this.state.review,
+          rating: this.state.rating,
           inspections: this.state.inspections,
-          area: this.state.area,
+          role: this.state.role,
           make: this.state.make,
           model: this.state.model,
+          badge: this.state.badge,
+          image: this.state.image
         };
         let ret = await FreelancerService.createFreelancer(freelancer);
         this.props.history.push("/");
@@ -101,11 +109,11 @@ class AddFreelancerView extends Component {
         <TextField
           InputProps={{ className: styles.inputField }}
           id="outlined-required"
-          label="Review"
+          label="Rating"
           type="number"
-          name="review"
+          name="rating"
           onChange={this.handleChange}
-          value={this.state.review}
+          value={this.state.rating}
           variant="outlined"
         />
         <TextField
@@ -121,10 +129,10 @@ class AddFreelancerView extends Component {
         <TextField
           InputProps={{ className: styles.inputField }}
           id="outlined-required"
-          label="Area"
-          name="area"
+          label="Role"
+          name="role"
           onChange={this.handleChange}
-          value={this.state.area}
+          value={this.state.role}
           variant="outlined"
         />
         <TextField
@@ -143,6 +151,24 @@ class AddFreelancerView extends Component {
           name="model"
           onChange={this.handleChange}
           value={this.state.model}
+          variant="outlined"
+        />
+        <TextField
+          InputProps={{ className: styles.inputField }}
+          id="outlined-required"
+          label="Badge"
+          name="badge"
+          onChange={this.handleChange}
+          value={this.state.badge}
+          variant="outlined"
+        />
+        <TextField
+          InputProps={{ className: styles.inputField }}
+          id="outlined-required"
+          label="Image"
+          name="image"
+          onChange={this.handleChange}
+          value={this.state.image}
           variant="outlined"
         />
         <Button
