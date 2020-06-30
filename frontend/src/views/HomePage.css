@@ -49,12 +49,12 @@
 
 :local(.bannerFirstLine) {
     border-top: 2px;
-    width: 40%;
+    width: 38%;
     margin: auto;
 }
 
 :local(.bannerSecondLine) {
     border-top: 2px;
-    width: 30%;
+    width: 25%;
     margin: auto;
 }
