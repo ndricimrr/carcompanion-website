@@ -19,7 +19,8 @@ import { SellAdvertiseView } from "./views/SellAdvertiseView";
 import { FindCarView } from "./views/FindCarView";
 import UserService from "./services/UserService";
 import PostCarView from "./views/PostCarView";
-import AddFreelancerView from "./views/AddFreelancerView"
+import AddFreelancerView from "./views/AddFreelancerView";
+import AskQuestionForm from "./views/AskQuestionForm";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ export default class App extends React.Component {
         { component: AddFreelancerView, path: "/addfreelancer", exact: true },
         { component: FindCarView, path: "/findcar", exact: true },
         { component: SellAdvertiseView, path: "/sell-advertise", exact: true },
-        { component: CommunityView, path: "/community", exact: true },
+        { component: AskQuestionForm, path: "/community", exact: true },
         { component: HomePage, path: "/", exact: true },
         { component: FreelancersPageView, path: "/freelancers", exact: true },
         { component: MovieDetailView, path: "/show/:id" },
