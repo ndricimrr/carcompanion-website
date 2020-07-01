@@ -24,6 +24,20 @@ const QuestionSchema = new mongoose.Schema({
     thumbnail: String,
     original: String,
   },
+  answers: [{
+    authorId: {
+      type: String,
+      required: true
+    },
+    content: {
+      type: String,
+      required: true
+    },
+    date: {
+      type: Date,
+      required: true,
+    },
+  }]
 });
 
 QuestionSchema.set("versionKey", false);
