@@ -2,6 +2,22 @@
 
 const mongoose = require("mongoose");
 
+// Define answers schema
+var AnswerSchema = new mongoose.Schema({
+  authorId: {
+    type: String,
+    required: true
+  },
+  content: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
+});
+
 // Define the question schema
 const QuestionSchema = new mongoose.Schema({
   title: {
@@ -24,20 +40,7 @@ const QuestionSchema = new mongoose.Schema({
     thumbnail: String,
     original: String,
   },
-  answers: [{
-    authorId: {
-      type: String,
-      required: true
-    },
-    content: {
-      type: String,
-      required: true
-    },
-    date: {
-      type: Date,
-      required: true,
-    },
-  }]
+  answers: [AnswerSchema]
 });
 
 QuestionSchema.set("versionKey", false);

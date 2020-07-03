@@ -74,6 +74,21 @@ export default class QuestionService {
     });
   }
 
+  static createAnswer(questionId,answer) {
+    return new Promise((resolve, reject) => {
+      HttpService.put(
+        `${this.baseURL()}/answer/${questionId}`,
+        answer,
+        function (data) {
+          resolve(data);
+        },
+        function (textStatus) {
+          reject(textStatus);
+        }
+      );
+    });
+  }
+
   static createQuestion(question) {
     question.id = Math.floor(Math.random() * 100000000 + 1).toString();
 //Handle question images from the file upload

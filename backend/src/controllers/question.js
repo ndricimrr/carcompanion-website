@@ -91,10 +91,38 @@ const list = async (req, res) => {
   }
 };
 
+const createAnswer = async (req, res) => {
+  if (Object.keys(req.body).length === 0) {
+    return res.status(400).json({
+      error: "Bad Request",
+      message: "The request body is empty",
+    });
+  }
+
+  try {
+    let question = await QuestionModel.findById(req.params.id).exec();
+
+    question.answers = question.answers.push(req.body);
+    
+    let newQuestion = await QuestionModel.findByIdAndUpdate(req.params.id, question, {
+      new: true,
+      runValidators: true,
+    }).exec();
+
+    return res.status(200).json(newQuestion);
+  } catch (err) {
+    return res.status(500).json({
+      error: "Internal server error",
+      message: err.message,
+    });
+  }
+};
+
 module.exports = {
   create,
   read,
   update,
   remove,
   list,
+  createAnswer
 };
