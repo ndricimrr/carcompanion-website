@@ -3,8 +3,6 @@ import Page from "../components/Page";
 import styles from "./HomePage.css";
 // import { Grid } from "@material-ui/core";
 import { Grid, Cell } from "react-mdl";
-import findCar from "../assets/findCar.png";
-import inspection from "../assets/inspection.png";
 import findDreamCar from "../assets/findDreamCar.jpg"
 import freeInspection from "../assets/freeInspection.jpg"
 import cheapRepair from "../assets/CheapRepair.jpg"
@@ -55,7 +53,6 @@ export class HomePage extends Component {
             </div>
           </div>
         </section>
-        <button>Start Exploring our services</button>
       </Page>
       
       
