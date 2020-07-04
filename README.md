@@ -7,7 +7,7 @@ Both for the back end and front end application check
 
 - nodejs [official website](https://nodejs.org/en/) - nodejs includes [npm](https://www.npmjs.com/) (node package manager)
 
-Just for the backend application:
+Also for the backend application:
 
 - mongodb [official installation guide](https://docs.mongodb.org/manual/administration/install-community/) **Hint**: Make sure to follow all the installation guide, especially in Windows where you need to set the Environment Variables for mongod
 
