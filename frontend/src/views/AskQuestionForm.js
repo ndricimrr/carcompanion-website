@@ -42,6 +42,12 @@ class AskQuestionForm extends React.Component {
           content: this.state.content,
           date: Date(),
         };
+
+        let answer = {
+          authorId: "6666",
+          content: "88888",
+          date: Date()
+        }
         let ret = await QuestionService.createQuestion(question);
         this.props.history.push("/");
       } catch (err) {

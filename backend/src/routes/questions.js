@@ -11,6 +11,8 @@ router.post("/", middlewares.checkAuthentication, QuestionsController.create); /
 router.get("/:id", QuestionsController.read); // Read a question by Id
 router.put("/:id", middlewares.checkAuthentication, QuestionsController.update); // Update a question by Id
 router.put("/answer/:id", middlewares.checkAuthentication, QuestionsController.createAnswer); // Update a question by Id
+router.put("/updateanswer/:id/:answerId", middlewares.checkAuthentication, QuestionsController.updateAnswer); // Update a question by Id
+router.put("/removeanswer/:id/:answerId", middlewares.checkAuthentication, QuestionsController.removeAnswer); // Update a question by Id
 router.delete("/:id", middlewares.checkAuthentication, QuestionsController.remove); // Delete a question by Id
 
 module.exports = router;

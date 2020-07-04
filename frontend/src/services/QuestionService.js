@@ -89,6 +89,35 @@ export default class QuestionService {
     });
   }
 
+  static updateAnswer(questionId, answerId, answer) {
+    return new Promise((resolve, reject) => {
+      HttpService.put(
+        `${this.baseURL()}/updateanswer/${questionId}/${answerId}`,
+        answer,
+        function (data) {
+          resolve(data);
+        },
+        function (textStatus) {
+          reject(textStatus);
+        }
+      );
+    });
+  }
+
+  static removeAnswer(questionId, answerId) {
+    return new Promise((resolve, reject) => {
+      HttpService.put(
+        `${this.baseURL()}/removeanswer/${questionId}/${answerId}`,
+        function (data) {
+          resolve(data);
+        },
+        function (textStatus) {
+          reject(textStatus);
+        }
+      );
+    });
+  }
+  
   static createQuestion(question) {
     question.id = Math.floor(Math.random() * 100000000 + 1).toString();
 //Handle question images from the file upload

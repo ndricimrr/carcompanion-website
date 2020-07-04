@@ -117,6 +117,48 @@ const createAnswer = async (req, res) => {
     });
   }
 };
+const updateAnswer = async (req, res) => {
+  if (Object.keys(req.body).length === 0) {
+    return res.status(400).json({
+      error: "Bad Request",
+      message: "The request body is empty",
+    });
+  }
+  try {
+    let question = await QuestionModel.findById(req.params.id).exec();
+    let index = question.answers.findIndex(ans => ans._id == req.params.answerId);
+    question.answers[index] = req.body;
+    let newQuestion = await QuestionModel.findByIdAndUpdate(req.params.id, question, {
+      new: true,
+      runValidators: true,
+    }).exec();
+    return res.status(200).json(question);
+} catch (err) {
+    return res.status(500).json({
+      error: "Internal server error",
+      message: err.message,
+    });
+  }
+};
+
+const removeAnswer = async (req, res) => {
+  try {
+    let question = await QuestionModel.findById(req.params.id).exec();
+    let index = question.answers.findIndex(ans => ans._id == req.params.answerId);
+    question.answers = question.answers.splice(index, 1);
+    let newQuestion = await QuestionModel.findByIdAndUpdate(req.params.id, question, {
+      new: true,
+      runValidators: true,
+    }).exec();
+
+    return res.status(200).json(question);
+  } catch (err) {
+    return res.status(500).json({
+      error: "Internal server error",
+      message: err.message,
+    });
+  }
+};
 
 module.exports = {
   create,
@@ -124,5 +166,7 @@ module.exports = {
   update,
   remove,
   list,
-  createAnswer
+  createAnswer,
+  updateAnswer,
+  removeAnswer
 };
