@@ -71,7 +71,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ margin: 0, padding: 0 }}>
         <Router>
           <Switch>
             {this.state.routes.map((route, i) => (
