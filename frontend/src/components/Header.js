@@ -8,6 +8,8 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import UserService from "../services/UserService";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import LockIcon from "@material-ui/icons/Lock";
 
 class Header extends React.Component {
   constructor(props) {
@@ -86,18 +88,41 @@ class Header extends React.Component {
           </nav>
         </div>
         {this.state.isLoggedIn ? (
+          <div>
+            <IconButton
+              onClick={() => {
+                alert("Hello User");
+              }}
+              aria-label="delete"
+              color="primary"
+              style={{ height: "100%" }}
+            >
+              <AccountCircleIcon />
+            </IconButton>
+            <IconButton
+              onClick={() => {
+                UserService.logout();
+                console.log("-----", this.props.history.location.pathname);
+                this.props.history.go(this.props.history.location.pathname);
+              }}
+              aria-label="delete"
+              color="primary"
+              style={{ height: "100%" }}
+            >
+              <ExitToAppIcon />
+            </IconButton>
+          </div>
+        ) : (
           <IconButton
             onClick={() => {
-              alert("Hello User");
+              this.props.history.push("/login");
             }}
-            aria-label="delete"
+            aria-label="login"
             color="primary"
             style={{ height: "100%" }}
           >
-            <AccountCircleIcon />
+            <LockIcon />
           </IconButton>
-        ) : (
-          <a href={"#/login"}>Login/Register</a>
         )}
       </div>
     );
