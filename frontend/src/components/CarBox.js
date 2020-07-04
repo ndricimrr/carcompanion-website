@@ -45,40 +45,36 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Freelancer = (props) => {
+const CarBox = (props) => {
   const classes = useStyles();
   // Get rating of the inspector by rendering components in a loop
-  const [freelanceData, setFreelanceData] = useState({
-    name: props.freelance.freelancerName,
-    surname: props.freelance.surname,
-    age: props.freelance.age,
-    rating: props.freelance.rating,
-    inspections: props.freelance.inspections,
-    role: props.freelance.role,
-    make: props.freelance.make,
-    model: props.freelance.model,
-    badge: props.freelance.badge,
-    image: props.freelance.image,
+  const [carData, setFreelanceData] = useState({
+    image: props.car.image,
+    model: props.car.model,
+    make: props.car.make,
+    year: props.car.year,
+    mileage: props.car.mileage,
+    price: props.car.price,
   });
   var rating = [];
-  for (var i = 0; i < Number(freelanceData.rating); i++) {
+  for (var i = 0; i < Number(carData.rating); i++) {
     rating.push(<StarIcon key={i} color="primary" />);
   }
   return (
     // Overall card of freelancer component
     <Card className={classes.root}>
       {/* Creating the bedge */}
-      <div className={classes.badge}>{freelanceData.badge}</div>
+      <div className={classes.badge}>{carData.make}</div>
       {/* Image of the card */}
-      <CardMedia className={classes.media} image={freelanceData.image} />
+      <CardMedia className={classes.media} image={carData.image} />
       {/* Freelancer details */}
       <CardContent>
         <center>
-          <div className={classes.lightText}>{freelanceData.role}</div>
+          <div className={classes.lightText}>{carData.mileage}</div>
           <div className={classes.name}>
-            {freelanceData.name} {freelanceData.surname}
+            {carData.model} {carData.make}
           </div>
-          <div className={classes.numbers}>{freelanceData.inspections}</div>
+          <div className={classes.numbers}>{carData.year}</div>
           <div className={classes.lightText}>INSPECTIONS</div>
           <div>{rating}</div>
         </center>
@@ -87,4 +83,4 @@ const Freelancer = (props) => {
   );
 };
 
-export default Freelancer;
+export default CarBox;

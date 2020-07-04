@@ -48,14 +48,6 @@ class Header extends React.Component {
             </NavLink>
             <NavLink
               exact
-              to={"/inspectors"}
-              className={homePageLinkStyle}
-              activeClassName={homePageLinkSelectedStyle}
-            >
-              {"Inspectors"}
-            </NavLink>
-            <NavLink
-              exact
               to={"/freelancers"}
               className={homePageLinkStyle}
               activeClassName={homePageLinkSelectedStyle}
