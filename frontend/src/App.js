@@ -22,6 +22,7 @@ import PostCarView from "./views/PostCarView";
 import AddFreelancerView from "./views/AddFreelancerView";
 import AskQuestionForm from "./views/AskQuestionForm";
 import QuestionView from "./views/QuestionView";
+import QuestionListView from "./views/QuestionsListView";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -35,10 +36,11 @@ export default class App extends React.Component {
         { component: FindCarView, path: "/findcar", exact: true },
         { component: SellAdvertiseView, path: "/sell-advertise", exact: true },
         { component: QuestionView, path: "/question-view", exact: true },
-        { component: AskQuestionForm, path: "/community", exact: true },
+        { component: CommunityView, path: "/community", exact: true },
         { component: HomePage, path: "/", exact: true },
         { component: FreelancersPageView, path: "/freelancers", exact: true },
         { component: MovieDetailView, path: "/show/:id" },
+        {component: QuestionListView, path:"/questionList", exact: true },
         {
           render: (props) => {
             if (UserService.isAuthenticated()) {

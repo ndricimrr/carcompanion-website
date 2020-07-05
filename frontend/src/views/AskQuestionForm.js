@@ -141,13 +141,13 @@ class AskQuestionForm extends React.Component {
           >
             Submit
           </Button>
-          <Button
+          {/* <Button
             variant="contained"
             color="secondary"
             startIcon={<DeleteIcon />}
           >
             Cancel
-          </Button>
+          </Button> */}
         </div>
       </div>
     );
