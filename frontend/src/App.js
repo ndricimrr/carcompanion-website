@@ -14,15 +14,15 @@ import { MovieDetailView } from "./views/MovieDetailView";
 import { MovieFormView } from "./views/MovieFormView";
 import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
-import { CommunityView } from "./views/CommunityView";
+import { CommunityView } from "./views/CommunityView/CommunityView";
 import { SellAdvertiseView } from "./views/SellAdvertiseView";
 import { FindCarView } from "./views/FindCarView";
 import UserService from "./services/UserService";
 import PostCarView from "./views/PostCarView";
 import AddFreelancerView from "./views/AddFreelancerView";
-import AskQuestionForm from "./views/AskQuestionForm";
+import AskQuestionForm from "./views/CommunityView/AskQuestionForm";
 import QuestionView from "./views/QuestionView";
-import QuestionListView from "./views/QuestionsListView";
+import QuestionListView from "./views/CommunityView/QuestionsListView";
 
 export default class App extends React.Component {
   constructor(props) {

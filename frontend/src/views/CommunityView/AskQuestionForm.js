@@ -1,8 +1,8 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import { ImageUploadView } from "./ImageUploadView";
+import { ImageUploadView } from "../ImageUploadView";
 import Button from "@material-ui/core/Button";
-import QuestionService from "../services/QuestionService";
+import QuestionService from "../../services/QuestionService";
 import SaveIcon from "@material-ui/icons/Save";
 import DeleteIcon from "@material-ui/icons/Delete";
 

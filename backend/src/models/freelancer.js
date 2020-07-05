@@ -4,6 +4,7 @@
 const mongoose = require("mongoose");
 
 // Define the freelancer schema
+//Suggestions to add to the freelandcer model: city, telephone, email, bio, array of reviews(comment+starrating), areas of expertise
 const FreelancerSchema = new mongoose.Schema({
   freelancerName: {
     type: String,

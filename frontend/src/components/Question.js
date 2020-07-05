@@ -16,8 +16,8 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
     root: {
         // width: '100%',
-        height: '15ch',
-        width: '50ch',
+        height: '17ch',
+        width: '100ch',
         // maxWidth: '50ch',
         backgroundColor: theme.palette.background.paper,
       },
