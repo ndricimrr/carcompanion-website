@@ -58,7 +58,7 @@ class QuestionView extends Component {
           color="primary"
         >
           <QuestionAnswerIcon fontSize="large" />
-          45
+          {this.state.question.answers.length}
         </Button>
         <p>..</p>
         <Button
@@ -95,7 +95,10 @@ class QuestionView extends Component {
         <Divider />
         <br />
         {this.state.isAnsweringEnabled ? (
-          <AnswerForm />
+          <AnswerForm 
+            questionId={this.state.question._id} 
+            authorId="8"
+            history={this.props.history}/>
         ) : (
           this.state.question.answers.map((item) => {
             return (
