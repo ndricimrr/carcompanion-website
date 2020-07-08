@@ -28,7 +28,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function FullScreenDialog() {
+const FullScreenDialog = (props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -54,13 +54,12 @@ export default function FullScreenDialog() {
             <Typography variant="h6" className={classes.title}>
               Ask a question
             </Typography>
-            <Button autoFocus color="inherit" onClick={handleClose}>
-              save
-            </Button>
           </Toolbar>
         </AppBar>
-        <AskQuestionForm closeDialog={handleClose}/>
+        <AskQuestionForm closeDialog={handleClose} history={props.history}/>
       </Dialog>
     </div>
   );
 }
+
+export default FullScreenDialog;

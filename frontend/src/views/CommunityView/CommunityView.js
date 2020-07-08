@@ -29,7 +29,7 @@ export class CommunityView extends Component {
         <div className={styles.container}>
           <div className={styles.main}> 
           <h1 className={styles.h1Style}>Top community questions</h1>
-            <FullScreenDialog/>
+            <FullScreenDialog history={this.props.history}/>
           </div>
             <QuestionListView/>
         </div>
