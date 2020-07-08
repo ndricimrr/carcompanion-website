@@ -81,6 +81,8 @@ class QuestionView extends Component {
   }
 
   renderComponent(question) {
+    let answers = question.answers;
+    let revAnswers = answers.reverse()
     return (
       <React.Fragment>
         <Paper
@@ -94,13 +96,14 @@ class QuestionView extends Component {
         <br />
         <Divider />
         <br />
+        
         {this.state.isAnsweringEnabled ? (
           <AnswerForm 
             questionId={this.state.question._id} 
             authorId="8"
             history={this.props.history}/>
-        ) : (
-          this.state.question.answers.map((item) => {
+        ) : ( 
+          revAnswers.map((item) => {
             return (
               <React.Fragment key={item.id}>
                 <AnswerCard answer={item} />
