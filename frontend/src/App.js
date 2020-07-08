@@ -35,7 +35,7 @@ export default class App extends React.Component {
         { component: AddFreelancerView, path: "/addfreelancer", exact: true },
         { component: FindCarView, path: "/findcar", exact: true },
         { component: SellAdvertiseView, path: "/sell-advertise", exact: true },
-        { component: QuestionView, path: "/question-view", exact: true },
+        { component: QuestionView, path: "/community/:id", exact: true },
         { component: CommunityView, path: "/community", exact: true },
         { component: HomePage, path: "/", exact: true },
         { component: FreelancersPageView, path: "/freelancers", exact: true },

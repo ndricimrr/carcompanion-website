@@ -6,11 +6,11 @@ class QuestionDetail extends Component {
     return (
       <React.Fragment>
         <h1 style={{ color: "black" }}>
-          <b>What is the point of this ?</b>
+          <b>{this.props.title}</b>
         </h1>
-        <p>Asked: 23.02.2020</p>
+        <p>Asked: {this.props.date}</p>
         <h3>
-          What is the problem with my car. I push the button and it doesnt work
+          {this.props.content}
         </h3>
       </React.Fragment>
     );

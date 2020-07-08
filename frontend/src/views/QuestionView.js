@@ -7,13 +7,14 @@ import CommentIcon from "@material-ui/icons/Comment";
 import ShareIcon from "@material-ui/icons/Share";
 import QuestionDetail from "../components/QuestionDetail";
 import AnswerForm from "../components/AnswerForm";
+import QuestionService from '../services/QuestionService'
 
 import AnswerCard from "../components/AnswerCard";
 
 class QuestionView extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    /*this.state = {
       rating: 0,
       isAnsweringEnabled: false,
       isAnswerListShowing: false,
@@ -31,20 +32,32 @@ class QuestionView extends Component {
           rating: 0,
         },
       ],
+    };*/
+    this.state = {
+      loading: false,
+      question: null,
     };
+  }
+    componentWillMount(props) {
+    this.setState({
+      loading: true,
+    });
+
+    let id = this.props.match.params.id;
+    (async () => {
+      try {
+        let question = await QuestionService.getQuestion(id);
+        this.setState({
+          question: question,
+          loading: false,
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+
     this.renderComponent = this.renderComponent.bind(this);
     this.renderResponseRow = this.renderResponseRow.bind(this);
-    this.handleButtonClick = this.handleButtonClick.bind(this);
-  }
-
-  handleButtonClick() {
-    this.setState({ isAnsweringEnabled: false });
-    alert("hello");
-  }
-
-  handleButtonClick() {
-    this.setState({ isAnsweringEnabled: true });
-    alert("hello");
   }
 
   renderResponseRow() {
@@ -86,7 +99,7 @@ class QuestionView extends Component {
     );
   }
 
-  renderComponent() {
+  renderComponent(question) {
     return (
       <React.Fragment>
         <Paper
@@ -94,7 +107,7 @@ class QuestionView extends Component {
           square
           style={{ padding: "10px", paddingTop: "0" }}
         >
-          <QuestionDetail />
+          <QuestionDetail title={question.title} date={question.date} content={question.content} />
           {this.renderResponseRow()}
         </Paper>
         <br />
@@ -103,7 +116,7 @@ class QuestionView extends Component {
         {this.state.isAnsweringEnabled ? (
           <AnswerForm />
         ) : (
-          this.state.answers.map((item) => {
+          this.state.question.answers.map((item) => {
             return (
               <React.Fragment key={item.id}>
                 <AnswerCard answer={item} />
@@ -117,7 +130,9 @@ class QuestionView extends Component {
     );
   }
   render() {
-    return this.renderComponent();
+    if (this.state.question != null)
+      return this.renderComponent(this.state.question);
+    return <div>No Questions</div>
   }
 }
 

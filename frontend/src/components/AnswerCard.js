@@ -10,7 +10,7 @@ class AnswerCard extends Component {
     return (
       <Paper elevation={3} style={{ padding: "10px" }}>
         <p>
-          <a href="#">{this.props.answer.answer_owner}</a> answered 2 days ago
+          <a href="#">{this.props.answer.answer_owner}</a> answered {this.props.answer.date}
         </p>
         <div
           style={{
@@ -19,7 +19,7 @@ class AnswerCard extends Component {
             justifyContent: "space-between",
           }}
         >
-          <h4>{this.props.answer.answer_content}</h4>
+          <h4>{this.props.answer.content}</h4>
           <Rating
             name="simple-controlled"
             value={this.props.answer.rating}
