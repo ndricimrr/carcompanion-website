@@ -59,7 +59,7 @@ export default function FullScreenDialog() {
             </Button>
           </Toolbar>
         </AppBar>
-        <AskQuestionForm/>
+        <AskQuestionForm closeDialog={handleClose}/>
       </Dialog>
     </div>
   );
