@@ -14,25 +14,6 @@ import AnswerCard from "../components/AnswerCard";
 class QuestionView extends Component {
   constructor(props) {
     super(props);
-    /*this.state = {
-      rating: 0,
-      isAnsweringEnabled: false,
-      isAnswerListShowing: false,
-      answers: [
-        {
-          id: "1",
-          answer_owner: "ndricimrr",
-          answer_content: "You should turn it off and on again",
-          rating: 0,
-        },
-        {
-          id: "2",
-          answer_owner: "leomessi",
-          answer_content: "You should buy a new one",
-          rating: 0,
-        },
-      ],
-    };*/
     this.state = {
       loading: false,
       question: null,
