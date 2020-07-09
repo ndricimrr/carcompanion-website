@@ -22,6 +22,8 @@ import PostCarView from "./views/PostCarView";
 import AddFreelancerView from "./views/AddFreelancerView";
 import AskQuestionForm from "./views/AskQuestionForm";
 import QuestionView from "./views/QuestionView";
+import RegisterView from "./views/RegisterView";
+
 
 export default class App extends React.Component {
   constructor(props) {
@@ -35,6 +37,7 @@ export default class App extends React.Component {
         { component: FindCarView, path: "/findcar", exact: true },
         { component: SellAdvertiseView, path: "/sell-advertise", exact: true },
         { component: QuestionView, path: "/question-view", exact: true },
+        { component: RegisterView, path: "/register-view", exact: true },
         { component: AskQuestionForm, path: "/community", exact: true },
         { component: HomePage, path: "/", exact: true },
         { component: FreelancersPageView, path: "/freelancers", exact: true },
