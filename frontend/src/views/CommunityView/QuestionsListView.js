@@ -52,10 +52,7 @@ class QuestionListView extends Component {
       let qstn = [].concat(result).sort((a, b) => a.rating < b.rating ? 1 : -1)
       questionsToShow = []
       if(qstn.length > 0) {
-        qstn.map((qs) => {questionsToShow.concat(this.state.questions.filter(question => question.title == qs.target)[0])})
-      console.log(this.state.questions[0]);
-      console.log(questionsToShow);
-      
+        qstn.map((qs) => {questionsToShow.push(this.state.questions.filter(question => question.title == qs.target)[0])})      
       }
     } else {
       questionsToShow = this.state.questions;
