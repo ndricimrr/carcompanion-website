@@ -6,6 +6,7 @@ import Question from "../../components/Question";
 import Grid from "@material-ui/core/Grid";
 import QuestionService from "../../services/QuestionService";
 
+
 class QuestionListView extends Component {
     // Contructor
     constructor(props) {
@@ -15,7 +16,9 @@ class QuestionListView extends Component {
             loading: false,
             questions: []
         };
+        
     }
+    
      // Load data
   componentWillMount(){
     this.setState({
@@ -36,13 +39,28 @@ class QuestionListView extends Component {
 
   // Render
   render() {
+    const stringSimilarity = require('string-similarity');
     if (this.state.loading) {
         return (<h2>Loading...</h2>);
+    }
+    let questionsToShow = this.state.questions;
+    if(this.props.search != "") {
+      let result = stringSimilarity.findBestMatch(this.props.search, questionsToShow.map(question => question.title)).ratings
+      
+      result = result.filter(question => question.rating > 0.05)
+      
+      let qstn = [].concat(result).sort((a, b) => a.rating < b.rating ? 1 : -1)
+      questionsToShow = []
+      if(qstn.length > 0) {
+        qstn.map((qs) => {questionsToShow.push(this.state.questions.filter(question => question.title == qs.target)[0])})      
+      }
+    } else {
+      questionsToShow = this.state.questions;
     }
     return (
       <React.Fragment>
         <Grid container justify="center" spacing={5}>
-          {this.state.questions.map((question) => (
+          {questionsToShow.map((question) => (
             <Grid key={question.title} item>
               <Question
                 questn={question}
