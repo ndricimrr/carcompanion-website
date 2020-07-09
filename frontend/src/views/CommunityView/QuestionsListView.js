@@ -45,13 +45,18 @@ class QuestionListView extends Component {
     }
     let questionsToShow = this.state.questions;
     if(this.props.search != "") {
-      let result = stringSimilarity.findBestMatch(this.props.search, questionsToShow.map(question => question.title))
+      let result = stringSimilarity.findBestMatch(this.props.search, questionsToShow.map(question => question.title)).ratings
       
-      result = result.ratings.filter(question => question.rating > 0.05)
+      result = result.filter(question => question.rating > 0.05)
       
-      const qstn = [].concat(result).sort((a, b) => a.rating < b.rating ? 1 : -1)
-    
-      questionsToShow = qstn
+      let qstn = [].concat(result).sort((a, b) => a.rating < b.rating ? 1 : -1)
+      questionsToShow = []
+      if(qstn.length > 0) {
+        qstn.map((qs) => {questionsToShow.concat(this.state.questions.filter(question => question.title == qs.target)[0])})
+      console.log(this.state.questions[0]);
+      console.log(questionsToShow);
+      
+      }
     } else {
       questionsToShow = this.state.questions;
     }
