@@ -12,6 +12,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 import { ListItemAvatar, Avatar } from "@material-ui/core";
 import Button from '@material-ui/core/Button';
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -38,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
         date: props.questn.date,
         images: props.questn.images
     })
-    console.log(props.questn);
 
     return (
         //List elements of the list of questions
@@ -66,7 +66,10 @@ const useStyles = makeStyles((theme) => ({
           }
         />
         {/* Button wouls redirect to the actual question + answers */}
-        <Button variant="outlined" size="small" color="primary" className={classes.margin}>See question</Button>
+        <NavLink exact to={"/community/".concat(props.questn._id)} style={{ textDecoration: "none" }}>
+          <Button variant="outlined" size="small" color="primary" className={classes.margin}>See question</Button>
+        </NavLink>
+        
             </ListItem>
             <Divider variant="inset" component="li" />
         </List>

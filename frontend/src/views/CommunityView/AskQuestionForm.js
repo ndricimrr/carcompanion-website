@@ -49,7 +49,8 @@ class AskQuestionForm extends React.Component {
           date: Date()
         }
         let ret = await QuestionService.createQuestion(question);
-        this.props.history.push("/");
+        this.props.history.go(0);
+        this.props.closeDialog()
       } catch (err) {
         console.error(err);
         this.setState(

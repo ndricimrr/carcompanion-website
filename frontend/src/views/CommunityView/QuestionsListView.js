@@ -23,8 +23,10 @@ class QuestionListView extends Component {
     });
 
     QuestionService.getQuestions().then((questions) => {
+        let qsts = [...questions]
+        let revqsts = qsts.reverse();
         this.setState({
-            questions: [...questions],
+            questions: [...revqsts],
             loading: false
         });
     }).catch((e) => {
