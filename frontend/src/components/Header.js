@@ -10,6 +10,7 @@ import logo from "../assets/logo.png";
 import UserService from "../services/UserService";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import LockIcon from "@material-ui/icons/Lock";
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
 
 class Header extends React.Component {
   constructor(props) {
@@ -101,8 +102,17 @@ class Header extends React.Component {
             </IconButton>
             <IconButton
               onClick={() => {
+                this.props.history.push("/requests");
+              }}
+              aria-label="delete"
+              color="primary"
+              style={{ height: "100%" }}
+            >
+              <MailOutlineIcon />
+            </IconButton>
+            <IconButton
+              onClick={() => {
                 UserService.logout();
-                console.log("-----", this.props.history.location.pathname);
                 this.props.history.go(this.props.history.location.pathname);
               }}
               aria-label="delete"

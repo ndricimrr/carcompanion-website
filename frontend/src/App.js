@@ -20,7 +20,9 @@ import { FindCarView } from "./views/FindCarView";
 import UserService from "./services/UserService";
 import PostCarView from "./views/PostCarView";
 import AddFreelancerView from "./views/AddFreelancerView";
-import AskQuestionForm from "./views/CommunityView/AskQuestionForm";
+import RequestListView from "./views/RequestView/RequestListView";
+import RequestContent from "./views/RequestView/RequestContent";
+
 import QuestionView from "./views/QuestionView";
 import QuestionListView from "./views/CommunityView/QuestionsListView";
 
@@ -40,7 +42,9 @@ export default class App extends React.Component {
         { component: HomePage, path: "/", exact: true },
         { component: FreelancersPageView, path: "/freelancers", exact: true },
         { component: MovieDetailView, path: "/show/:id" },
-        {component: QuestionListView, path:"/questionList", exact: true },
+        { component: QuestionListView, path: "/questionList", exact: true },
+        { component: RequestListView, path: "/requests", exact: true },
+        { component: RequestContent, path: "/requests/:id", exact: true },
         {
           render: (props) => {
             if (UserService.isAuthenticated()) {
