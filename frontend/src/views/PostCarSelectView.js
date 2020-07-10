@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 const specs = [
   {
-    label: "Brand",
+    label: "Make",
     values: [
       {
         key: "mercedes",
@@ -47,8 +47,6 @@ const specs = [
       },
     ],
   },
-
-
 ];
 
 const PostCarSelectView = (props) => {
@@ -58,14 +56,9 @@ const PostCarSelectView = (props) => {
     <div className={classes.root}>
       <center>
         {specs.map((spec, index) => (
-          <PostCarInput
-            label={spec.label}
-            key={index}
-            values={spec.values}
-          />
+          <PostCarInput label={spec.label} key={index} values={spec.values} />
         ))}
       </center>
-
     </div>
   );
 };

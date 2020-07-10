@@ -15,7 +15,6 @@ import { MovieFormView } from "./views/MovieFormView";
 import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
 import { CommunityView } from "./views/CommunityView";
-import { SellAdvertiseView } from "./views/SellAdvertiseView";
 import { FindCarView } from "./views/FindCarView";
 import UserService from "./services/UserService";
 import PostCarView from "./views/PostCarView";
@@ -29,10 +28,9 @@ export default class App extends React.Component {
     this.state = {
       title: "Car Companion App",
       routes: [
-        { component: PostCarView, path: "/postcar", exact: true },
+        { component: PostCarView, path: "/sell-advertise", exact: true },
         { component: AddFreelancerView, path: "/addfreelancer", exact: true },
         { component: FindCarView, path: "/findcar", exact: true },
-        { component: SellAdvertiseView, path: "/sell-advertise", exact: true },
         { component: AskQuestionForm, path: "/community", exact: true },
         { component: HomePage, path: "/", exact: true },
         { component: FreelancersPageView, path: "/freelancers", exact: true },
