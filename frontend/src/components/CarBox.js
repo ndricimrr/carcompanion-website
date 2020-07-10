@@ -11,7 +11,7 @@ import CardContent from "@material-ui/core/CardContent";
 import StarIcon from "@material-ui/icons/Star";
 
 const useStyles = makeStyles((theme) => ({
-  // Styles of elements
+  // St
   root: {
     maxWidth: 345,
     width: 230,

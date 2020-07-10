@@ -9,6 +9,7 @@ import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import StarIcon from "@material-ui/icons/Star";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   // Styles of elements
@@ -58,6 +59,10 @@ const Freelancer = (props) => {
     make: props.freelance.make,
     model: props.freelance.model,
     badge: props.freelance.badge,
+    expertise: props.freelance.expertise,
+    telephone: props.freelance.telephone,
+    email: props.freelance.email,
+    city: props.freelance.city,
     image: props.freelance.image,
   });
   var rating = [];
@@ -65,6 +70,7 @@ const Freelancer = (props) => {
     rating.push(<StarIcon key={i} color="primary" />);
   }
   return (
+    <NavLink exact to={"/freelancers/".concat(props.freelance._id)} style={{ textDecoration: "none" }}>
     // Overall card of freelancer component
     <Card className={classes.root}>
       {/* Creating the bedge */}
@@ -84,6 +90,7 @@ const Freelancer = (props) => {
         </center>
       </CardContent>
     </Card>
+    </NavLink>
   );
 };
 
