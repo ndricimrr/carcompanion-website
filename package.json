@@ -16,8 +16,5 @@
     "start-backend": "cd scripts && \"./startBackendWindows1.sh\"",
     "finish-backend": "cd scripts && \"./startBackendWindows2.sh\"",
     "frontend": "cd scripts && \"./startFrontend.sh\""
-  },
-  "dependencies": {
-    "string-similarity": "^4.0.1"
   }
 }
