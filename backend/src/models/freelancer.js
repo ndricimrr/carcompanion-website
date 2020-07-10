@@ -45,7 +45,23 @@ const FreelancerSchema = new mongoose.Schema({
   badge: {
     type: String,
     required: true,
-  }
+  },
+  expertise: {
+    type: String,
+    required: true,
+  },
+  telephone: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  city: {
+    type: String,
+    required: true,
+  },
 });
 
 FreelancerSchema.set("versionKey", false);
