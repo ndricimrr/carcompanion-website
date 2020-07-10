@@ -14,12 +14,16 @@ import { MovieDetailView } from "./views/MovieDetailView";
 import { MovieFormView } from "./views/MovieFormView";
 import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
-import { CommunityView } from "./views/CommunityView";
+import { CommunityView } from "./views/CommunityView/CommunityView";
 import { FindCarView } from "./views/FindCarView";
 import UserService from "./services/UserService";
 import PostCarView from "./views/PostCarView";
 import AddFreelancerView from "./views/AddFreelancerView";
-import AskQuestionForm from "./views/AskQuestionForm";
+import RequestListView from "./views/RequestView/RequestListView";
+import RequestContent from "./views/RequestView/RequestContent";
+
+import QuestionView from "./views/QuestionView";
+import QuestionListView from "./views/CommunityView/QuestionsListView";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -31,10 +35,14 @@ export default class App extends React.Component {
         { component: PostCarView, path: "/sell-advertise", exact: true },
         { component: AddFreelancerView, path: "/addfreelancer", exact: true },
         { component: FindCarView, path: "/findcar", exact: true },
-        { component: AskQuestionForm, path: "/community", exact: true },
+        { component: QuestionView, path: "/community/:id", exact: true },
+        { component: CommunityView, path: "/community", exact: true },
         { component: HomePage, path: "/", exact: true },
         { component: FreelancersPageView, path: "/freelancers", exact: true },
         { component: MovieDetailView, path: "/show/:id" },
+        { component: QuestionListView, path: "/questionList", exact: true },
+        { component: RequestListView, path: "/requests", exact: true },
+        { component: RequestContent, path: "/requests/:id", exact: true },
         {
           render: (props) => {
             if (UserService.isAuthenticated()) {
@@ -67,15 +75,13 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Router>
-          <Switch>
-            {this.state.routes.map((route, i) => (
-              <Route key={i} {...route} />
-            ))}
-          </Switch>
-        </Router>
-      </div>
+      <Router>
+        <Switch>
+          {this.state.routes.map((route, i) => (
+            <Route key={i} {...route} />
+          ))}
+        </Switch>
+      </Router>
     );
   }
 }

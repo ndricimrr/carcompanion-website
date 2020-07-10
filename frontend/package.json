@@ -25,24 +25,28 @@
     "clean-webpack-plugin": "0.1.17",
     "css-loader": "0.28.7",
     "extract-text-webpack-plugin": "3.0.1",
+    "file-loader": "^6.0.0",
     "html-loader": "0.4.5",
     "html-webpack-plugin": "2.29.0",
     "style-loader": "0.19.0",
-    "webpack": "3.3.0",
+    "webpack": "^3.3.0",
     "webpack-dev-server": "2.9.1",
     "webpack-merge": "4.1.0"
   },
   "dependencies": {
-    "@material-ui/core": "^4.10.1",
+    "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "material-ui-dropzone": "^3.3.0",
     "react": "16.8.4",
     "react-dom": "16.8.4",
     "react-md": "1.2.11",
-    "react-router-dom": "4.2.2",
+    "react-mdl": "^2.1.0",
+    "react-router-dom": "4.3.0",
     "styled-components": "3.1.6",
     "url-loader": "^4.1.0",
-    "webfontloader": "1.6.28"
+    "webfontloader": "1.6.28",
+    "string-similarity": "^4.0.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

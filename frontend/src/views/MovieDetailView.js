@@ -6,8 +6,6 @@ import { MovieDetail } from "../components/MovieDetail";
 
 import MovieService from "../services/MovieService";
 
-import FreelancersPageView from "./FreelancersPageView";
-
 export class MovieDetailView extends React.Component {
   constructor(props) {
     super(props);
@@ -31,15 +29,6 @@ export class MovieDetailView extends React.Component {
         console.error(err);
       }
     })();
-
-    // MovieService.getMovie(id).then((data) => {
-    //     this.setState({
-    //         movie: data,
-    //         loading: false
-    //     });
-    // }).catch((e) => {
-    //     console.error(e);
-    // });
   }
 
   async deleteMovie(id) {
@@ -62,7 +51,6 @@ export class MovieDetailView extends React.Component {
           movie={this.state.movie}
           onDelete={(id) => this.deleteMovie(id)}
         />
-        {/* <FreelancersPageView /> */}
       </div>
     );
   }

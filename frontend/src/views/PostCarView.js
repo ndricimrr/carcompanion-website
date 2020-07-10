@@ -53,7 +53,7 @@ class PostCarView extends Component {
           price: this.state.price,
         };
         let ret = await CarService.createCar(car);
-        this.props.history.push("/");
+        this.props.history.push("/findcar");
       } catch (err) {
         console.error(err);
         this.setState(

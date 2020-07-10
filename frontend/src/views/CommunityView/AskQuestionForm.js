@@ -1,8 +1,8 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import { ImageUploadView } from "./ImageUploadView";
+import { ImageUploadView } from "../ImageUploadView";
 import Button from "@material-ui/core/Button";
-import QuestionService from "../services/QuestionService";
+import QuestionService from "../../services/QuestionService";
 import SaveIcon from "@material-ui/icons/Save";
 import DeleteIcon from "@material-ui/icons/Delete";
 
@@ -42,8 +42,15 @@ class AskQuestionForm extends React.Component {
           content: this.state.content,
           date: Date(),
         };
+
+        let answer = {
+          authorId: "6666",
+          content: "88888",
+          date: Date()
+        }
         let ret = await QuestionService.createQuestion(question);
-        this.props.history.push("/");
+        this.props.history.go(0);
+        this.props.closeDialog()
       } catch (err) {
         console.error(err);
         this.setState(
@@ -135,13 +142,13 @@ class AskQuestionForm extends React.Component {
           >
             Submit
           </Button>
-          <Button
+          {/* <Button
             variant="contained"
             color="secondary"
             startIcon={<DeleteIcon />}
           >
             Cancel
-          </Button>
+          </Button> */}
         </div>
       </div>
     );
