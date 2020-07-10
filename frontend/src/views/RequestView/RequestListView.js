@@ -20,6 +20,7 @@ class RequestListView extends Component {
           return (
             <ListItem
               button
+              key={item.id}
               onClick={() => {
                 this.props.history.push(`/requests/${item.id}`);
               }}
