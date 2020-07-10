@@ -24,6 +24,8 @@ import RequestListView from "./views/RequestView/RequestListView";
 import RequestContent from "./views/RequestView/RequestContent";
 
 import QuestionView from "./views/QuestionView";
+import { CarDescriptionView } from "./views/CarDescriptionView";
+
 import QuestionListView from "./views/CommunityView/QuestionsListView";
 
 export default class App extends React.Component {
@@ -37,6 +39,7 @@ export default class App extends React.Component {
         { component: AddFreelancerView, path: "/addfreelancer", exact: true },
         { component: FindCarView, path: "/findcar", exact: true },
         { component: SellAdvertiseView, path: "/sell-advertise", exact: true },
+        { component: CarDescriptionView, path: "/carDescription", exact: true },
         { component: QuestionView, path: "/community/:id", exact: true },
         { component: CommunityView, path: "/community", exact: true },
         { component: HomePage, path: "/", exact: true },

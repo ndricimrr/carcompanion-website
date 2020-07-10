@@ -1,0 +1,16 @@
+:local(.imageStyle) {
+    /* border: 1px solid black; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    padding: 5px;
+    max-width: 20%;
+    height: auto;
+
+}
+
+:local(.center) {
+    text-align: center;
+    padding: 3px;
+} 
