@@ -17,6 +17,10 @@ class AddFreelancerView extends Component {
       make: "",
       model: "",
       badge: "",
+      expertise: "",
+      telephone: "",
+      email: "",
+      city: "",
       image: ""
     };
     this.handleChange = this.handleChange.bind(this);
@@ -45,6 +49,10 @@ class AddFreelancerView extends Component {
       this.state.role != "" &&
       this.state.make != "" &&
       this.state.badge != "" &&
+      this.state.expertise != "" &&
+      this.state.telephone != "" &&
+      this.state.email != "" &&
+      this.state.city != "" &&
       this.state.model != "" &&
       this.state.image != ""
     ) {
@@ -59,6 +67,10 @@ class AddFreelancerView extends Component {
           make: this.state.make,
           model: this.state.model,
           badge: this.state.badge,
+          expertise: this.state.expertise,
+          telephone: this.state.telephone,
+          email: this.state.email,
+          city: this.state.city,
           image: this.state.image
         };
         let ret = await FreelancerService.createFreelancer(freelancer);
@@ -160,6 +172,42 @@ class AddFreelancerView extends Component {
           name="badge"
           onChange={this.handleChange}
           value={this.state.badge}
+          variant="outlined"
+        />
+        <TextField
+          InputProps={{ className: styles.inputField }}
+          id="outlined-required"
+          label="Expertise"
+          name="expertise"
+          onChange={this.handleChange}
+          value={this.state.expertise}
+          variant="outlined"
+        />
+        <TextField
+          InputProps={{ className: styles.inputField }}
+          id="outlined-required"
+          label="City"
+          name="city"
+          onChange={this.handleChange}
+          value={this.state.city}
+          variant="outlined"
+        />
+        <TextField
+          InputProps={{ className: styles.inputField }}
+          id="outlined-required"
+          label="Telephone"
+          name="telephone"
+          onChange={this.handleChange}
+          value={this.state.telephone}
+          variant="outlined"
+        />
+        <TextField
+          InputProps={{ className: styles.inputField }}
+          id="outlined-required"
+          label="E-mail"
+          name="email"
+          onChange={this.handleChange}
+          value={this.state.email}
           variant="outlined"
         />
         <TextField

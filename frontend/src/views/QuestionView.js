@@ -7,6 +7,7 @@ import CommentIcon from "@material-ui/icons/Comment";
 import ShareIcon from "@material-ui/icons/Share";
 import QuestionDetail from "../components/QuestionDetail";
 import AnswerForm from "../components/AnswerForm";
+import QuestionService from '../services/QuestionService'
 
 import AnswerCard from "../components/AnswerCard";
 
@@ -14,37 +15,30 @@ class QuestionView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: 0,
-      isAnsweringEnabled: false,
-      isAnswerListShowing: false,
-      answers: [
-        {
-          id: "1",
-          answer_owner: "ndricimrr",
-          answer_content: "You should turn it off and on again",
-          rating: 0,
-        },
-        {
-          id: "2",
-          answer_owner: "leomessi",
-          answer_content: "You should buy a new one",
-          rating: 0,
-        },
-      ],
+      loading: false,
+      question: null,
     };
+  }
+    componentWillMount(props) {
+    this.setState({
+      loading: true,
+    });
+
+    let id = this.props.match.params.id;
+    (async () => {
+      try {
+        let question = await QuestionService.getQuestion(id);
+        this.setState({
+          question: question,
+          loading: false,
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+
     this.renderComponent = this.renderComponent.bind(this);
     this.renderResponseRow = this.renderResponseRow.bind(this);
-    this.handleButtonClick = this.handleButtonClick.bind(this);
-  }
-
-  handleButtonClick() {
-    this.setState({ isAnsweringEnabled: false });
-    alert("hello");
-  }
-
-  handleButtonClick() {
-    this.setState({ isAnsweringEnabled: true });
-    alert("hello");
   }
 
   renderResponseRow() {
@@ -64,7 +58,7 @@ class QuestionView extends Component {
           color="primary"
         >
           <QuestionAnswerIcon fontSize="large" />
-          45
+          {this.state.question.answers.length}
         </Button>
         <p>..</p>
         <Button
@@ -86,7 +80,9 @@ class QuestionView extends Component {
     );
   }
 
-  renderComponent() {
+  renderComponent(question) {
+    let answers = question.answers;
+    let revAnswers = answers.reverse()
     return (
       <React.Fragment>
         <Paper
@@ -94,16 +90,20 @@ class QuestionView extends Component {
           square
           style={{ padding: "10px", paddingTop: "0" }}
         >
-          <QuestionDetail />
+          <QuestionDetail title={question.title} date={question.date} content={question.content} />
           {this.renderResponseRow()}
         </Paper>
         <br />
         <Divider />
         <br />
+        
         {this.state.isAnsweringEnabled ? (
-          <AnswerForm />
-        ) : (
-          this.state.answers.map((item) => {
+          <AnswerForm 
+            questionId={this.state.question._id} 
+            authorId="8"
+            history={this.props.history}/>
+        ) : ( 
+          revAnswers.map((item) => {
             return (
               <React.Fragment key={item.id}>
                 <AnswerCard answer={item} />
@@ -117,7 +117,9 @@ class QuestionView extends Component {
     );
   }
   render() {
-    return this.renderComponent();
+    if (this.state.question != null)
+      return this.renderComponent(this.state.question);
+    return <div>No Questions</div>
   }
 }
 

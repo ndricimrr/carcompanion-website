@@ -3,16 +3,23 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import styles from "./PostCarView.css";
 import CarService from "../services/CarService";
+import { ImageUploadView } from "./ImageUploadView";
+import SaveIcon from "@material-ui/icons/Save";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { makeStyles } from "@material-ui/core/styles";
+import PostCarSelectView from "./PostCarSelectView";
+import Page from "../components/Page";
 
 class PostCarView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      make: "",
+      make: "mercedez",
       model: "",
-      year: 0,
+      year: "",
       mileage: 0,
       price: 0,
+      images: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleCreateCar = this.handleCreateCar.bind(this);
@@ -46,7 +53,7 @@ class PostCarView extends Component {
           price: this.state.price,
         };
         let ret = await CarService.createCar(car);
-        this.props.history.push("/");
+        this.props.history.push("/findcar");
       } catch (err) {
         console.error(err);
         this.setState(
@@ -60,64 +67,140 @@ class PostCarView extends Component {
 
   render() {
     return (
-      <div className={styles.container}>
-        <h2>Post Car</h2>
-        <TextField
-          InputProps={{ className: styles.inputField }}
-          id="outlined-required"
-          label="Make"
-          name="make"
-          onChange={this.handleChange}
-          value={this.state.make}
-          variant="outlined"
-        />
-        <TextField
-          InputProps={{ className: styles.inputField }}
-          id="outlined-required"
-          label="Model"
-          name="model"
-          onChange={this.handleChange}
-          value={this.state.model}
-          variant="outlined"
-        />
-        <TextField
-          InputProps={{ className: styles.inputField }}
-          id="outlined-required"
-          label="Year"
-          type="number"
-          name="year"
-          onChange={this.handleChange}
-          value={this.state.year}
-          variant="outlined"
-        />
-        <TextField
-          InputProps={{ className: styles.inputField }}
-          id="outlined-required"
-          label="Mileage"
-          name="mileage"
-          type="number"
-          onChange={this.handleChange}
-          value={this.state.mileage}
-          variant="outlined"
-        />
-        <TextField
-          InputProps={{ className: styles.inputField }}
-          id="outlined-required"
-          label="Price"
-          type="number"
-          name="price"
-          onChange={this.handleChange}
-          value={this.state.price}
-          variant="outlined"
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={this.handleCreateCar}
+      <Page>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          Submit
-        </Button>
-      </div>
+          <br />
+          <br />
+          <br />
+          <h2>Sell your car!</h2>
+          <br />
+          <form>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                width: "1200px",
+                justifyContent: "space-evenly",
+              }}
+            >
+              <br />
+              <PostCarSelectView />
+
+              <br />
+              <TextField
+                id="outlined-required"
+                label="Model"
+                name="model"
+                onChange={this.handleChange}
+                value={this.state.model}
+                variant="filled"
+                style={{ width: 500 }}
+                margin="normal"
+              />
+            </div>
+            <br />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                width: "1200px",
+                justifyContent: "space-evenly",
+              }}
+            >
+              <TextField
+                id="outlined-required"
+                label="Year"
+                type="number"
+                name="year"
+                onChange={this.handleChange}
+                value={this.state.year}
+                variant="filled"
+                style={{ width: 500 }}
+                margin="normal"
+              />
+              <br />
+              <br />
+              <TextField
+                id="outlined-required"
+                label="Mileage"
+                name="mileage"
+                type="number"
+                onChange={this.handleChange}
+                value={this.state.mileage}
+                variant="filled"
+                style={{ width: 500 }}
+                margin="normal"
+              />
+            </div>
+            <br />
+            <br />
+            <br />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                width: "1200px",
+                justifyContent: "space-evenly",
+              }}
+            >
+              <TextField
+                id="outlined-required"
+                label="Price"
+                type="number"
+                name="price"
+                onChange={this.handleChange}
+                value={this.state.price}
+                variant="filled"
+                style={{ width: 500 }}
+                margin="normal"
+              />
+              <br />
+              <ImageUploadView />
+            </div>
+          </form>
+          <br />
+          <div
+            style={{
+              position: "relative",
+              right: 470,
+            }}
+          >
+            <Button variant="outlined" color="primary">
+              Advanced Options
+            </Button>
+          </div>
+          <br />
+
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={this.handleCreateCar}
+            style={{ width: 300 }}
+            size="large"
+          >
+            Post
+          </Button>
+          <br />
+          <br />
+          <div
+            style={{
+              position: "relative",
+              left: 470,
+            }}
+          >
+            <Button variant="contained" color="secondary">
+              Boost your car!
+            </Button>
+          </div>
+        </div>
+      </Page>
     );
   }
 }

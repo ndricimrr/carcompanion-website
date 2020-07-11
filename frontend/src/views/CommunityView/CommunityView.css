@@ -1,0 +1,22 @@
+:local(.container) {
+    width: 100%;
+    margin: auto;
+}
+
+:local(.main) {
+    width: 50%;
+    text-align: center;
+    padding: 35px;
+    margin: auto;
+}
+
+:local(.h1Style) {
+    margin: 0;
+    display: inline-block;
+    text-align: "center";
+    padding: 30px;
+}
+
+:local(.buttonStyle) {
+    float: right;
+}
