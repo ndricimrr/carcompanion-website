@@ -6,61 +6,37 @@ const mongoose = require("mongoose");
 // Define the freelancer schema
 //Suggestions to add to the freelandcer model: city, telephone, email, bio, array of reviews(comment+starrating), areas of expertise
 const FreelancerSchema = new mongoose.Schema({
-  freelancerName: {
+  name: {
     type: String,
-    required: true,
   },
   surname: {
     type: String,
-    required: true,
-  },
-  age: {
-    type: Number,
-    required: true,
   },
   rating: {
     type: Number,
-    required: true,
+    default: 0,
   },
   inspections: {
     type: Number,
-    required: true,
-  },
-  role: {
-    type: String,
-    required: true,
-  },
-  make: {
-    type: String,
-    required: true,
-  },
-  model: {
-    type: String,
-    required: true,
+    default: 0,
   },
   image: {
     type: String,
-    required: true,
+    default: "avatar",
   },
   badge: {
     type: String,
-    required: true,
+    enum: ["begginer", "medium", "advanced", "expert"],
+    default: "begginer",
   },
   expertise: {
     type: String,
-    required: true,
   },
   telephone: {
     type: String,
-    required: true,
   },
-  email: {
+  address: {
     type: String,
-    required: true,
-  },
-  city: {
-    type: String,
-    required: true,
   },
 });
 

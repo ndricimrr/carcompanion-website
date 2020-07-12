@@ -1,6 +1,7 @@
 "use strict";
 
 import HttpService from "./HttpService";
+import UserService from "./UserService";
 
 export default class CarService {
   constructor() {}
@@ -75,7 +76,7 @@ export default class CarService {
   }
 
   static createCar(car) {
-    car.id = Math.floor(Math.random() * 100000000 + 1).toString();
+    car.id = UserService.getCurrentUser().id;
 
     car.images = {
       thumbnail:

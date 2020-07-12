@@ -70,26 +70,29 @@ const Freelancer = (props) => {
     rating.push(<StarIcon key={i} color="primary" />);
   }
   return (
-    <NavLink exact to={"/freelancers/".concat(props.freelance._id)} style={{ textDecoration: "none" }}>
-    // Overall card of freelancer component
-    <Card className={classes.root}>
-      {/* Creating the bedge */}
-      <div className={classes.badge}>{freelanceData.badge}</div>
-      {/* Image of the card */}
-      <CardMedia className={classes.media} image={freelanceData.image} />
-      {/* Freelancer details */}
-      <CardContent>
-        <center>
-          <div className={classes.lightText}>{freelanceData.role}</div>
-          <div className={classes.name}>
-            {freelanceData.name} {freelanceData.surname}
-          </div>
-          <div className={classes.numbers}>{freelanceData.inspections}</div>
-          <div className={classes.lightText}>INSPECTIONS</div>
-          <div>{rating}</div>
-        </center>
-      </CardContent>
-    </Card>
+    <NavLink
+      exact
+      to={"/freelancers/".concat(props.freelance._id)}
+      style={{ textDecoration: "none" }}
+    >
+      <Card className={classes.root}>
+        {/* Creating the bedge */}
+        <div className={classes.badge}>{freelanceData.badge}</div>
+        {/* Image of the card */}
+        <CardMedia className={classes.media} image={freelanceData.image} />
+        {/* Freelancer details */}
+        <CardContent>
+          <center>
+            <div className={classes.lightText}>{freelanceData.role}</div>
+            <div className={classes.name}>
+              {freelanceData.name} {freelanceData.surname}
+            </div>
+            <div className={classes.numbers}>{freelanceData.inspections}</div>
+            <div className={classes.lightText}>INSPECTIONS</div>
+            <div>{rating}</div>
+          </center>
+        </CardContent>
+      </Card>
     </NavLink>
   );
 };

@@ -1,0 +1,26 @@
+:local(.container) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+:local(.extendTitleContainer) {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+:local(.extendTitleContent) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+:local(.form) {
+  padding-top: 10px;
+  height: 100%;
+  width: 100%;
+}

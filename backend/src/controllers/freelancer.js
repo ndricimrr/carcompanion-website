@@ -2,6 +2,7 @@
 
 // Create freelancer model
 const FreelanceModel = require("../models/freelancer");
+const UserModel = require("../models/user");
 
 // adds new freelancer
 const create = async (req, res) => {
@@ -26,7 +27,15 @@ const create = async (req, res) => {
 // gets freelancer with specific id
 const read = async (req, res) => {
   try {
-    let freelancer = await FreelanceModel.findById(req.params.id).exec();
+    // return res.status(200).json(req.params.id);
+    var user = await UserModel.find({}).exec();
+    // return res.status(200).json({ test: 2 });
+
+    let freelancer = user.find((item) => {
+      return (
+        item.freelancerData.name && item.freelancerData._id == req.params.id
+      );
+    });
 
     if (!freelancer)
       return res.status(404).json({
@@ -34,7 +43,7 @@ const read = async (req, res) => {
         message: `Freelancer not found`,
       });
 
-    return res.status(200).json(freelancer);
+    return res.status(200).json(freelancer.freelancerData);
   } catch (err) {
     return res.status(500).json({
       error: "Internal Server Error",
@@ -53,10 +62,14 @@ const update = async (req, res) => {
   }
 
   try {
-    let freelancer = await FreelanceModel.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    }).exec();
+    let freelancer = await FreelanceModel.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    ).exec();
 
     return res.status(200).json(freelancer);
   } catch (err) {
@@ -86,8 +99,14 @@ const remove = async (req, res) => {
 // lists all freelancers
 const list = async (req, res) => {
   try {
-    let freelancers = await FreelanceModel.find({}).exec();
-
+    let users = await UserModel.find({}).exec();
+    let freelancers = [];
+    users.forEach((element) => {
+      if (element.freelancerData.name) {
+        freelancers.push(element.freelancerData);
+      }
+    });
+    // let freelancers = await FreelanceModel.find({}).exec();
     return res.status(200).json(freelancers);
   } catch (err) {
     return res.status(500).json({

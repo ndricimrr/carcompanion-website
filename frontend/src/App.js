@@ -23,7 +23,7 @@ import RequestListView from "./views/RequestView/RequestListView";
 import RequestContent from "./views/RequestView/RequestContent";
 
 import QuestionView from "./views/QuestionView";
-import RegisterView from "./views/RegisterView";
+import ExtendProfileView from "./views/ExtendProfile/ExtendProfileView";
 
 import { CarDescriptionView } from "./views/CarDescriptionView";
 
@@ -40,16 +40,20 @@ export default class App extends React.Component {
         { component: PostCarView, path: "/sell-advertise", exact: true },
         { component: AddFreelancerView, path: "/addfreelancer", exact: true },
         { component: FindCarView, path: "/findcar", exact: true },
-        { component: RegisterView, path: "/register-view", exact: true },
+        { component: ExtendProfileView, path: "/extend-profile", exact: true },
         { component: CarDescriptionView, path: "/carDescription", exact: true },
         { component: QuestionView, path: "/community/:id", exact: true },
         { component: CommunityView, path: "/community", exact: true },
         { component: HomePage, path: "/", exact: true },
         { component: FreelancersPageView, path: "/freelancers", exact: true },
         { component: MovieDetailView, path: "/show/:id" },
-        { component: QuestionListView, path:"/questionList", exact: true },
+        { component: QuestionListView, path: "/questionList", exact: true },
         // { component: FreelancerDescriptionView, path:"/freelancerDescription", exact: true },
-        { component: FreelancerDescriptionView, path:"/freelancers/:id", exact: true },
+        {
+          component: FreelancerDescriptionView,
+          path: "/freelancers/:id",
+          exact: true,
+        },
         { component: RequestListView, path: "/requests", exact: true },
         { component: RequestContent, path: "/requests/:id", exact: true },
         {

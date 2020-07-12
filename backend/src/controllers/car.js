@@ -1,6 +1,7 @@
 "use strict";
 
 const CarModel = require("../models/car");
+const UserModel = require("../models/user");
 
 const create = async (req, res) => {
   if (Object.keys(req.body).length === 0)
@@ -10,9 +11,16 @@ const create = async (req, res) => {
     });
 
   try {
-    let car = await CarModel.create(req.body);
+    // let car = await CarModel.create(req.body);
+    var user = await UserModel.findById(req.body.id).exec();
 
-    return res.status(201).json(car);
+    user.carOwnerData.cars = user.carOwnerData.cars.push(req.body);
+    let newCar = await UserModel.findByIdAndUpdate(req.body.id, user, {
+      new: true,
+      runValidators: true,
+    }).exec();
+
+    return res.status(201).json(user.carOwnerData.cars);
   } catch (err) {
     return res.status(500).json({
       error: "Internal server error",
@@ -80,8 +88,13 @@ const remove = async (req, res) => {
 
 const list = async (req, res) => {
   try {
-    let cars = await CarModel.find({}).exec();
-
+    let users = await UserModel.find({}).exec();
+    let cars = [];
+    users.forEach((element) => {
+      if (element.carOwnerData.cars.length > 0) {
+        cars.push.apply(cars, element.carOwnerData.cars);
+      }
+    });
     return res.status(200).json(cars);
   } catch (err) {
     return res.status(500).json({
