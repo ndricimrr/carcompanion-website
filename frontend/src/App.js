@@ -21,13 +21,14 @@ import PostCarView from "./views/PostCarView";
 import AddFreelancerView from "./views/AddFreelancerView";
 import RequestListView from "./views/RequestView/RequestListView";
 import RequestContent from "./views/RequestView/RequestContent";
-
 import QuestionView from "./views/QuestionView";
 import ExtendProfileView from "./views/ExtendProfile/ExtendProfileView";
 
 import { CarDescriptionView } from "./views/CarDescriptionView";
 
 import QuestionListView from "./views/CommunityView/QuestionsListView";
+import CarOwnerUserProfile from "./views/CarOwnerUserProfile";
+import FreelancerUserProfile from "./views/FreelancerUserProfile"
 import FreelancerDescriptionView from "./views/FreelancerDescriptionView";
 
 export default class App extends React.Component {
@@ -56,6 +57,8 @@ export default class App extends React.Component {
         },
         { component: RequestListView, path: "/requests", exact: true },
         { component: RequestContent, path: "/requests/:id", exact: true },
+        { component: CarOwnerUserProfile, path:"/CarOwnerUserProfile", exact: true},
+        { component: FreelancerUserProfile, path:"/FreelancerrUserProfile", exact: true},
         {
           render: (props) => {
             if (UserService.isAuthenticated()) {

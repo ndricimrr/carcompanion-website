@@ -1,5 +1,4 @@
 import React, { Component, useState } from "react";
-import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -13,19 +12,10 @@ import CardContent from '@material-ui/core/CardContent';
 import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
 import Divider from '@material-ui/core/Divider';
+import { ImageUploadView } from "./ImageUploadView";
 
 
-
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//       '& > *': {
-//         margin: theme.spacing(1),
-//       },
-//     },
-//   }));
-// let classes = useStyles()
-
-class CarOwnerUserProfile extends Component {
+class FreelancerUserProfile extends Component {
     constructor(props) {
         super(props);
           this.state = {
@@ -76,13 +66,18 @@ class CarOwnerUserProfile extends Component {
      password: "123456",
      name: "Michael",
      surname: "Mckinney",
-     address: "Marienplatz 6, 80909 München",
+     city: "Munich, Germany",
      email: "michael@email.com",
-     phone: "+12345669"
+     phone: "+12345669",
+     age: 23,
+     rating: 4,
+     inspections: 231,
+     role: "automotive mechanic",
+     expertise: "BMW, Mercedes"
  }
     return (
         <div className={styles.container}> 
-        <Card  >
+        <Card>
             <CardContent>
             <ListGroup variant="flush">
                 <div> 
@@ -107,7 +102,7 @@ class CarOwnerUserProfile extends Component {
                 <br/>
                 <br/>
                 <ListGroup.Item>
-                    <h4>Contact details</h4>
+                    <h4>General details</h4>
                     <br/>
                     <form noValidate autoComplete="off">
                         <FormControl variant="outlined">
@@ -122,10 +117,23 @@ class CarOwnerUserProfile extends Component {
                             <InputLabel htmlFor="component-outlined">phone</InputLabel>
                             <OutlinedInput id="component-outlined" value={user.phone} label="phonelabel"/>
                         </FormControl>
+                        <FormControl variant="outlined">
+                            <InputLabel htmlFor="component-outlined">Role</InputLabel>
+                            <OutlinedInput id="component-outlined" value={user.role} label="phonelabel"/>
+                        </FormControl>
+                        <FormControl variant="outlined">
+                            <InputLabel htmlFor="component-outlined">Expertise</InputLabel>
+                            <OutlinedInput id="component-outlined" value={user.expertise} label="phonelabel"/>
+                        </FormControl>
                     </form>
                 </ListGroup.Item>
                 <br/>
-                <br/>  
+                <br/>
+                <h6>Upload images that will appear on your profile</h6>
+                  <ImageUploadView /> 
+                
+                <br/>
+                <br/> 
                 <ListGroupItem>
                     <h6>You wanna create and manage the digital profiles of your cars? Then take a tour in your Garage!</h6>
                     <Button variant="contained" color="primary">See my Garage</Button>
@@ -155,4 +163,4 @@ class CarOwnerUserProfile extends Component {
     );
 }
 }
-export default CarOwnerUserProfile;
+export default FreelancerUserProfile;
