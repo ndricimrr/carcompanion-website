@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 const specs = [
   {
-    label: "Brand",
+    label: "Make",
     values: [
       {
         key: "audi",
