@@ -11,6 +11,7 @@ const movie = require("./routes/movie");
 const cars = require("./routes/cars");
 const questions = require("./routes/questions");
 const freelancers = require("./routes/freelancers");
+const carPurchaseRequests = require("./routes/carPurchaseRequest");
 
 const api = express();
 
@@ -23,7 +24,7 @@ api.use(middlewares.allowCrossDomain);
 // Basic route
 api.get("/", (req, res) => {
   res.json({
-    name: "SEBA Master Movie Backend",
+    name: "Car Companion Backend",
   });
 });
 
@@ -31,7 +32,8 @@ api.get("/", (req, res) => {
 api.use("/auth", auth);
 api.use("/movies", movie);
 api.use("/cars", cars);
-api.use("/questions", questions)
-api.use("/freelancers", freelancers)
+api.use("/questions", questions);
+api.use("/freelancers", freelancers);
+api.use("/carPurchaseRequest", carPurchaseRequests)
 
 module.exports = api;

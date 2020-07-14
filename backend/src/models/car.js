@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose");
 
-// Define the movie schema
+// Define the car schema
 const CarSchema = new mongoose.Schema({
   model: {
     type: String,

@@ -9,6 +9,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/core/styles";
 import PostCarSelectView from "./PostCarSelectView";
 import Page from "../components/Page";
+import CarPurchaseRequestService from "../services/CarPurchaseRequestService";
+import UserService from "../services/UserService";
 
 class PostCarView extends Component {
   constructor(props) {
@@ -36,33 +38,38 @@ class PostCarView extends Component {
 
   // call create car service
   async handleCreateCar() {
-    if (
-      this.state.make != "" &&
-      this.state.model != "" &&
-      this.state.mileage >= 0 &&
-      this.state.year >= 1990 &&
-      this.state.year <= 2020 &&
-      this.state.price >= 0
-    ) {
-      try {
-        let car = {
-          make: this.state.make,
-          model: this.state.model,
-          mileage: this.state.mileage,
-          year: this.state.year,
-          price: this.state.price,
-        };
-        let ret = await CarService.createCar(car);
-        this.props.history.push("/findcar");
-      } catch (err) {
-        console.error(err);
-        this.setState(
-          Object.assign({}, this.state, { error: "Error while creating car" })
-        );
-      }
-    } else {
-      window.alert("Please fill in all the fields!");
-    }
+    let ret = await CarPurchaseRequestService.getCarPurchaseRequests( UserService.getCurrentUser().id);
+//CarPurchaseRequestService
+
+
+
+    // if (
+    //   this.state.make != "" &&
+    //   this.state.model != "" &&
+    //   this.state.mileage >= 0 &&
+    //   this.state.year >= 1990 &&
+    //   this.state.year <= 2020 &&
+    //   this.state.price >= 0
+    // ) {
+    //   try {
+    //     let car = {
+    //       make: this.state.make,
+    //       model: this.state.model,
+    //       mileage: this.state.mileage,
+    //       year: this.state.year,
+    //       price: this.state.price,
+    //     };
+    //     let ret = await CarService.createCar(car);
+    //     this.props.history.push("/findcar");
+    //   } catch (err) {
+    //     console.error(err);
+    //     this.setState(
+    //       Object.assign({}, this.state, { error: "Error while creating car" })
+    //     );
+    //   }
+    // } else {
+    //   window.alert("Please fill in all the fields!");
+    // }
   }
 
   render() {

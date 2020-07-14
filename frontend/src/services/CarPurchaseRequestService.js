@@ -3,17 +3,19 @@
 import HttpService from "./HttpService";
 import UserService from "./UserService";
 
-export default class CarService {
+export default class CarPurchaseRequestService {
   constructor() {}
 
   static baseURL() {
-    return "http://localhost:3000/cars";
+    return "http://localhost:3000/carPurchaseRequest";
   }
 
-  static getCars() {
+//not sure how to make this compatible with user id
+  static getCarPurchaseRequests(id) {
     return new Promise((resolve, reject) => {
       HttpService.get(
         this.baseURL(),
+        id,
         function (data) {
           resolve(data);
         },
@@ -24,15 +26,16 @@ export default class CarService {
     });
   }
 
-  static getCar(id) {
+//   Getting a request with a specific ID
+  static getCarPurchaseRequest(id) {
     return new Promise((resolve, reject) => {
       HttpService.get(
-        `${CarService.baseURL()}/${id}`,
+        `${CarPurchaseRequestService.baseURL()}/${id}`,
         function (data) {
           if (data != undefined || Object.keys(data).length !== 0) {
             resolve(data);
           } else {
-            reject("Error while retrieving car");
+            reject("Error while retrieving car purchase request");
           }
         },
         function (textStatus) {
@@ -42,10 +45,10 @@ export default class CarService {
     });
   }
 
-  static deleteCar(id) {
+  static deleteCarPurchaseRequest(id) {
     return new Promise((resolve, reject) => {
       HttpService.remove(
-        `${CarService.baseURL()}/${id}`,
+        `${CarPurchaseRequestService.baseURL()}/${id}`,
         function (data) {
           if (data.message != undefined) {
             resolve(data.message);
@@ -60,11 +63,11 @@ export default class CarService {
     });
   }
 
-  static updateCar(car) {
+  static updateCarPurchaseRequest(request) {
     return new Promise((resolve, reject) => {
       HttpService.put(
-        `${this.baseURL()}/${car._id}`,
-        car,
+        `${this.baseURL()}/${request._id}`,
+        request,
         function (data) {
           resolve(data);
         },
@@ -75,19 +78,14 @@ export default class CarService {
     });
   }
 
-  static createCar(car) {
-    car.id = UserService.getCurrentUser().id;
+//not sure how to set sender and receiver id
+  static createCarPurchaseRequest(request) {
+    request.senderID = UserService.getCurrentUser().id;
 
-    car.images = {
-      thumbnail:
-        "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      original:
-        "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    };
     return new Promise((resolve, reject) => {
       HttpService.post(
-        CarService.baseURL(),
-        car,
+        CarPurchaseRequestService.baseURL(),
+        request,
         function (data) {
           resolve(data);
         },
