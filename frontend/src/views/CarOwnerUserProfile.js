@@ -51,6 +51,11 @@ class CarOwnerUserProfile extends Component {
         })();
     }
 
+    //redirect to sell/advertise page
+    handleSell= () => {
+        this.props.history.push("/sell-advertise")
+    }
+
     // handle input field changes
     handleChange(evt) {
         const value = evt.target.value;
@@ -132,7 +137,7 @@ class CarOwnerUserProfile extends Component {
                     <br/>
                     <br/>
                     <h6>Your Garage still holds hidden treasures? Then put your car for sale with the best price!</h6>
-                    <Button variant="contained" color="secondary">sell your car</Button>
+                    <Button onClick={this.handleSell} variant="contained" color="secondary">sell your car</Button>
                     <br/>
                     <br/>
                     <FormControlLabel
