@@ -26,177 +26,52 @@ const useStyles = makeStyles((theme) => ({
 
 const specs = [
   {
-    label: "Make",
+    label: "Badge",
     values: [
       {
-        key: "audi",
-        val: "Audi",
+        key: "beginner",
+        val: "Beginner",
       },
       {
-        key: "bmw",
-        val: "BMW",
+        key: "medium",
+        val: "Medium",
       },
       {
-        key: "ford",
-        val: "Ford",
+        key: "advanced",
+        val: "Advanced",
       },
       {
-        key: "mercedes",
-        val: "Mercedes Benz",
-      },
-      {
-        key: "opel",
-        val: "Opel",
-      },
-      {
-        key: "vw",
-        val: "VolksWagen",
+        key: "expert",
+        val: "Expert",
       },
     ],
   },
   {
-    label: "Model",
+    label: "Expertise",
     values: [
       {
-        key: "A1",
-        val: "A1",
+        key: "repairs",
+        val: "Car repair",
       },
       {
-        key: "A2",
-        val: "A2",
+        key: "maintenance",
+        val: "Car maintenance",
       },
       {
-        key: "A3",
-        val: "A3",
+        key: "diagnostics",
+        val: "Diagnostics",
       },
       {
-        key: "116",
-        val: "116",
+        key: "inspections",
+        val: "Inspections",
       },
       {
-        key: "118",
-        val: "118",
+        key: "system",
+        val: "Electrical systems",
       },
       {
-        key: "120",
-        val: "120",
-      },
-      {
-        key: "fiesta",
-        val: "Fiesta",
-      },
-      {
-        key: "focus",
-        val: "Focus",
-      },
-      {
-        key: "galaxy",
-        val: "Galaxy",
-      },
-      {
-        key: "A180",
-        val: "A180",
-      },
-      {
-        key: "A200",
-        val: "A200",
-      },
-      {
-        key: "B180",
-        val: "B180",
-      },
-      {
-        key: "astra",
-        val: "Astra",
-      },
-      {
-        key: "corsa",
-        val: "Corsa",
-      },
-      {
-        key: "insignia",
-        val: "Insignia",
-      },
-      {
-        key: "golf",
-        val: "Golf",
-      },
-      {
-        key: "polo",
-        val: "Polo",
-      },
-      {
-        key: "scirocco",
-        val: "Scirocco",
-      },
-    ],
-  },
-  {
-    label: "Year",
-    values: [
-      {
-        key: "2020",
-        val: "2020",
-      },
-      {
-        key: "2019",
-        val: "2019",
-      },
-      {
-        key: "2018",
-        val: "2018",
-      },
-      {
-        key: "2017",
-        val: "2017",
-      },
-      {
-        key: "2016",
-        val: "2016",
-      },
-      {
-        key: "2015",
-        val: "2015",
-      },
-      {
-        key: "2014",
-        val: "2014",
-      },
-      {
-        key: "2013",
-        val: "2013",
-      },
-      {
-        key: "2012",
-        val: "2012",
-      },
-      {
-        key: "2011",
-        val: "2011",
-      },
-      {
-        key: "2010",
-        val: "2010",
-      },
-      {
-        key: "2005",
-        val: "2005",
-      },
-      {
-        key: "2000",
-        val: "2000",
-      },
-      {
-        key: "1990",
-        val: "1990",
-      },
-      {
-        key: "1980",
-        val: "1980",
-      },
-      {
-        key: "1970",
-        val: "1970",
+        key: "replacement",
+        val: "Part replacements",
       },
     ],
   },
