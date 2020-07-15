@@ -24,7 +24,7 @@ export default class Page extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <AppBar title="Car Companion" />
+        <Header />
         {this.props.children}
         <Footer />
       </React.Fragment>

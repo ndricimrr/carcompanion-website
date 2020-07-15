@@ -11,12 +11,15 @@ import UserService from "../services/UserService";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import LockIcon from "@material-ui/icons/Lock";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoggedIn: false,
+      displayDrawer: false
     };
     console.log(__dirname);
   }
@@ -27,6 +30,13 @@ class Header extends React.Component {
     } else {
       this.setState({ isLoggedIn: false });
     }
+  }
+
+  handleToggle = () => {
+    this.setState({
+      displayDrawer: !this.state.displayDrawer
+    }); 
+    console.log(this.state.displayDrawer)
   }
 
   render() {
@@ -41,26 +51,26 @@ class Header extends React.Component {
     const titleStyle = styles.title;
     //   ? styles.title
     //   : `${styles.title} ${styles.titleHome}`;
-    const navBarStyling = isHomePageNotSelected
-      ? `${styles.parentStyle} ${styles.parentWhitened}`
-      : styles.parentStyle;
+    const navBarStyling = this.state.displayDrawer ? styles.drawer : styles.parentStyle;
 
-    return (
+
+    return (    
+      <div>
+      <button className={styles.ToggleButton} onClick={this.handleToggle}>Toggle</button>    
       <div className={navBarStyling}>
+      
         <NavLink exact to={"/"} style={{ textDecoration: "none" }}>
           <div style={{ display: "flex", flexDirection: "row" }}>
             <img width={100} src={logo} alt="logo" />
           </div>
         </NavLink>
-        <div className={styles.navigationLinks}>
-          <nav className={styles.line}>
             <NavLink
               exact
               to={"/findcar"}
               className={homePageLinkStyle}
               activeClassName={homePageLinkSelectedStyle}
             >
-              {"Find a Car"}
+              <Tab label="Find A Car"/>
             </NavLink>
             <NavLink
               exact
@@ -68,7 +78,7 @@ class Header extends React.Component {
               className={homePageLinkStyle}
               activeClassName={homePageLinkSelectedStyle}
             >
-              {"Freelancers"}
+              <Tab label="Freelancers"/>
             </NavLink>
             <NavLink
               exact
@@ -76,7 +86,7 @@ class Header extends React.Component {
               className={homePageLinkStyle}
               activeClassName={homePageLinkSelectedStyle}
             >
-              {"Community"}
+              <Tab label="Community"/>
             </NavLink>
             <NavLink
               exact
@@ -84,10 +94,8 @@ class Header extends React.Component {
               className={homePageLinkStyle}
               activeClassName={homePageLinkSelectedStyle}
             >
-              {"Sell & Advertise"}
+              <Tab label="Sell & Advertise"/>
             </NavLink>
-          </nav>
-        </div>
         {this.state.isLoggedIn ? (
           <div>
             <IconButton
@@ -134,6 +142,7 @@ class Header extends React.Component {
             <LockIcon />
           </IconButton>
         )}
+      </div>
       </div>
     );
   }
