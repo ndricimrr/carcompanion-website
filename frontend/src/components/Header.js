@@ -13,6 +13,7 @@ import LockIcon from "@material-ui/icons/Lock";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import ToggleDrawer from './DrawerToggle'
 
 class Header extends React.Component {
   constructor(props) {
@@ -56,14 +57,17 @@ class Header extends React.Component {
 
     return (    
       <div>
-      <button className={styles.ToggleButton} onClick={this.handleToggle}>Toggle</button>    
+      <div className={styles.mobile}>
+      <ToggleDrawer clicked={this.handleToggle} /> 
+      <NavLink exact to={"/"} style={{ textDecoration: "none" }}>
+          <div style={{ display: "flex", flexDirection: "row", marginLeft: "48%" }}>
+            
+          </div>
+        </NavLink> 
+        </div>
       <div className={navBarStyling}>
       
-        <NavLink exact to={"/"} style={{ textDecoration: "none" }}>
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            <img width={100} src={logo} alt="logo" />
-          </div>
-        </NavLink>
+        
             <NavLink
               exact
               to={"/findcar"}

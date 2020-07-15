@@ -163,16 +163,15 @@
   z-index: 1000;
   top: 0;
 }
-
-:local(.ToggleButton) {
-    display: none;
+:local(.mobile) {
+    display: flex;
   }
 
   :local(.drawer) {
     display: flex;
   }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 950px) {
   /* For mobile phones: */
   :local(.line) {
     list-style: none;
@@ -186,10 +185,6 @@
     top: 0;
   }
 
-  :local(.ToggleButton) {
-    display: flex;
-    color: red;
-  }
 
   
   :local(.drawer) {
