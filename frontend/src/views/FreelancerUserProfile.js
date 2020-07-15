@@ -18,6 +18,8 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
+import UserService from "../services/UserService";
+
 
 
 
@@ -56,13 +58,14 @@ class FreelancerUserProfile extends Component {
         this.setState({
         loading: true,
         });
+        // let id = this.props.match.params.id;
         (async () => {
             try {
-                let user = await getCurrentUser();
+                let user = await UserService.getCurrentUser();
                 this.setState({
                     user: user,
                     loading: false,
-                    password: user.password,
+                    // password: user.password,
                     showPassword: false,
                 });
             } catch (err) {
@@ -72,20 +75,28 @@ class FreelancerUserProfile extends Component {
     }
 
     render() {
- let user = {
-     username: "michealmk20",
-     password: "123456",
-     name: "Michael",
-     surname: "Mckinney",
-     city: "Munich, Germany",
-     email: "michael@email.com",
-     phone: "+12345669",
-     age: 23,
-     rating: 4,
-     inspections: 231,
-     role: "automotive mechanic",
-     expertise: "BMW, Mercedes"
- }
+        if (this.state.loading) {
+            return <p>loading ...</p>;
+        }
+
+        if (this.state.user.freelancerData == null) {
+            return <p>this is not a freelancer profile</p>;
+        }
+
+//  let userExp = {
+//      username: "michealmk20",
+//      password: "123456",
+//      name: "Michael",
+//      surname: "Mckinney",
+//      city: "Munich, Germany",
+//      email: "michael@email.com",
+//      phone: "+12345669",
+//      age: 23,
+//      rating: 4,
+//      inspections: 231,
+//      role: "automotive mechanic",
+//      expertise: "BMW, Mercedes"
+//  }
 
     return (
         <div className={styles.container}> 
@@ -95,7 +106,7 @@ class FreelancerUserProfile extends Component {
                 <div> 
                 <ListGroup.Item>
                     {/* <img className={styles.imageStyle} src={mechanic}/> */}
-                    <h2>Welcome {user.name} {user.surname}</h2>
+                    <h2>Welcome {this.state.user.freelancerData.name} {this.state.user.freelancerData.surname}</h2>
                     <Divider variant="middle" />
                     <br/>
                     <h4>Log in data</h4>
@@ -103,14 +114,14 @@ class FreelancerUserProfile extends Component {
                     <form noValidate autoComplete="off">
                         <FormControl className={styles.formElement} variant="outlined">
                             <InputLabel htmlFor="component-outlined">Username</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.username} label="Username"/>
+                            <OutlinedInput id="component-outlined" value={this.state.user.username} label="Username"/>
                         </FormControl>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-password"
                                 type={this.state.showPassword ? 'text' : 'password'}
-                                value={user.password}
+                                value={this.state.user.password}
                                 // onChange={this.handleChange}
                                 endAdornment={
                                 <InputAdornment position="end">
@@ -137,23 +148,23 @@ class FreelancerUserProfile extends Component {
                     <form noValidate autoComplete="off">
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="component-outlined">Email</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.email} label="email"/>
+                            <OutlinedInput id="component-outlined" value={this.state.user.email} label="email"/>
                         </FormControl>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="component-outlined">City</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.city} label="city"/>
+                            <OutlinedInput id="component-outlined" value={this.state.user.freelancerData.city} label="city"/>
                         </FormControl>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="component-outlined">Phone</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.phone} label="phone"/>
+                            <OutlinedInput id="component-outlined" value={this.state.user.freelancerData.phone} label="phone"/>
                         </FormControl>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="component-outlined">Role</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.role} label="role"/>
+                            <OutlinedInput id="component-outlined" value={this.state.user.freelancerData.role} label="role"/>
                         </FormControl>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="component-outlined">Expertise</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.expertise} label="expertise"/>
+                            <OutlinedInput id="component-outlined" value={this.state.user.freelancerData.expertise} label="expertise"/>
                         </FormControl>
                     </form>
                 </ListGroup.Item>
