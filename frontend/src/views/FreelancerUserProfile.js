@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import TextField from '@material-ui/core/TextField';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -13,6 +14,11 @@ import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
 import Divider from '@material-ui/core/Divider';
 import { ImageUploadView } from "./ImageUploadView";
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+
 
 
 class FreelancerUserProfile extends Component {
@@ -20,9 +26,31 @@ class FreelancerUserProfile extends Component {
         super(props);
           this.state = {
             loading: false,
-            user: null
+            user: null,
+            password: '',
+            showPassword: false,
           };
-        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
+        this.handleMouseDownPassword = this.handleMouseDownPassword.bind(this);
+    }
+    
+    handleClickShowPassword = () => {
+        this.setState(Object.assign({}, this.state, {showPassword: !this.state.showPassword}));
+      };
+    
+    handleMouseDownPassword = (event) => {
+        event.preventDefault();
+      };
+
+    // handle input field changes
+    handleChange(evt) {
+    const value = evt.target.value;
+    // console.log("Value", value);
+    this.setState({
+        [evt.target.name]: value,
+    });
+    }
 
     componentWillMount(props) {
         this.setState({
@@ -34,31 +62,14 @@ class FreelancerUserProfile extends Component {
                 this.setState({
                     user: user,
                     loading: false,
+                    password: user.password,
+                    showPassword: false,
                 });
             } catch (err) {
                 console.error(err);
             }
         })();
     }
-
-    // handle input field changes
-    handleChange(evt) {
-        const value = evt.target.value;
-        console.log("Value", value);
-    //   this.setState({
-    //     [evt.target.name]: value,
-    //   });
-    }
-    // classes = useStyles();
-    // const [name, setName] = React.useState('Composed TextField'); 
-
-    // const handleChange = (event) => {
-    //     setName(event.target.value);
-    //   };
-
-    // const handleChangeCheck = (event) => {
-    // setState({ ...state, [event.target.name]: event.target.checked });
-    // };
 
     render() {
  let user = {
@@ -75,6 +86,7 @@ class FreelancerUserProfile extends Component {
      role: "automotive mechanic",
      expertise: "BMW, Mercedes"
  }
+
     return (
         <div className={styles.container}> 
         <Card>
@@ -94,8 +106,26 @@ class FreelancerUserProfile extends Component {
                             <OutlinedInput id="component-outlined" value={user.username} label="Username"/>
                         </FormControl>
                         <FormControl variant="outlined">
-                            <InputLabel htmlFor="component-outlined">Password</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.password} label="Password"/>
+                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                            <OutlinedInput
+                                id="outlined-adornment-password"
+                                type={this.state.showPassword ? 'text' : 'password'}
+                                value={user.password}
+                                // onChange={this.handleChange}
+                                endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={this.handleClickShowPassword}
+                                    onMouseDown={this.handleMouseDownPassword}
+                                    edge="end"
+                                    >
+                                    {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                                    </IconButton>
+                                </InputAdornment>
+                                }
+                                labelWidth={70}
+                            />
                         </FormControl>
                     </form>
                 </ListGroup.Item>
@@ -106,24 +136,24 @@ class FreelancerUserProfile extends Component {
                     <br/>
                     <form noValidate autoComplete="off">
                         <FormControl variant="outlined">
-                            <InputLabel htmlFor="component-outlined">email</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.email} label="emaillabel"/>
+                            <InputLabel htmlFor="component-outlined">Email</InputLabel>
+                            <OutlinedInput id="component-outlined" value={user.email} label="email"/>
                         </FormControl>
                         <FormControl variant="outlined">
-                            <InputLabel htmlFor="component-outlined">address</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.address} label="addresslabel"/>
+                            <InputLabel htmlFor="component-outlined">City</InputLabel>
+                            <OutlinedInput id="component-outlined" value={user.city} label="city"/>
                         </FormControl>
                         <FormControl variant="outlined">
-                            <InputLabel htmlFor="component-outlined">phone</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.phone} label="phonelabel"/>
+                            <InputLabel htmlFor="component-outlined">Phone</InputLabel>
+                            <OutlinedInput id="component-outlined" value={user.phone} label="phone"/>
                         </FormControl>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="component-outlined">Role</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.role} label="phonelabel"/>
+                            <OutlinedInput id="component-outlined" value={user.role} label="role"/>
                         </FormControl>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="component-outlined">Expertise</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.expertise} label="phonelabel"/>
+                            <OutlinedInput id="component-outlined" value={user.expertise} label="expertise"/>
                         </FormControl>
                     </form>
                 </ListGroup.Item>
@@ -154,6 +184,9 @@ class FreelancerUserProfile extends Component {
                             />
                         } label="I agree to receive newsletter emails from Car Companion"
                     />
+                    <br/>
+                    <br/>
+                    <Button variant="contained" color= "primary" onChange={this.handleChange}>Save your changes</Button>
                 </ListGroupItem>
             </div>
         </ListGroup>
