@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose");
 
-// Define the movie schema
+// Define the car schema
 const CarSchema = new mongoose.Schema({
   model: {
     type: String,
@@ -33,5 +33,5 @@ const CarSchema = new mongoose.Schema({
 CarSchema.set("versionKey", false);
 CarSchema.set("timestamps", true);
 
-// Export the Movie model
+// Export the car model
 module.exports = mongoose.model("Car", CarSchema);

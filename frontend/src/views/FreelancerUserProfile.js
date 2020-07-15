@@ -19,6 +19,12 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import UserService from "../services/UserService";
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import FindCarGridView from "./FindCarGridView";
 
 
 
@@ -78,25 +84,26 @@ class FreelancerUserProfile extends Component {
         if (this.state.loading) {
             return <p>loading ...</p>;
         }
+// Should prevent the user.freelancerData from being null
+        // if (this.state.user.freelancerData == null) {
+        //     return <p>this is not a freelancer profile</p>;
+        // }
 
-        if (this.state.user.freelancerData == null) {
-            return <p>this is not a freelancer profile</p>;
-        }
-
-//  let userExp = {
-//      username: "michealmk20",
-//      password: "123456",
-//      name: "Michael",
-//      surname: "Mckinney",
-//      city: "Munich, Germany",
-//      email: "michael@email.com",
-//      phone: "+12345669",
-//      age: 23,
-//      rating: 4,
-//      inspections: 231,
-//      role: "automotive mechanic",
-//      expertise: "BMW, Mercedes"
-//  }
+ let userExp = {
+     username: "michealmk20",
+     password: "123456",
+     name: "Michael",
+     surname: "Mckinney",
+     city: "Munich, Germany",
+     email: "michael@email.com",
+     phone: "+12345669",
+     age: 23,
+     rating: 4,
+     inspections: 231,
+     role: "automotive mechanic",
+     expertise: "BMW, Mercedes"
+ }
+ //to make data load from the state variable replace userExp. with this.state.user(.freelancerData)
 
     return (
         <div className={styles.container}> 
@@ -106,7 +113,7 @@ class FreelancerUserProfile extends Component {
                 <div> 
                 <ListGroup.Item>
                     {/* <img className={styles.imageStyle} src={mechanic}/> */}
-                    <h2>Welcome {this.state.user.freelancerData.name} {this.state.user.freelancerData.surname}</h2>
+                    <h2>Welcome {userExp.name} {userExp.surname}</h2>
                     <Divider variant="middle" />
                     <br/>
                     <h4>Log in data</h4>
@@ -114,14 +121,14 @@ class FreelancerUserProfile extends Component {
                     <form noValidate autoComplete="off">
                         <FormControl className={styles.formElement} variant="outlined">
                             <InputLabel htmlFor="component-outlined">Username</InputLabel>
-                            <OutlinedInput id="component-outlined" value={this.state.user.username} label="Username"/>
+                            <OutlinedInput id="component-outlined" value={userExp.username} label="Username"/>
                         </FormControl>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-password"
                                 type={this.state.showPassword ? 'text' : 'password'}
-                                value={this.state.user.password}
+                                value={userExp.password}
                                 // onChange={this.handleChange}
                                 endAdornment={
                                 <InputAdornment position="end">
@@ -148,23 +155,23 @@ class FreelancerUserProfile extends Component {
                     <form noValidate autoComplete="off">
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="component-outlined">Email</InputLabel>
-                            <OutlinedInput id="component-outlined" value={this.state.user.email} label="email"/>
+                            <OutlinedInput id="component-outlined" value={userExp.email} label="email"/>
                         </FormControl>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="component-outlined">City</InputLabel>
-                            <OutlinedInput id="component-outlined" value={this.state.user.freelancerData.city} label="city"/>
+                            <OutlinedInput id="component-outlined" value={userExp.city} label="city"/>
                         </FormControl>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="component-outlined">Phone</InputLabel>
-                            <OutlinedInput id="component-outlined" value={this.state.user.freelancerData.phone} label="phone"/>
+                            <OutlinedInput id="component-outlined" value={userExp.phone} label="phone"/>
                         </FormControl>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="component-outlined">Role</InputLabel>
-                            <OutlinedInput id="component-outlined" value={this.state.user.freelancerData.role} label="role"/>
+                            <OutlinedInput id="component-outlined" value={userExp.role} label="role"/>
                         </FormControl>
                         <FormControl variant="outlined">
                             <InputLabel htmlFor="component-outlined">Expertise</InputLabel>
-                            <OutlinedInput id="component-outlined" value={this.state.user.freelancerData.expertise} label="expertise"/>
+                            <OutlinedInput id="component-outlined" value={userExp.expertise} label="expertise"/>
                         </FormControl>
                     </form>
                 </ListGroup.Item>
@@ -176,8 +183,24 @@ class FreelancerUserProfile extends Component {
                 <br/>
                 <br/> 
                 <ListGroupItem>
-                    <h6>You wanna create and manage the digital profiles of your cars? Then take a tour in your Garage!</h6>
-                    <Button variant="contained" color="primary">See my Garage</Button>
+                    <h6>You wanna create and manage the digital profiles of your cars? Take a tour in your Garage!</h6>
+                    {/* <Button variant="contained" color="primary">See my Garage</Button> */}
+                    <Accordion>
+                        <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <Typography>Expand my Garage</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        {/* <Typography>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                            sit amet blandit leo lobortis eget.
+                        </Typography> */}
+                        <FindCarGridView/>
+                        </AccordionDetails>
+                    </Accordion>
                     <br/>
                     <br/>
                     <h6>Your Garage still holds hidden treasures? Then put your car for sale with the best price!</h6>
