@@ -26,9 +26,6 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FindCarGridView from "./FindCarGridView";
 
-
-
-
 class CarOwnerUserProfile extends Component {
     constructor(props) {
         super(props);
@@ -84,27 +81,9 @@ class CarOwnerUserProfile extends Component {
         if (this.state.loading) {
             return <p>loading ...</p>;
         }
-// Should prevent the user.freelancerData from being null
-        // if (this.state.user.freelancerData == null) {
-        //     return <p>this is not a freelancer profile</p>;
-        // }
 
- let userExp = {
-     username: "michealmk20",
-     password: "123456",
-     name: "Michael",
-     surname: "Mckinney",
-     city: "Munich, Germany",
-     email: "michael@email.com",
-     phone: "+12345669",
-     age: 23,
-     rating: 4,
-     inspections: 231,
-     role: "automotive mechanic",
-     expertise: "BMW, Mercedes"
- }
  //to make data load from the state variable replace userExp. with this.state.user(.freelancerData)
-
+    console.log("hi", this.props.cars)
     return (
       <div > 
             <ListGroup variant="flush">
@@ -122,11 +101,7 @@ class CarOwnerUserProfile extends Component {
                         <Typography>Expand my Garage</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                        {/* <Typography>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                            sit amet blandit leo lobortis eget.
-                        </Typography> */}
-                        <FindCarGridView/>
+                        <FindCarGridView cars={this.props.cars}/>
                         </AccordionDetails>
                     </Accordion>
                     <br/>
