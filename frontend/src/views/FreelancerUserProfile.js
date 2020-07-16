@@ -106,13 +106,13 @@ class FreelancerUserProfile extends Component {
  //to make data load from the state variable replace userExp. with this.state.user(.freelancerData)
 
     return (
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around" }}>
             <TextField
               id="expertise"
               label="Area of Expertise"
               onChange={this.handleChange}
               variant="outlined"
-              value={this.state.expertise}
+              value={this.props.expertise}
               name="expertise"
               errortext="expertise of expertise is required"
               required={true}
@@ -122,22 +122,10 @@ class FreelancerUserProfile extends Component {
               id="yoe"
               label="Years of experience"
               onChange={this.handleChange}
-              value={this.state.yearsOfExperience}
+              value={this.props.yearsOfExperience}
               variant="outlined"
               errortext="Years of Experience cannot be negative"
               name="yearsOfExperience"
-              required={true}
-              type="number"
-              style={{ padding: "10px" }}
-            />
-            <TextField
-              id="telephone"
-              label="Phone Number"
-              onChange={this.handleChange}
-              value={this.state.telephone}
-              variant="outlined"
-              errortext="Phone number is required"
-              name="telephone"
               required={true}
               type="number"
               style={{ padding: "10px" }}
