@@ -106,127 +106,43 @@ class FreelancerUserProfile extends Component {
  //to make data load from the state variable replace userExp. with this.state.user(.freelancerData)
 
     return (
-        <div className={styles.container}> 
-        <Card>
-            <CardContent>
-            <ListGroup variant="flush">
-                <div> 
-                <ListGroup.Item>
-                    {/* <img className={styles.imageStyle} src={mechanic}/> */}
-                    <h2>Welcome {userExp.name} {userExp.surname}</h2>
-                    <Divider variant="middle" />
-                    <br/>
-                    <h4>Log in data</h4>
-                    <br/>
-                    <form noValidate autoComplete="off">
-                        <FormControl className={styles.formElement} variant="outlined">
-                            <InputLabel htmlFor="component-outlined">Username</InputLabel>
-                            <OutlinedInput id="component-outlined" value={userExp.username} label="Username"/>
-                        </FormControl>
-                        <FormControl variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                            <OutlinedInput
-                                id="outlined-adornment-password"
-                                type={this.state.showPassword ? 'text' : 'password'}
-                                value={userExp.password}
-                                // onChange={this.handleChange}
-                                endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={this.handleClickShowPassword}
-                                    onMouseDown={this.handleMouseDownPassword}
-                                    edge="end"
-                                    >
-                                    {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
-                                    </IconButton>
-                                </InputAdornment>
-                                }
-                                labelWidth={70}
-                            />
-                        </FormControl>
-                    </form>
-                </ListGroup.Item>
-                <br/>
-                <br/>
-                <ListGroup.Item>
-                    <h4>General details</h4>
-                    <br/>
-                    <form noValidate autoComplete="off">
-                        <FormControl variant="outlined">
-                            <InputLabel htmlFor="component-outlined">Email</InputLabel>
-                            <OutlinedInput id="component-outlined" value={userExp.email} label="email"/>
-                        </FormControl>
-                        <FormControl variant="outlined">
-                            <InputLabel htmlFor="component-outlined">City</InputLabel>
-                            <OutlinedInput id="component-outlined" value={userExp.city} label="city"/>
-                        </FormControl>
-                        <FormControl variant="outlined">
-                            <InputLabel htmlFor="component-outlined">Phone</InputLabel>
-                            <OutlinedInput id="component-outlined" value={userExp.phone} label="phone"/>
-                        </FormControl>
-                        <FormControl variant="outlined">
-                            <InputLabel htmlFor="component-outlined">Role</InputLabel>
-                            <OutlinedInput id="component-outlined" value={userExp.role} label="role"/>
-                        </FormControl>
-                        <FormControl variant="outlined">
-                            <InputLabel htmlFor="component-outlined">Expertise</InputLabel>
-                            <OutlinedInput id="component-outlined" value={userExp.expertise} label="expertise"/>
-                        </FormControl>
-                    </form>
-                </ListGroup.Item>
-                <br/>
-                <br/>
-                <h6>Upload images that will appear on your profile</h6>
-                  <ImageUploadView /> 
-                
-                <br/>
-                <br/> 
-                <ListGroupItem>
-                    <h6>You wanna create and manage the digital profiles of your cars? Take a tour in your Garage!</h6>
-                    {/* <Button variant="contained" color="primary">See my Garage</Button> */}
-                    <Accordion>
-                        <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                        >
-                        <Typography>Expand my Garage</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                        {/* <Typography>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                            sit amet blandit leo lobortis eget.
-                        </Typography> */}
-                        <FindCarGridView/>
-                        </AccordionDetails>
-                    </Accordion>
-                    <br/>
-                    <br/>
-                    <h6>Your Garage still holds hidden treasures? Then put your car for sale with the best price!</h6>
-                    <Button variant="contained" color="secondary">sell your car</Button>
-                    <br/>
-                    <br/>
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                // checked={state.checkedB}
-                                checked = {true}
-                                // onChange={}
-                                name="checkedB"
-                                color="primary"
-                            />
-                        } label="I agree to receive newsletter emails from Car Companion"
-                    />
-                    <br/>
-                    <br/>
-                    <Button variant="contained" color= "primary" onChange={this.handleChange}>Save your changes</Button>
-                </ListGroupItem>
-            </div>
-        </ListGroup>
-        </CardContent>
-      </Card>
-      </div>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+            <TextField
+              id="expertise"
+              label="Area of Expertise"
+              onChange={this.handleChange}
+              variant="outlined"
+              value={this.state.expertise}
+              name="expertise"
+              errortext="expertise of expertise is required"
+              required={true}
+              style={{ padding: "10px" }}
+            />
+            <TextField
+              id="yoe"
+              label="Years of experience"
+              onChange={this.handleChange}
+              value={this.state.yearsOfExperience}
+              variant="outlined"
+              errortext="Years of Experience cannot be negative"
+              name="yearsOfExperience"
+              required={true}
+              type="number"
+              style={{ padding: "10px" }}
+            />
+            <TextField
+              id="telephone"
+              label="Phone Number"
+              onChange={this.handleChange}
+              value={this.state.telephone}
+              variant="outlined"
+              errortext="Phone number is required"
+              name="telephone"
+              required={true}
+              type="number"
+              style={{ padding: "10px" }}
+            />
+          </div>
     );
 }
 }
