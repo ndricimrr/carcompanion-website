@@ -11,6 +11,7 @@ const movie = require("./routes/movie");
 const cars = require("./routes/cars");
 const questions = require("./routes/questions");
 const freelancers = require("./routes/freelancers");
+const freelancerRequests = require("./routes/freelancerRequest");
 
 const api = express();
 
@@ -33,5 +34,6 @@ api.use("/movies", movie);
 api.use("/cars", cars);
 api.use("/questions", questions)
 api.use("/freelancers", freelancers)
+api.use("/freelancers", freelancerRequests)
 
 module.exports = api;
