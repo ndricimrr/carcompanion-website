@@ -1,0 +1,36 @@
+:local(.container) {
+    width: 70%;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+/* :local(.container) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  } */
+
+  :local(.formElement) {
+      padding   : 20px;
+      margin-left: 20px;
+      margin-right: 40px;
+  }
+
+  :local(.center) {
+    text-align: center;
+    padding: 3px;
+}
+ 
+:local(.imageStyle) {
+    /* border: 1px solid black; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    padding: 5px;
+    max-width: 20%;
+    height: auto;
+
+}

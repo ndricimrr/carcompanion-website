@@ -8,7 +8,7 @@ const AuthController = require("../controllers/auth");
 
 router.post("/login", AuthController.login);
 router.post("/register", AuthController.register);
-router.get("/me", middlewares.checkAuthentication, AuthController.me);
+router.get("/:id", middlewares.checkAuthentication, AuthController.me);
 router.put(
   "/update-carowner",
   middlewares.checkAuthentication,

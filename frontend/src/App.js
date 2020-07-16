@@ -30,6 +30,7 @@ import QuestionListView from "./views/CommunityView/QuestionsListView";
 import CarOwnerUserProfile from "./views/CarOwnerUserProfile";
 import FreelancerUserProfile from "./views/FreelancerUserProfile"
 import FreelancerDescriptionView from "./views/FreelancerDescriptionView";
+import Profile from './views/Profile'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -49,6 +50,7 @@ export default class App extends React.Component {
         { component: FreelancersPageView, path: "/freelancers", exact: true },
         { component: MovieDetailView, path: "/show/:id" },
         { component: QuestionListView, path: "/questionList", exact: true },
+        { component: Profile, path: "/profile", exact: true },
         // { component: FreelancerDescriptionView, path:"/freelancerDescription", exact: true },
         {
           component: FreelancerDescriptionView,

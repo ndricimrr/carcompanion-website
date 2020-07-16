@@ -103,16 +103,17 @@ class Header extends React.Component {
             </NavLink>
         {this.state.isLoggedIn ? (
           <div>
+          <NavLink
+              exact
+              to={"/profile"}>
             <IconButton
-              onClick={() => {
-                alert("Hello User");
-              }}
               aria-label="delete"
               color="primary"
               style={{ height: "100%" }}
             >
               <AccountCircleIcon />
             </IconButton>
+            </NavLink>
             <IconButton
               onClick={() => {
                 this.props.history.push("/requests");

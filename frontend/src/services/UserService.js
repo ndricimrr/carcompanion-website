@@ -47,6 +47,25 @@ export default class UserService {
     });
   }
 
+    static getUserData() {
+    return new Promise((resolve, reject) => {
+      HttpService.get(
+        `${UserService.baseURL()}/${this.getCurrentUser().id}`,
+        function (data) {
+          if (data != undefined || Object.keys(data).length !== 0) {
+            resolve(data);
+          } else {
+            reject("Error while retrieving car");
+          }
+        },
+        function (textStatus) {
+          reject(textStatus);
+        }
+      );
+    });
+  }
+  
+
   // this function updates freelancer data
   static updateFreelancerData(freelancer) {
     return new Promise((resolve, reject) => {
