@@ -13,14 +13,14 @@ import LockIcon from "@material-ui/icons/Lock";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import ToggleDrawer from './DrawerToggle'
+import DrawerToggle from './DrawerToggle'
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoggedIn: false,
-      displayDrawer: false
+      displayDrawer: true
     };
     console.log(__dirname);
   }
@@ -41,6 +41,7 @@ class Header extends React.Component {
   }
 
   render() {
+    console.log("reder",this.state.displayDrawer)
     const isHomePageNotSelected = this.props.location.pathname !== "/";
     const homePageLinkSelectedStyle = isHomePageNotSelected
       ? styles.linkSelected
@@ -56,17 +57,17 @@ class Header extends React.Component {
 
 
     return (    
-      <div>
+      <div >
+      
       <div className={styles.mobile}>
-      <ToggleDrawer clicked={this.handleToggle} /> 
-      <NavLink exact to={"/"} style={{ textDecoration: "none" }}>
-          <div style={{ display: "flex", flexDirection: "row", marginLeft: "48%" }}>
-            
+          <DrawerToggle clicked={this.handleToggle}/>
+          </div>
+      <div className={navBarStyling}>
+          <NavLink exact to={"/"} style={{ textDecoration: "none" }} className={styles.mobileLogo}>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <img width={100} src={logo} alt="logo" />
           </div>
         </NavLink> 
-        </div>
-      <div className={navBarStyling}>
-      
         
             <NavLink
               exact
