@@ -9,6 +9,10 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/core/styles";
 import PostCarSelectView from "./PostCarSelectView";
 import Page from "../components/Page";
+import UserService from '../services/UserService'
+import { withRouter } from "react-router-dom";
+
+import ListIcon from "@material-ui/icons/List";
 
 class PostCarView extends Component {
   constructor(props) {
@@ -20,6 +24,9 @@ class PostCarView extends Component {
       mileage: 0,
       price: 0,
       images: "",
+      loading: false,
+      user: null,
+      isCarOwner: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleCreateCar = this.handleCreateCar.bind(this);
@@ -33,6 +40,28 @@ class PostCarView extends Component {
       [evt.target.name]: value,
     });
   }
+
+  componentWillMount(props) {
+        this.setState({
+        loading: true,
+        });
+        // let id = this.props.match.params.id;
+        (async () => {
+            try {
+                let user = await UserService.getUserData();
+                this.setState({
+                    user: user,
+                    loading: false
+                });
+                this.setState({
+                    isCarOwner: (user.carOwnerData.name != null)})
+                console.log(user)
+            } catch (err) {
+                console.error(err);
+            }
+        })();
+        
+    }
 
   // call create car service
   async handleCreateCar() {
@@ -68,7 +97,7 @@ class PostCarView extends Component {
   render() {
     return (
       <Page>
-        <div
+        {this.state.isCarOwner ? (<div
           style={{
             display: "flex",
             flexDirection: "column",
@@ -158,11 +187,31 @@ class PostCarView extends Component {
           </Button>
           <br />
           <br />
-          
-        </div>
+          <div
+            style={{
+              position: "relative",
+              left: 470,
+            }}
+          >
+            <Button variant="contained" color="secondary">
+              Boost your car!
+            </Button>
+          </div>
+        </div>) : (<div style={{marginTop: "10%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-around"}}> 
+                      <h2>You need to be a car owner in order to post a car. Please extend your profile</h2>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick = {() => {this.props.history.push("/extend-profile")}}
+                      >
+                        <ListIcon fontSize="large" />
+                        Extend Profile
+                      </Button>
+                    </div>)}
+        
       </Page>
     );
   }
 }
 
-export default PostCarView;
+export default withRouter(PostCarView);

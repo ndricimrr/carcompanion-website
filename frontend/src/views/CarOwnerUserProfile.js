@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
-import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import TextField from '@material-ui/core/TextField';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -13,37 +13,63 @@ import CardContent from '@material-ui/core/CardContent';
 import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
 import Divider from '@material-ui/core/Divider';
-
-
-
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//       '& > *': {
-//         margin: theme.spacing(1),
-//       },
-//     },
-//   }));
-// let classes = useStyles()
+import { ImageUploadView } from "./ImageUploadView";
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+import UserService from "../services/UserService";
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import FindCarGridView from "./FindCarGridView";
 
 class CarOwnerUserProfile extends Component {
     constructor(props) {
         super(props);
           this.state = {
             loading: false,
-            user: null
+            user: null,
+            password: '',
+            showPassword: false,
           };
-        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
+        this.handleMouseDownPassword = this.handleMouseDownPassword.bind(this);
+    }
+    
+    handleClickShowPassword = () => {
+        this.setState(Object.assign({}, this.state, {showPassword: !this.state.showPassword}));
+      };
+    
+    handleMouseDownPassword = (event) => {
+        event.preventDefault();
+      };
+
+    // handle input field changes
+    handleChange(evt) {
+    const value = evt.target.value;
+    // console.log("Value", value);
+    this.setState({
+        [evt.target.name]: value,
+    });
+    }
 
     componentWillMount(props) {
         this.setState({
         loading: true,
         });
+        // let id = this.props.match.params.id;
         (async () => {
             try {
-                let user = await getCurrentUser();
+                let user = await UserService.getCurrentUser();
                 this.setState({
                     user: user,
                     loading: false,
+                    // password: user.password,
+                    showPassword: false,
                 });
             } catch (err) {
                 console.error(err);
@@ -51,106 +77,42 @@ class CarOwnerUserProfile extends Component {
         })();
     }
 
-    // handle input field changes
-    handleChange(evt) {
-        const value = evt.target.value;
-        console.log("Value", value);
-    //   this.setState({
-    //     [evt.target.name]: value,
-    //   });
-    }
-    // classes = useStyles();
-    // const [name, setName] = React.useState('Composed TextField'); 
-
-    // const handleChange = (event) => {
-    //     setName(event.target.value);
-    //   };
-
-    // const handleChangeCheck = (event) => {
-    // setState({ ...state, [event.target.name]: event.target.checked });
-    // };
-
     render() {
- let user = {
-     username: "michealmk20",
-     password: "123456",
-     name: "Michael",
-     surname: "Mckinney",
-     address: "Marienplatz 6, 80909 München",
-     email: "michael@email.com",
-     phone: "+12345669"
- }
+        if (this.state.loading) {
+            return <p>loading ...</p>;
+        }
+
+ //to make data load from the state variable replace userExp. with this.state.user(.freelancerData)
+    console.log("hi", this.props.cars)
     return (
-        <div className={styles.container}> 
-        <Card  >
-            <CardContent>
+      <div > 
             <ListGroup variant="flush">
-                <div> 
-                <ListGroup.Item>
-                    {/* <img className={styles.imageStyle} src={mechanic}/> */}
-                    <h2>Welcome {user.name} {user.surname}</h2>
-                    <Divider variant="middle" />
-                    <br/>
-                    <h4>Log in data</h4>
-                    <br/>
-                    <form noValidate autoComplete="off">
-                        <FormControl className={styles.formElement} variant="outlined">
-                            <InputLabel htmlFor="component-outlined">Username</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.username} label="Username"/>
-                        </FormControl>
-                        <FormControl variant="outlined">
-                            <InputLabel htmlFor="component-outlined">Password</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.password} label="Password"/>
-                        </FormControl>
-                    </form>
-                </ListGroup.Item>
-                <br/>
-                <br/>
-                <ListGroup.Item>
-                    <h4>Contact details</h4>
-                    <br/>
-                    <form noValidate autoComplete="off">
-                        <FormControl variant="outlined">
-                            <InputLabel htmlFor="component-outlined">email</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.email} label="emaillabel"/>
-                        </FormControl>
-                        <FormControl variant="outlined">
-                            <InputLabel htmlFor="component-outlined">address</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.address} label="addresslabel"/>
-                        </FormControl>
-                        <FormControl variant="outlined">
-                            <InputLabel htmlFor="component-outlined">phone</InputLabel>
-                            <OutlinedInput id="component-outlined" value={user.phone} label="phonelabel"/>
-                        </FormControl>
-                    </form>
-                </ListGroup.Item>
-                <br/>
-                <br/>  
+                <div>
+                <br/> 
                 <ListGroupItem>
-                    <h6>You wanna create and manage the digital profiles of your cars? Then take a tour in your Garage!</h6>
-                    <Button variant="contained" color="primary">See my Garage</Button>
+                    <h6>You wanna create and manage the digital profiles of your cars? Take a tour in your Garage!</h6>
+                    {/* <Button variant="contained" color="primary">See my Garage</Button> */}
+                    <Accordion>
+                        <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <Typography>Expand my Garage</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <FindCarGridView cars={this.props.cars}/>
+                        </AccordionDetails>
+                    </Accordion>
                     <br/>
                     <br/>
                     <h6>Your Garage still holds hidden treasures? Then put your car for sale with the best price!</h6>
                     <Button variant="contained" color="secondary">sell your car</Button>
                     <br/>
                     <br/>
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                // checked={state.checkedB}
-                                checked = {true}
-                                // onChange={}
-                                name="checkedB"
-                                color="primary"
-                            />
-                        } label="I agree to receive newsletter emails from Car Companion"
-                    />
                 </ListGroupItem>
             </div>
         </ListGroup>
-        </CardContent>
-      </Card>
       </div>
     );
 }

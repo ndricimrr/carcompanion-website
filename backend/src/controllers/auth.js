@@ -102,14 +102,13 @@ const register = async (req, res) => {
 
 const me = async (req, res) => {
   try {
-    let user = await UserModel.findById(req.userId).select("username").exec();
-
+    var user = await UserModel.findById(req.params.id).exec();
     if (!user)
       return res.status(404).json({
         error: "Not Found",
         message: `User not found`,
       });
-
+    user.password = null
     return res.status(200).json(user);
   } catch (err) {
     return res.status(500).json({

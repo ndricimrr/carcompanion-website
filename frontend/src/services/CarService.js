@@ -32,7 +32,7 @@ export default class CarService {
           if (data != undefined || Object.keys(data).length !== 0) {
             resolve(data);
           } else {
-            reject("Error while retrieving movie");
+            reject("Error while retrieving car");
           }
         },
         function (textStatus) {

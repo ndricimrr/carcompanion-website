@@ -23,7 +23,7 @@ export default class Page extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header title={this.state.title} />
+        <Header />
         {this.props.children}
         <Footer />
       </React.Fragment>

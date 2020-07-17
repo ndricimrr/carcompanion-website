@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "concurrently": "^5.2.0",
     "file-loader": "^6.0.0",
     "lerna": "^3.22.0",
@@ -16,5 +17,8 @@
     "start-backend": "cd scripts && \"./startBackendWindows1.sh\"",
     "finish-backend": "cd scripts && \"./startBackendWindows2.sh\"",
     "frontend": "cd scripts && \"./startFrontend.sh\""
+  },
+  "dependencies": {
+    "core-js": "^3.6.5"
   }
 }
