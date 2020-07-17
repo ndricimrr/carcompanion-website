@@ -24,6 +24,26 @@ import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
 class CarLifecycleView extends Component {
     
     render() {
+        let carHistory = {
+            technicalInfo: [
+                [<ChromeReaderModeIcon/>, "Contruction year", "2014"],
+                [<ReceiptIcon/>, "Bought on", "10.05.2019"],
+                [<DriveEtaIcon/>, "Current mileage", "100.000 km"],
+                [<PersonIcon/>, "Number of previous owners", "2 owners"],
+                [<LocalGasStationIcon/>, "Fuel type", "Gasoline"],
+        ],
+        pastRepairs: [
+            [<DiscFullIcon/>, "Brake and tire inspection - 01.04.2020", "Summer tires were attached and brakes inspected"],
+            [<InvertColorsIcon/>, "Fluid inspection - 10.02.2020", "Engine oil and brake fluid were changed at 98.000 Km"],
+            [<BuildIcon/>, "General car inspection - 09.12.2020", "Motor, exhaust and safety features checks"],
+            [<EmojiObjectsIcon/>, "Lights inspection - 01.08.2019", "Right headlight bulb was changed"],
+        ],
+        reminders: [
+            ["TÜV expires on 10.09.2020", "Bring your car for inspection and don't forget the TÜV renewal"],
+            ["Winter tires attachment on 01.10.2020", "Don't forget to change the summer tires"],
+            ["Timing chain should be changed at 120.000 km", "Remember to book an appointment early and look for an alternative way of transport for few days"]
+        ]
+        }
         return (
             <div style={{textAlign: "center"}}>
                 <div style={{padding: "20px"}}>
@@ -44,49 +64,20 @@ class CarLifecycleView extends Component {
                     </AccordionSummary>
                     <AccordionDetails>
                         <List>
+                            <div> 
+                            {carHistory.technicalInfo.map( (item) => { return (
                             <ListItem>
                                 <ListItemAvatar>
-                                    <Avatar>
-                                    <ChromeReaderModeIcon />
-                                    </Avatar>
+                                    <Avatar> {item[0]} </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText primary="Contruction year" secondary="2014" />
+                                <ListItemText primary={item[1]} secondary={item[2]} />
                             </ListItem>
-                            <ListItem>
-                                <ListItemAvatar>
-                                    <Avatar>
-                                    <ReceiptIcon />
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText primary="Bought on" secondary="10.05.2019" />
-                            </ListItem>
-                            <ListItem>
-                                <ListItemAvatar>
-                                    <Avatar>
-                                    <DriveEtaIcon />
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText primary="Current mileage" secondary="100.000 km" />
-                            </ListItem>
-                            <ListItem>
-                                <ListItemAvatar>
-                                    <Avatar>
-                                    <PersonIcon />
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText primary="Number of previous owners" secondary="2 owners" />
-                            </ListItem>
-                            <ListItem>
-                                <ListItemAvatar>
-                                    <Avatar>
-                                    <LocalGasStationIcon />
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText primary="Fuel type" secondary="Gasoline" />
-                            </ListItem>
-                        </List>
-                    </AccordionDetails>
-                </Accordion>
+                            )}
+                            )}
+                            </div>
+                            </List>
+                        </AccordionDetails>
+                    </Accordion> 
 
                 <Accordion>
                     <AccordionSummary
@@ -98,38 +89,17 @@ class CarLifecycleView extends Component {
                     </AccordionSummary>
                     <AccordionDetails>
                         <List>
+                        <div> 
+                            {carHistory.pastRepairs.map( (item) => { return (
                             <ListItem>
                                 <ListItemAvatar>
-                                    <Avatar>
-                                    <EmojiObjectsIcon />
-                                    </Avatar>
+                                    <Avatar> {item[0]} </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText primary="Lights inspection - 01.08.2019" secondary="Right headlight bulb was changed" />
+                                <ListItemText primary={item[1]} secondary={item[2]} />
                             </ListItem>
-                            <ListItem>
-                                <ListItemAvatar>
-                                    <Avatar>
-                                    <BuildIcon />
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText primary="General car inspection - 09.12.2020" secondary="Motor, exhaust and safety features checks" />
-                            </ListItem>
-                            <ListItem>
-                                <ListItemAvatar>
-                                    <Avatar>
-                                    <InvertColorsIcon />
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText primary="Fluid inspection - 10.02.2020" secondary="Engine oil and brake fluid were changed at 98.000 Km" />
-                            </ListItem>
-                            <ListItem>
-                                <ListItemAvatar>
-                                    <Avatar>
-                                    <DiscFullIcon />
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText primary="Brake and tire inspection - 01.04.2020" secondary="Summer tires were attached and brakes inspected" />
-                            </ListItem>
+                            )}
+                            )}
+                        </div>
                         </List>
                     </AccordionDetails>
                 </Accordion>
@@ -140,45 +110,27 @@ class CarLifecycleView extends Component {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                     >
-                    <Typography variant="h6">Reminders</Typography>
+                    <Typography variant="h6">Reminders</Typography> 
                     </AccordionSummary>
                     <AccordionDetails>
                         <List>
+                        <div> 
+                            {carHistory.reminders.map( (item) => { return (
                             <ListItem>
                                 <ListItemAvatar>
-                                    <Avatar>
-                                    <NotificationsActiveIcon />
-                                    </Avatar>
+                                    <Avatar> <NotificationsActiveIcon /> </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText primary="TÜV expires on 10.09.2020" secondary="Bring your car for inspection and don't forget the TÜV renewal" />
+                                <ListItemText primary={item[0]} secondary={item[1]} />
                             </ListItem>
-                            <ListItem>
-                                <ListItemAvatar>
-                                    <Avatar>
-                                    <NotificationsActiveIcon />
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText primary="Winter tires attachment on 01.10.2020" secondary="Don't forget to change the summer tires" />
-                            </ListItem>
-                            <ListItem>
-                                <ListItemAvatar>
-                                    <Avatar>
-                                    <NotificationsActiveIcon />
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText primary="Timing chain should be changed at 120.000 km" secondary="Remember to book an appointment early and look for an alternative way of transport for few days" />
-                            </ListItem>
+                            )}
+                            )}
+                        </div>
                         </List>
                     </AccordionDetails>
                 </Accordion>
                 </div>
             </div>
-    
-            
-      
-    
         );
     }
-    
 }
 export default CarLifecycleView;
