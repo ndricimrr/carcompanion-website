@@ -10,7 +10,7 @@ router.get("/:id", middlewares.checkAuthentication, RequestController.read); // 
 router.get(
   "/list/:id",
   middlewares.checkAuthentication,
-  RequestController.read
+  RequestController.list
 ); // List all requests connected to user with this id
 router.post("/", middlewares.checkAuthentication, RequestController.create); // Create a new request
 router.put("/:id", middlewares.checkAuthentication, RequestController.update); // Update a request by Id

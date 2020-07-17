@@ -26,7 +26,7 @@ const create = async (req, res) => {
 // params.id is id of request
 const read = async (req, res) => {
   try {
-    let request = RequestModel.find(req.params.id);
+    let request = RequestModel.find(req.params.id).exec();
 
     if (!request)
       return res.status(404).json({
@@ -53,12 +53,16 @@ const update = async (req, res) => {
   }
 
   try {
-    let movie = await RequestModel.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    }).exec();
+    let request = await RequestModel.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    ).exec();
 
-    return res.status(200).json(movie);
+    return res.status(200).json(request);
   } catch (err) {
     return res.status(500).json({
       error: "Internal server error",
@@ -86,13 +90,19 @@ const remove = async (req, res) => {
 // params.id = id of currentUser
 const list = async (req, res) => {
   try {
-    let sent = RequestModel.find({ senderID: { $eq: req.params.id } });
-    let received = RequestModel.find({ receiverID: { $in: req.params.id } });
+    let sent = await RequestModel.find({
+      senderID: { $eq: req.params.id },
+    }).exec();
+
+    let received = await RequestModel.find({
+      receiverID: { $eq: req.params.id },
+    }).exec();
 
     let requests = {
       sent: sent,
       received: received,
     };
+
     if (!sent && !received)
       return res.status(404).json({
         error: "Not Found",

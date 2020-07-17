@@ -54,7 +54,7 @@ class FreelancerDescriptionView extends Component {
         carMake: "mercedes",
       };
       let ret = await RequestService.createRequest(request);
-      this.props.history.push("/");
+      this.props.history.push("/requests");
     } catch (err) {
       console.error(err);
     }
@@ -130,7 +130,7 @@ class FreelancerDescriptionView extends Component {
           <center>
             <Button
               variant="contained"
-              onClick={this.sendRequest()}
+              onClick={this.sendRequest}
               color="secondary"
             >
               Send request
