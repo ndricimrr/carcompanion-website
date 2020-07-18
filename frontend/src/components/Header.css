@@ -10,7 +10,7 @@
   /* flex-wrap: none; */
   /* flex: 1; */
   justify-content: space-between;
-  background: #ffffff00;
+  background: #c9c9c977;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
   position: -webkit-sticky;
   position: sticky;
@@ -107,43 +107,42 @@
 }
 
 :local(.DrawerToggle) {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-flow: row;
-    padding: 5px 0;
-    box-sizing: border-box;
-    cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row;
+  padding: 5px 0;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 :local(.Logo) {
-    flex:1;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    box-sizing: border-box;
-    margin-left: -20px;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  box-sizing: border-box;
+  margin-left: -20px;
 }
 
 :local(.Burger) {
-    width: 40px;
-    height: 100%;
-    display: flex;
-    flex-flow: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 5px 0;
-    box-sizing: border-box;
-    cursor: pointer;
+  width: 40px;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px 0;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 :local(.Burger div) {
-    width: 90%;
-    height: 3px;
-    margin-top: 3px;
-    background-color: black;
+  width: 90%;
+  height: 3px;
+  margin-top: 3px;
+  background-color: black;
 }
-
 
 :local(.linkStyling) {
   transition: all 1s;
@@ -205,23 +204,21 @@
   top: 0;
 }
 :local(.mobile) {
-    display: flex;
-  }
+  display: flex;
+}
 
+:local(.drawer) {
+  display: flex;
+}
+:local(.mobileLogo) {
+  padding: 25px;
+  display: flex;
+}
 
-  :local(.drawer) {
-    display: flex;
-  }
-  :local(.mobileLogo) {
-    padding: 25px;
-    display: flex;
-  }
-
-  
 @media (min-width: 950px) {
-    :local(.DrawerToggle) {
-        display: none;
-    }
+  :local(.DrawerToggle) {
+    display: none;
+  }
 }
 @media only screen and (max-width: 950px) {
   /* For mobile phones: */
@@ -237,8 +234,6 @@
     top: 0;
   }
 
-
-  
   :local(.drawer) {
     display: none;
   }

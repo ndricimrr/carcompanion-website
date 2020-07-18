@@ -6,34 +6,90 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DriveEtaIcon from "@material-ui/icons/DriveEta";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-
+import RequestService from "../../services/RequestService";
+import UserService from "../../services/UserService";
+import Accordion from "@material-ui/core/Accordion";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import CheckIcon from "@material-ui/icons/Check";
+import CloseIcon from "@material-ui/icons/Close";
+import Button from "@material-ui/core/Button";
 class RequestListView extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      requests: null,
+    };
     this.renderList = this.renderList.bind(this);
   }
 
+  componentWillMount(props) {
+    (async () => {
+      try {
+        let requests = await RequestService.getMyRequests();
+        this.setState({
+          requests: requests,
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }
+
   renderList(items) {
+    if (items.length == 0) {
+      return (
+        <center>
+          <h1>No Elements</h1>
+        </center>
+      );
+    }
     return (
       <List component="nav" aria-label="main mailbox folders">
         {items.map((item) => {
           return (
-            <ListItem
-              button
-              key={item.id}
-              onClick={() => {
-                this.props.history.push(`/requests/${item.id}`);
-              }}
-            >
-              <ListItemIcon>
-                {item.type === "purchase" ? (
-                  <DriveEtaIcon />
-                ) : (
-                  <SupervisorAccountIcon />
-                )}
-              </ListItemIcon>
-              <ListItemText primary={item.content.concat(" " + item.id)} />
-            </ListItem>
+            // <ListItem
+            //   button
+            //   key={item._id}
+            //   // onClick={() => {
+            //   //   this.props.history.push(`/requests/${item._id}`);
+            //   // }}
+            // >
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <ListItemIcon>
+                  {item.type === "purchase" ? (
+                    <DriveEtaIcon />
+                  ) : (
+                    <SupervisorAccountIcon />
+                  )}
+                </ListItemIcon>
+                <ListItemText primary={item.message.concat(" " + item._id)} />
+                <ListItemIcon>
+                  {item.type === "purchase" ? (
+                    <DriveEtaIcon />
+                  ) : (
+                    <CheckCircleIcon style={{ color: "green" }} />
+                  )}
+                </ListItemIcon>
+              </AccordionSummary>
+              <AccordionDetails>
+                User has sent you a request. Accept
+                <CheckIcon
+                  onClick={() => {
+                    alert("hello");
+                  }}
+                />
+                Decline <CloseIcon />
+              </AccordionDetails>
+            </Accordion>
+            // </ListItem>
           );
         })}
       </List>
@@ -41,39 +97,20 @@ class RequestListView extends Component {
   }
 
   render() {
-    var mockRequest = [
-      {
-        id: "123",
-        type: "inspection",
-        date: "13.02.2020",
-        content: "Hello, I am looking for an inspector",
-        date_of_acceptance: "14.02.2020",
-        urgency: 2,
-      },
-      {
-        id: "456",
-        type: "purchase",
-        date: "16.02.2020",
-        content: "Hello, I am looking for a new ferrari",
-        date_of_acceptance: "14.02.2020",
-        urgency: 3,
-      },
-      {
-        id: "789",
-        type: "purchase",
-        date: "16.05.2020",
-        content: "Hello, I am looking for a new vehicle",
-        date_of_acceptance: "20.05.2020",
-        urgency: 3,
-      },
-    ];
-    console.log(mockRequest);
+    console.log(this.state.requests);
+    if (this.state.requests == null) {
+      return (
+        <center>
+          <h2>Loading</h2>
+        </center>
+      );
+    }
     return (
       <Page>
         <h3>Incoming Request:</h3>
-        {this.renderList(mockRequest)}
+        {this.renderList(this.state.requests.received)}
         <h3>Sent Requests:</h3>
-        {this.renderList(mockRequest)}
+        {this.renderList(this.state.requests.sent)}
       </Page>
     );
   }

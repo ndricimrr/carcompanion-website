@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import mechanic from "../assets/mechanic1.png";
 import Rating from "@material-ui/lab/Rating";
-import Box from "@material-ui/core/Box";
-import { List, ListItem, ListItemIcon, Button } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import { ListItem, ListItemIcon, Button } from "@material-ui/core";
 import ListItemText from "@material-ui/core/ListItemText";
 import PhoneIcon from "@material-ui/icons/Phone";
 import DraftsIcon from "@material-ui/icons/Drafts";
@@ -12,6 +12,8 @@ import WorkOutlineIcon from "@material-ui/icons/WorkOutline";
 import styles from "./FreelancerDescriptionView.css";
 import FreelancerService from "../services/FreelancerService";
 import Page from "../components/Page";
+import RequestService from "../services/RequestService";
+import UserService from "../services/UserService";
 
 class FreelancerDescriptionView extends Component {
   constructor(props) {
@@ -20,6 +22,7 @@ class FreelancerDescriptionView extends Component {
       loading: false,
       freelancer: null,
     };
+    this.sendRequest = this.sendRequest.bind(this);
   }
 
   componentWillMount(props) {
@@ -40,6 +43,23 @@ class FreelancerDescriptionView extends Component {
     })();
   }
 
+  async sendRequest(request) {
+    try {
+      let request = {
+        senderID: UserService.getCurrentUser().id,
+        receiverID: this.props.match.params.id,
+        type: "inspection",
+        accepted: false,
+        message: "Hello what's up",
+        carMake: "mercedes",
+      };
+      let ret = await RequestService.createRequest(request);
+      this.props.history.push("/requests");
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   render() {
     if (this.state.loading) {
       return <p></p>;
@@ -47,75 +67,75 @@ class FreelancerDescriptionView extends Component {
 
     return (
       <Page>
+        {/* Image not loaded from freelancer card */}
+        <img className={styles.imageStyle} src={mechanic} />
         <div className={styles.center}>
-          {/* Image not loaded from freelancer card */}
-          <img className={styles.imageStyle} src={mechanic} />
-          <br />
+          <h3>
+            {this.state.freelancer.name} {this.state.freelancer.surname}
+          </h3>
+          {/* <p>evetually we can add hier a bio / description in next sprints</p> */}
+          <Rating name="rating" value={this.state.freelancer.rating} readOnly />
           <div className={styles.center}>
-            <h3>
-              {this.state.freelancer.name} {this.state.freelancer.surname}
-            </h3>
-            {/* <p>evetually we can add hier a bio / description in next sprints</p> */}
-            <Rating
-              name="rating"
-              value={this.state.freelancer.rating}
-              readOnly
-            />
+            <ListItem>
+              <ListItemIcon>
+                <WorkOutlineIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Expertise"
+                secondary={this.state.freelancer.expertise}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemIcon>
+                <BuildIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Inspections"
+                secondary={this.state.freelancer.inspections}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemIcon>
+                <PhoneIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Telephone"
+                secondary={this.state.freelancer.telephone}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemIcon>
+                <DraftsIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="E-mail"
+                secondary={this.state.freelancer.email}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemIcon>
+                <RoomIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="City"
+                secondary={this.state.freelancer.city}
+              />
+            </ListItem>
           </div>
-          <Box display="flex" alignItems="center" justifyContent="center">
-            <List>
-              <ListItem>
-                <ListItemIcon>
-                  <WorkOutlineIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary="Expertise"
-                  secondary={this.state.freelancer.expertise}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <BuildIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary="Inspections"
-                  secondary={this.state.freelancer.inspections}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <PhoneIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary="Telephone"
-                  secondary={this.state.freelancer.telephone}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <DraftsIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary="E-mail"
-                  secondary={this.state.freelancer.email}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <RoomIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary="City"
-                  secondary={this.state.freelancer.city}
-                />
-              </ListItem>
-            </List>
-          </Box>
           {/* Button should send request to freelancer */}
-          <Button variant="contained" color="secondary">
-            Send request
-          </Button>
-          <br />
+          <center>
+            <Button
+              variant="contained"
+              onClick={this.sendRequest}
+              color="secondary"
+            >
+              Send request
+            </Button>
+          </center>
         </div>
       </Page>
     );
