@@ -6,6 +6,7 @@ import { withRouter } from "react-router-dom";
 
 import { AlertMessage } from "./AlertMessage";
 import Page from "./Page";
+import * as EmailValidator from 'email-validator'
 
 const style = { maxWidth: 500 };
 
@@ -17,6 +18,7 @@ class UserSignup extends React.Component {
       email: "",
       username: "",
       password: "",
+      emailError: "Email is not valid"
     };
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -27,6 +29,9 @@ class UserSignup extends React.Component {
 
   handleChangeEmail(value) {
     this.setState(Object.assign({}, this.state, { email: value }));
+    if (EmailValidator.validate(this.state.email)) {
+      this.setState({emailError: ""})
+    }
   }
 
   handleChangeUsername(value) {
@@ -66,7 +71,8 @@ class UserSignup extends React.Component {
               required={true}
               value={this.state.email}
               onChange={this.handleChangeEmail}
-              errorText="Email is required"
+              errorText={this.state.emailError}
+              error={!EmailValidator.validate(this.state.email)}
             />
             <TextField
               label="Username"
@@ -95,6 +101,7 @@ class UserSignup extends React.Component {
               disabled={
                 this.state.email == undefined ||
                 this.state.email == "" ||
+                !EmailValidator.validate(this.state.email) ||
                 this.state.username == undefined ||
                 this.state.username == "" ||
                 this.state.password == undefined ||
