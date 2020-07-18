@@ -25,6 +25,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FindCarGridView from "./FindCarGridView";
+import { withRouter } from "react-router-dom";
 
 class CarOwnerUserProfile extends Component {
     constructor(props) {
@@ -77,6 +78,30 @@ class CarOwnerUserProfile extends Component {
         })();
     }
 
+    //redirect to sell/advertise page
+    handleSell= () => {
+        this.props.history.push("/sell-advertise")
+    }
+
+    // handle input field changes
+    handleChange(evt) {
+        const value = evt.target.value;
+        console.log("Value", value);
+    //   this.setState({
+    //     [evt.target.name]: value,
+    //   });
+    }
+    // classes = useStyles();
+    // const [name, setName] = React.useState('Composed TextField'); 
+
+    // const handleChange = (event) => {
+    //     setName(event.target.value);
+    //   };
+
+    // const handleChangeCheck = (event) => {
+    // setState({ ...state, [event.target.name]: event.target.checked });
+    // };
+
     render() {
         if (this.state.loading) {
             return <p>loading ...</p>;
@@ -107,7 +132,7 @@ class CarOwnerUserProfile extends Component {
                     <br/>
                     <br/>
                     <h6>Your Garage still holds hidden treasures? Then put your car for sale with the best price!</h6>
-                    <Button variant="contained" color="secondary">sell your car</Button>
+                    <Button onClick={this.handleSell} variant="contained" color="secondary">sell your car</Button>
                     <br/>
                     <br/>
                 </ListGroupItem>
@@ -117,4 +142,4 @@ class CarOwnerUserProfile extends Component {
     );
 }
 }
-export default CarOwnerUserProfile;
+export default withRouter(CarOwnerUserProfile);

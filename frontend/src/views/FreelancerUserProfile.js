@@ -79,6 +79,11 @@ class FreelancerUserProfile extends Component {
             }
         })();
     }
+    
+    //redirect to sell/advertise page
+    handleSell= () => {
+        this.props.history.push("/sell-advertise")
+    }
 
     render() {
         if (this.state.loading) {
