@@ -16,6 +16,9 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import Button from "@material-ui/core/Button";
+import DeleteIcon from '@material-ui/icons/Delete';
+import ClearIcon from '@material-ui/icons/Clear';
+
 class RequestListView extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +26,7 @@ class RequestListView extends Component {
       requests: null,
     };
     this.renderList = this.renderList.bind(this);
+    this.handleDeleteRequest = this.handleDeleteRequest.bind(this);
   }
 
   componentWillMount(props) {
@@ -38,8 +42,13 @@ class RequestListView extends Component {
     })();
   }
 
+  handleDeleteRequest(id){
+      RequestService.deleteRequest(id);
+      this.props.history.go(0);
+  }
+
   renderList(items) {
-    if (items.length == 0) {
+    if (items == undefined || items.length == 0 ) {
       return (
         <center>
           <h1>No Elements</h1>
@@ -80,13 +89,24 @@ class RequestListView extends Component {
                 </ListItemIcon>
               </AccordionSummary>
               <AccordionDetails>
-                User has sent you a request. Accept
-                <CheckIcon
-                  onClick={() => {
-                    alert("hello");
-                  }}
-                />
-                Decline <CloseIcon />
+                <div style={{display:"flex", flex: "1", flexDirection: "row", justifyContent: "space-around"}}>
+                  <div>
+                  User has sent you a request. 
+                  </div>
+                  <Button variant="contained" size="small" color="primary" onClick={() => {this.handleDeleteRequest(item._id)}}>
+                    <CheckIcon  />
+                    Accept
+                  </Button>
+                  <Button variant="contained" size="small" color="secondary" onClick={() => {this.handleDeleteRequest(item._id)}}>
+                    <ClearIcon/>
+                    Decline
+                  </Button>
+                  <Button variant="contained" size="small" color="secondary" onClick={() => {this.handleDeleteRequest(item._id)}}>
+                    <DeleteIcon  />
+                    Delete Request
+                  </Button>
+                </div>
+
               </AccordionDetails>
             </Accordion>
             // </ListItem>

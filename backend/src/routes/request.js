@@ -17,7 +17,7 @@ router.put("/:id", middlewares.checkAuthentication, RequestController.update); /
 router.delete(
   "/:id",
   middlewares.checkAuthentication,
-  RequestController.update
-); // Update a request by request Id
+  RequestController.remove
+); // Delete a request by request Id
 
 module.exports = router;
