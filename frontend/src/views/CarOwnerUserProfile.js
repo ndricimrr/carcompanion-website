@@ -25,6 +25,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FindCarGridView from "./FindCarGridView";
+import { withRouter } from "react-router-dom";
 
 class CarOwnerUserProfile extends Component {
     constructor(props) {
@@ -141,4 +142,4 @@ class CarOwnerUserProfile extends Component {
     );
 }
 }
-export default CarOwnerUserProfile;
+export default withRouter(CarOwnerUserProfile);
