@@ -58,7 +58,8 @@ class CarOwnerForm extends Component {
               required={true}
               value={this.state.name}
               style={{ padding: "10px" }}
-              errortext="Name is required"
+              error={this.state.name==""}
+              helperText="Name is required"
             />
             <TextField
               id="surname"
@@ -68,7 +69,8 @@ class CarOwnerForm extends Component {
               name="surname"
               value={this.state.surname}
               required={true}
-              errortext="Surname is required"
+              error={this.state.surname==""}
+              helperText="Surname is required"
               style={{ padding: "10px" }}
             />
           </div>
@@ -80,7 +82,8 @@ class CarOwnerForm extends Component {
               variant="outlined"
               value={this.state.address}
               name="address"
-              errortext="Address is required"
+              error={this.state.address==""}
+              helperText="Address is required"
               required={true}
               style={{ padding: "10px" }}
             />
@@ -90,7 +93,8 @@ class CarOwnerForm extends Component {
               onChange={this.handleChange}
               value={this.state.preferredModel}
               variant="outlined"
-              errortext="Preferred Model is required"
+              error={this.state.preferredModel==""}
+              helperText="Preferred Model is required"
               name="preferredModel"
               required={true}
               style={{ padding: "10px" }}

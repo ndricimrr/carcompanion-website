@@ -64,7 +64,8 @@ class FreelancerForm extends Component {
               required={true}
               value={this.state.name}
               style={{ padding: "10px" }}
-              errortext="Name is required"
+              error={this.state.name==""}
+              helperText="Name is required"
             />
             <TextField
               id="surname"
@@ -74,7 +75,8 @@ class FreelancerForm extends Component {
               name="surname"
               value={this.state.surname}
               required={true}
-              errortext="Surname is required"
+              error={this.state.surname==""}
+              helperText="Surname is required"
               style={{ padding: "10px" }}
             />
             <TextField
@@ -84,7 +86,8 @@ class FreelancerForm extends Component {
               variant="outlined"
               value={this.state.address}
               name="address"
-              errortext="Address is required"
+              error={this.state.address==""}
+              helperText="Address is required"
               required={true}
               style={{ padding: "10px" }}
             />
@@ -97,7 +100,8 @@ class FreelancerForm extends Component {
               variant="outlined"
               value={this.state.expertise}
               name="expertise"
-              errortext="expertise of expertise is required"
+              error={this.state.expertise==""}
+              helperText="Expertise is required"
               required={true}
               style={{ padding: "10px" }}
             />
@@ -107,7 +111,8 @@ class FreelancerForm extends Component {
               onChange={this.handleChange}
               value={this.state.yearsOfExperience}
               variant="outlined"
-              errortext="Years of Experience cannot be negative"
+              error={this.state.yearsOfExperience==""}
+              helperText="Years of Experience is required"
               name="yearsOfExperience"
               required={true}
               type="number"
@@ -119,7 +124,8 @@ class FreelancerForm extends Component {
               onChange={this.handleChange}
               value={this.state.telephone}
               variant="outlined"
-              errortext="Phone number is required"
+              error={this.state.telephone==""}
+              helperText="Phone number is required"
               name="telephone"
               required={true}
               type="number"
@@ -133,7 +139,9 @@ class FreelancerForm extends Component {
             variant="outlined"
             name="description"
             required={true}
+            error={this.state.description==""}
             value={this.state.description}
+            helperText="A short description is required"
             style={{ padding: "10px", width: "100%" }}
             multiline
             rows={3}
