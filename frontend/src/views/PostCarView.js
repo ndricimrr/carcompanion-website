@@ -108,7 +108,8 @@ class PostCarView extends Component {
           <br />
           <br />
           <br />
-          <h2>Sell your car!</h2>
+          <h1 className={styles.h1Style}>Sell your car!</h1>        
+          <br />
           <br />
           <form>
             <div
@@ -116,102 +117,63 @@ class PostCarView extends Component {
                 display: "flex",
                 flexDirection: "row",
                 width: "1200px",
-                justifyContent: "space-evenly",
+                justifyContent: "left",
               }}
             >
               <br />
               <PostCarSelectView />
-
               <br />
-              <TextField
-                id="outlined-required"
-                label="Model"
-                name="model"
-                onChange={this.handleChange}
-                value={this.state.model}
-                variant="filled"
-                style={{ width: 500 }}
-                margin="normal"
-              />
-            </div>
-            <br />
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                width: "1200px",
-                justifyContent: "space-evenly",
-              }}
-            >
-              <TextField
-                id="outlined-required"
-                label="Year"
-                type="number"
-                name="year"
-                onChange={this.handleChange}
-                value={this.state.year}
-                variant="filled"
-                style={{ width: 500 }}
-                margin="normal"
-              />
-              <br />
-              <br />
-              <TextField
-                id="outlined-required"
-                label="Mileage"
-                name="mileage"
-                type="number"
-                onChange={this.handleChange}
-                value={this.state.mileage}
-                variant="filled"
-                style={{ width: 500 }}
-                margin="normal"
-              />
             </div>
             <br />
             <br />
             <br />
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                width: "1200px",
-                justifyContent: "space-evenly",
-              }}
-            >
-              <TextField
-                id="outlined-required"
-                label="Price"
-                type="number"
-                name="price"
-                onChange={this.handleChange}
-                value={this.state.price}
-                variant="filled"
-                style={{ width: 500 }}
-                margin="normal"
-              />
-              <br />
-              <ImageUploadView />
-            </div>
+            <br />
           </form>
           <br />
           <div
             style={{
               position: "relative",
               right: 470,
+              left: 255,
+              width: 850,
+              bottom: 150,  
+            }}
+          >
+          <ImageUploadView />
+          </div>
+          <br />
+          <div style={{
+              position: "relative",
+              right: 340,
+              width: 450,
+              bottom: 45,
+            }}>
+          <Button variant="contained" color="secondary">
+              Boost your car!
+            </Button>
+          </div>
+          <div
+            style={{
+              position: "relative",
+              right: 340,
+              width: 450,
+              bottom: 155,
             }}
           >
             <Button variant="outlined" color="primary">
               Advanced Options
             </Button>
           </div>
-          <br />
-
           <Button
             variant="contained"
             color="primary"
             onClick={this.handleCreateCar}
-            style={{ width: 300 }}
+            style={{ 
+              left: 350,
+              width: 250,
+              bottom: 130, 
+              height: 50
+            }}
             size="large"
           >
             Post
@@ -224,9 +186,6 @@ class PostCarView extends Component {
               left: 470,
             }}
           >
-            <Button variant="contained" color="secondary">
-              Boost your car!
-            </Button>
           </div>
         </div>) : (<div style={{marginTop: "10%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-around"}}> 
                       <h2>You need to be a car owner in order to post a car. Please extend your profile</h2>

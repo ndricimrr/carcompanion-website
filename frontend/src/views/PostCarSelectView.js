@@ -9,10 +9,11 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: "relative",
-    width: 450,
+    position: "center",
+    width: 1150,
     bottom: 15,
     right: 65,
+    columnCount: 2
   },
   buttons: {
     flex: 1,
@@ -29,22 +30,26 @@ const specs = [
   {
     label: "Make",
     values: [
-      {
-        key: "mercedes",
-        val: "Mercedes Benz",
-      },
-      {
-        key: "bmw",
-        val: "BMW",
-      },
-      {
-        key: "audi",
-        val: "Audi",
-      },
-      {
-        key: "vw",
-        val: "VolksWagen",
-      },
+    ],
+  },
+  {
+    label: "Model",
+    values: [
+    ],
+  },
+  {
+    label: "Year",
+    values: [
+    ],
+  },
+  {
+    label: "Mileage",
+    values: [
+    ],
+  },
+  {
+    label: "Price",
+    values: [
     ],
   },
 ];
