@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 const FindCarSpecificationView = (props) => {
   const classes = useStyles();
-
+  
   return (
     <div className={classes.root}>
       <center>
@@ -39,6 +39,9 @@ const FindCarSpecificationView = (props) => {
             label={spec.label}
             key={index}
             values={spec.values}
+            name={spec.name}
+            onChange={props.onChange} 
+            vals={props.values}
           />
         ))}
       </center>
