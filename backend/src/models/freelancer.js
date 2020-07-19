@@ -43,5 +43,5 @@ const FreelancerSchema = new mongoose.Schema({
 FreelancerSchema.set("versionKey", false);
 FreelancerSchema.set("timestamps", true);
 
-// Export the Movie model
+// Export the Freelancer model
 module.exports = mongoose.model("Freelancer", FreelancerSchema);

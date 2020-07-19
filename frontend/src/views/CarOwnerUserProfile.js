@@ -126,7 +126,7 @@ class CarOwnerUserProfile extends Component {
                         <Typography>Expand my Garage</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                        <FindCarGridView cars={this.props.cars}/>
+                        <FindCarGridView cars={this.props.cars} filteredCars={this.props.cars} filtersSet={false}/>
                         </AccordionDetails>
                     </Accordion>
                     <br/>
