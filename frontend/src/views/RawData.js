@@ -414,6 +414,7 @@ export let carPost = [
 export let carFind = [
     {
       label: "Make",
+      name: "make",
       values: [
         {
           key: "alfa",
@@ -463,6 +464,7 @@ export let carFind = [
     },
     {
       label: "Model",
+      name: "model",
       values: [
         {
           key: "4C",
@@ -688,6 +690,7 @@ export let carFind = [
     },
     {
       label: "Year",
+      name: "year",
       values: [
         {
           key: "2020",
@@ -817,6 +820,7 @@ export let carFind = [
     },
     {
       label: "Mileage",
+      name: "mileage",
       values: [
         {
           key: "5000-10000",
@@ -862,6 +866,7 @@ export let carFind = [
     },
     {
       label: "Price",
+      name: "price",
       values: [
         {
           key: "0-500",

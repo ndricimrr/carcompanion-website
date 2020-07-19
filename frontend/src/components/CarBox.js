@@ -58,11 +58,6 @@ const CarBox = (props) => {
     price: props.car.price,
   });
 
-  var rating = [];
-  for (var i = 0; i < Number(carData.rating); i++) {
-    rating.push(<StarIcon key={i} color="primary" />);
-  }
-
   return (
     <NavLink exact to={"/findcar/".concat(props.car._id)} style={{ textDecoration: "none" }}>
    
@@ -74,10 +69,9 @@ const CarBox = (props) => {
       {/* Freelancer details */}
       <CardContent>
         <center>
-          <div className={classes.lightText}>{carData.make}</div>
-          <div className={classes.name}>{carData.model}</div>
-          <div className={classes.lightText}>{carData.mileage} km</div>
-          <div>{rating}</div>
+          <div className={classes.lightText}>{props.car.make}</div>
+          <div className={classes.name}>{props.car.model}</div>
+          <div className={classes.lightText}>{props.car.mileage} km</div>
         </center>
       </CardContent>
     </Card>

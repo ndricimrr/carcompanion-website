@@ -25,10 +25,12 @@ const SpecificationInput = (props) => {
   const classes = useStyles();
   const [val, setVal] = React.useState("");
 
-  const handleChange = (event) => {
-    setVal(event.target.value);
-  };
-
+  // const handleChange = (event) => {
+  //   setVal(event.target.value);
+  // };
+  console.log("vals", props.vals)
+  console.log("name", props.name)
+  console.log("res", props.vals[props.name])
   return (
     <div>
       <FormControl variant="filled" className={classes.formControl}>
@@ -38,8 +40,9 @@ const SpecificationInput = (props) => {
         <Select
           labelId="demo-simple-select-filled-label"
           id="demo-simple-select-filled"
-          value={val}
-          onChange={handleChange}
+          value={props.vals[props.name]}
+          name={props.name}
+          onChange={props.onChange}
         >
           <MenuItem value="">
             <em>Any</em>
