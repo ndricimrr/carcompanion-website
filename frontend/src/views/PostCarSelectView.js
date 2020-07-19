@@ -10,11 +10,10 @@ import {carPost} from "./RawData.js"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: "center",
+    position: "relative",
     width: 1150,
     bottom: 15,
-    right: 65,
-    columnCount: 2
+    right: 290,
   },
   buttons: {
     flex: 1,

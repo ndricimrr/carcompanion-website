@@ -18,7 +18,7 @@ class PostCarView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      make: "mercedez",
+      make: "",
       model: "",
       year: "",
       mileage: 0,
@@ -126,19 +126,45 @@ class PostCarView extends Component {
               
             </div>
             <br />
-            
+            <TextField
+                id="outlined-required"
+                label="Mileage (in km)"
+                name="mileage"
+                type="number"
+                onChange={this.handleChange}
+                value={this.state.mileage}
+                variant="filled"
+                style={{position: "relative",
+                width: 500,
+                bottom: 292,
+                left: 600, }}
+                margin="normal"
+              />
+            <br />
+            <TextField
+                id="outlined-required"
+                label="Price (in €)"
+                type="number"
+                name="price"
+                onChange={this.handleChange}
+                value={this.state.price}
+                variant="filled"
+                style={{ position: "relative",
+                width: 500,
+                bottom: 284,
+                left: 600,}}
+                margin="normal"
+              />
             <br />
             <br />
-            <br />
-          
           </form>
           <br />
           <div
             style={{
               position: "relative",
-              left: 255,
+              left: 235,
               width: 850,
-              bottom: 150,            
+              bottom: 280,            
             }}
           >
             <ImageUploadView />
@@ -149,7 +175,7 @@ class PostCarView extends Component {
               position: "relative",
               right: 340,
               width: 450,
-              bottom: 45,
+              bottom: 205,
             }}
           >
             <Button variant="contained" color="secondary">
@@ -161,7 +187,7 @@ class PostCarView extends Component {
               position: "relative",
               right: 340,
               width: 450,
-              bottom: 155,
+              bottom: 295,
             }}
           >
             <Button variant="outlined" color="primary">
@@ -178,7 +204,7 @@ class PostCarView extends Component {
             style={{ 
               left: 350,
               width: 250,
-              bottom: 130, 
+              bottom: 300, 
               height: 50
             }}
             size="large"
