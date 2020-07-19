@@ -32,6 +32,9 @@ import FreelancerUserProfile from "./views/FreelancerUserProfile"
 import FreelancerDescriptionView from "./views/FreelancerDescriptionView";
 import Profile from './views/Profile'
 
+import FreelancerRequestView from "./views/FreelancerRequestView";
+
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -61,6 +64,9 @@ export default class App extends React.Component {
         { component: RequestContent, path: "/requests/:id", exact: true },
         { component: CarOwnerUserProfile, path:"/CarOwnerUserProfile", exact: true},
         { component: FreelancerUserProfile, path:"/FreelancerrUserProfile", exact: true},
+        
+        { component: FreelancerRequestView, path:"/Freelancer-Request", exact: true},
+        
         {
           render: (props) => {
             if (UserService.isAuthenticated()) {
