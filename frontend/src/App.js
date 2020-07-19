@@ -10,8 +10,6 @@ import {
 
 import { HomePage } from "./views/HomePage";
 import { FreelancersPageView } from "./views/FreelancersPageView";
-import { MovieDetailView } from "./views/MovieDetailView";
-import { MovieFormView } from "./views/MovieFormView";
 import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
 import { CommunityView } from "./views/CommunityView/CommunityView";
@@ -48,7 +46,6 @@ export default class App extends React.Component {
         { component: CommunityView, path: "/community", exact: true },
         { component: HomePage, path: "/", exact: true },
         { component: FreelancersPageView, path: "/freelancers", exact: true },
-        { component: MovieDetailView, path: "/show/:id" },
         { component: QuestionListView, path: "/questionList", exact: true },
         { component: Profile, path: "/profile", exact: true },
         // { component: FreelancerDescriptionView, path:"/freelancerDescription", exact: true },
@@ -68,26 +65,6 @@ export default class App extends React.Component {
           component: FreelancerUserProfile,
           path: "/FreelancerrUserProfile",
           exact: true,
-        },
-        {
-          render: (props) => {
-            if (UserService.isAuthenticated()) {
-              return <MovieFormView {...props} />;
-            } else {
-              return <Redirect to={"/login"} />;
-            }
-          },
-          path: "/edit/:id",
-        },
-        {
-          render: (props) => {
-            if (UserService.isAuthenticated()) {
-              return <MovieFormView {...props} />;
-            } else {
-              return <Redirect to={"/login"} />;
-            }
-          },
-          path: "/add",
         },
         { component: UserLoginView, path: "/login" },
         { component: UserSignupView, path: "/register" },
