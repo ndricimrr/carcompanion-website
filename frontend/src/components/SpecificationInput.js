@@ -27,10 +27,7 @@ const SpecificationInput = (props) => {
 
   // const handleChange = (event) => {
   //   setVal(event.target.value);
-  // };
-  console.log("vals", props.vals)
-  console.log("name", props.name)
-  console.log("res", props.vals[props.name])
+  console.log("valueesss", props.vals)
   return (
     <div>
       <FormControl variant="filled" className={classes.formControl}>
