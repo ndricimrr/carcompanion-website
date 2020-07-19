@@ -24,7 +24,7 @@ import RequestContent from "./views/RequestView/RequestContent";
 import QuestionView from "./views/QuestionView";
 import ExtendProfileView from "./views/ExtendProfile/ExtendProfileView";
 
-import { CarDescriptionView } from "./views/CarDescriptionView";
+import CarDescriptionView from "./views/CarDescriptionView";
 
 import QuestionListView from "./views/CommunityView/QuestionsListView";
 import CarOwnerUserProfile from "./views/CarOwnerUserProfile";
@@ -46,7 +46,7 @@ export default class App extends React.Component {
         { component: AddFreelancerView, path: "/addfreelancer", exact: true },
         { component: FindCarView, path: "/findcar", exact: true },
         { component: ExtendProfileView, path: "/extend-profile", exact: true },
-        { component: CarDescriptionView, path: "/carDescription", exact: true },
+        { component: CarDescriptionView, path: "/findcar/:id", exact: true },
         { component: QuestionView, path: "/community/:id", exact: true },
         { component: CommunityView, path: "/community", exact: true },
         { component: HomePage, path: "/", exact: true },

@@ -9,6 +9,7 @@ import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import StarIcon from "@material-ui/icons/Star";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   // St
@@ -63,7 +64,8 @@ const CarBox = (props) => {
   }
 
   return (
-    // Overall card of freelancer component
+    <NavLink exact to={"/findcar/".concat(props.car._id)} style={{ textDecoration: "none" }}>
+   
     <Card className={classes.root}>
       {/* Creating the bedge */}
       <div className={classes.badge}>{carData.year}</div>
@@ -79,6 +81,7 @@ const CarBox = (props) => {
         </center>
       </CardContent>
     </Card>
+    </NavLink>
   );
 };
 

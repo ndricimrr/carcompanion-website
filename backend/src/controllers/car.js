@@ -29,17 +29,34 @@ const create = async (req, res) => {
   }
 };
 
+// gets car with specific id
 const read = async (req, res) => {
   try {
-    let car = await CarModel.findById(req.params.id).exec();
+    //return res.status(200).json(req.params.id);
+    var user = await UserModel.find({}).exec();
+    // return res.status(200).json({ test: 2 });
 
-    if (!car)
+    let carOwners = user.filter((item) => {
+      return (
+        item.carOwnerData.name
+      );
+    });
+
+    var cars = {}
+    carOwners.map((item) => {
+      item.carOwnerData.cars.map((car) => {
+        if (car._id == req.params.id)
+          cars = car
+      })
+    });
+
+    if (!cars)
       return res.status(404).json({
         error: "Not Found",
         message: `Car not found`,
       });
 
-    return res.status(200).json(car);
+    return res.status(200).json(cars);
   } catch (err) {
     return res.status(500).json({
       error: "Internal Server Error",
