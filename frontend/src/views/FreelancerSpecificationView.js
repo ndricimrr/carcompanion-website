@@ -7,6 +7,8 @@ import React from "react";
 import SpecificationInput from "../components/SpecificationInput";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import {freelancerFind} from "./RawData.js"
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,80 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const specs = [
-  {
-    label: "Brand",
-    values: [
-      {
-        key: "mercedes",
-        val: "Mercedes Benz",
-      },
-      {
-        key: "bmw",
-        val: "BMW",
-      },
-      {
-        key: "audi",
-        val: "Audi",
-      },
-      {
-        key: "vw",
-        val: "VolksWagen",
-      },
-    ],
-  },
-  {
-    label: "Model",
-    values: [
-      {
-        key: "c220",
-        val: "C220",
-      },
-      {
-        key: "e630",
-        val: "E630",
-      },
-      {
-        key: "gla",
-        val: "GLA",
-      },
-    ],
-  },
-  {
-    label: "Year",
-    values: [
-      {
-        key: "2018",
-        val: "2018",
-      },
-      {
-        key: "2019",
-        val: "2019",
-      },
-      {
-        key: "2020",
-        val: "2020",
-      },
-    ],
-  },
-  {
-    label: "Problem Area",
-    values: [
-      {
-        key: "mechanic",
-        val: "Mechanic",
-      },
-      {
-        key: "tire",
-        val: "Tire",
-      },
-      {
-        key: "electrical",
-        val: "Electrical",
-      },
-    ],
-  },
-];
+
 
 const FreelancerSpecificationView = (props) => {
   const classes = useStyles();
@@ -105,7 +34,7 @@ const FreelancerSpecificationView = (props) => {
   return (
     <div className={classes.root}>
       <center>
-        {specs.map((spec, index) => (
+        {freelancerFind.map((spec, index) => (
           <SpecificationInput
             label={spec.label}
             key={index}

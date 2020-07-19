@@ -7,10 +7,15 @@ import { ImageUploadView } from "./ImageUploadView";
 import SaveIcon from "@material-ui/icons/Save";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/core/styles";
-import PostCarSelectView from "./PostCarSelectView";
 import Page from "../components/Page";
 import UserService from '../services/UserService'
 import { withRouter } from "react-router-dom";
+import {carPost} from "./RawData.js"
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import Grid from "@material-ui/core/Grid";
 
 import ListIcon from "@material-ui/icons/List";
 
@@ -18,7 +23,7 @@ class PostCarView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      make: "mercedez",
+      make: "",
       model: "",
       year: "",
       mileage: 0,
@@ -35,17 +40,17 @@ class PostCarView extends Component {
   // handle input field changes
   handleChange(evt) {
     const value = evt.target.value;
-    console.log("Value", value);
+    console.log("name", evt.target.name)
     this.setState({
       [evt.target.name]: value,
     });
+    console.log("State", this.state[evt.target.name]);
   }
 
   componentWillMount(props) {
         this.setState({
         loading: true,
         });
-        // let id = this.props.match.params.id;
         (async () => {
             try {
                 let user = await UserService.getUserData();
@@ -55,7 +60,6 @@ class PostCarView extends Component {
                 });
                 this.setState({
                     isCarOwner: (user.carOwnerData.name != null)})
-                console.log(user)
             } catch (err) {
                 console.error(err);
             }
@@ -72,7 +76,10 @@ class PostCarView extends Component {
       this.state.year >= 1990 &&
       this.state.year <= 2020 &&
       this.state.price >= 0
-    ) {
+      
+    )
+  
+     {
       try {
         let car = {
           make: this.state.make,
@@ -97,138 +104,86 @@ class PostCarView extends Component {
   render() {
     return (
       <Page>
-        {this.state.isCarOwner ? (<div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <br />
-          <br />
-          <br />
-          <h2>Sell your car!</h2>
-          <br />
-          <form>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                width: "1200px",
-                justifyContent: "space-evenly",
-              }}
+        {this.state.isCarOwner ? (
+          <React.Fragment>
+          <center><h1 className={styles.h1Style}>Sell your car!</h1></center>   
+          <Grid container justify="center" spacing={8} style={{flex: "1"}}>
+          {carPost.map((spec, index) => (
+            <Grid key={spec.label} item>
+          <FormControl variant="filled" style={{width: "600px"}} >
+            <InputLabel id="demo-simple-select-filled-label">
+              {spec.label}
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-filled-label"
+              id="demo-simple-select-filled"
+              value={this.state[name]}
+              onChange={this.handleChange}
+              name={spec.name}
             >
-              <br />
-              <PostCarSelectView />
-
-              <br />
-              <TextField
+              <MenuItem value="">
+                <em>Any</em>
+              </MenuItem>
+              {spec.values.map((val, index) => (
+                <MenuItem key={index} value={val.key}>
+                  {val.val}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          </Grid>
+        ))}
+        <Grid key={"mileage"} item>
+        <TextField
                 id="outlined-required"
-                label="Model"
-                name="model"
-                onChange={this.handleChange}
-                value={this.state.model}
-                variant="filled"
-                style={{ width: 500 }}
-                margin="normal"
-              />
-            </div>
-            <br />
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                width: "1200px",
-                justifyContent: "space-evenly",
-              }}
-            >
-              <TextField
-                id="outlined-required"
-                label="Year"
-                type="number"
-                name="year"
-                onChange={this.handleChange}
-                value={this.state.year}
-                variant="filled"
-                style={{ width: 500 }}
-                margin="normal"
-              />
-              <br />
-              <br />
-              <TextField
-                id="outlined-required"
-                label="Mileage"
+                label="Mileage (in km)"
                 name="mileage"
                 type="number"
                 onChange={this.handleChange}
                 value={this.state.mileage}
                 variant="filled"
-                style={{ width: 500 }}
-                margin="normal"
+                style={{width: "600px" }}
               />
-            </div>
-            <br />
-            <br />
-            <br />
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                width: "1200px",
-                justifyContent: "space-evenly",
-              }}
-            >
-              <TextField
+            </Grid>
+            <Grid key={"price"} item>
+            <TextField
                 id="outlined-required"
-                label="Price"
+                label="Price (in €)"
                 type="number"
                 name="price"
                 onChange={this.handleChange}
                 value={this.state.price}
                 variant="filled"
-                style={{ width: 500 }}
-                margin="normal"
+                style={{width: "600px"}}
               />
-              <br />
-              <ImageUploadView />
-            </div>
-          </form>
-          <br />
-          <div
-            style={{
-              position: "relative",
-              right: 470,
-            }}
-          >
-            <Button variant="outlined" color="primary">
+              </Grid>
+              <Grid key={"boost"} item>
+
+              <div style={{display: "flex", justifyContent: "space-around", width: "600px"}}>
+                <Button variant="contained" color="secondary">
+                Boost your car!
+             </Button>
+             <Button variant="outlined" color="primary">
               Advanced Options
             </Button>
-          </div>
-          <br />
-
-          <Button
+              </div>
+              </Grid>
+        </Grid>
+        <center><Button
             variant="contained"
             color="primary"
             onClick={this.handleCreateCar}
-            style={{ width: 300 }}
+            style={{ 
+              width: 250,
+              height: 50,
+              marginTop: "20px"
+            }}
             size="large"
           >
             Post
-          </Button>
-          <br />
-          <br />
-          <div
-            style={{
-              position: "relative",
-              left: 470,
-            }}
-          >
-            <Button variant="contained" color="secondary">
-              Boost your car!
-            </Button>
-          </div>
-        </div>) : (<div style={{marginTop: "10%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-around"}}> 
+          </Button></center>
+        </React.Fragment>
+        ) : (<div style={{marginTop: "10%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-around"}}> 
                       <h2>You need to be a car owner in order to post a car. Please extend your profile</h2>
                       <Button
                         variant="contained"
