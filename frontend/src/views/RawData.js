@@ -1040,6 +1040,7 @@ export let carFind = [
 export let freelancerFind = [
     {
       label: "Badge",
+      name: "badge",
       values: [
         {
           key: "beginner",
@@ -1061,6 +1062,7 @@ export let freelancerFind = [
     },
     {
       label: "Expertise",
+      name: "expertise",
       values: [
         {
           key: "repairs",
@@ -1090,6 +1092,7 @@ export let freelancerFind = [
     },
     {
       label: "Problem Area",
+      name: "problemArea",
       values: [
         {
           key: "lights",

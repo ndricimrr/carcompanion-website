@@ -39,6 +39,8 @@ const FreelancerSpecificationView = (props) => {
             label={spec.label}
             key={index}
             values={spec.values}
+            vals={props.values}
+            name={spec.name}
           />
         ))}
       </center>

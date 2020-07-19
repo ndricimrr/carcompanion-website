@@ -17,6 +17,11 @@ export class FreelancersPageView extends React.Component {
     this.state = {
       loading: false,
       data: [],
+      specs: {
+        badge: "",
+        expertise: "",
+        problemArea: ""
+      }
     };
   }
 
@@ -29,7 +34,7 @@ export class FreelancersPageView extends React.Component {
     return (
       <Page>
         <div className={styles.container}>
-          <FreelancerSpecificationView />
+          <FreelancerSpecificationView values={this.state.specs}/>
           <FreelancerGridView />
         </div>
       </Page>
