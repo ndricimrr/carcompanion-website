@@ -7,7 +7,6 @@ import { ImageUploadView } from "./ImageUploadView";
 import SaveIcon from "@material-ui/icons/Save";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/core/styles";
-import PostCarSelectView from "./PostCarSelectView";
 import Page from "../components/Page";
 import UserService from '../services/UserService'
 import { withRouter } from "react-router-dom";
