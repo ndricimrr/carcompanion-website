@@ -14,15 +14,12 @@ class FindCarGridView extends Component {
   }
 
   render() {
-    console.log("grid", this.props.cars)
     if (this.props.cars == undefined) {
       return <h2>No Cars...</h2>;
     }
 
     let cars = this.props.filteredCars.length != 0 || this.props.filtersSet ? this.props.filteredCars : this.props.cars
-    console.log("cars", this.props.cars)
-    console.log("filteredCars", this.props.filteredCars)
-    console.log("render", cars)
+
     return (
       <React.Fragment>
         <Grid container justify="center" spacing={4}>

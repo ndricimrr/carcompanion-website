@@ -63,7 +63,7 @@ const CarBox = (props) => {
    
     <Card className={classes.root}>
       {/* Creating the bedge */}
-      <div className={classes.badge}>{carData.year}</div>
+      <div className={classes.badge}>{props.car.year}</div>
       {/* Image of the card */}
       <CardMedia className={classes.media} image={carData.image} />
       {/* Freelancer details */}
