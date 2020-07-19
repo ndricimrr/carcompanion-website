@@ -39,7 +39,7 @@ const PostCarInput = (props) => {
           labelId="demo-simple-select-filled-label"
           id="demo-simple-select-filled"
           value={val}
-          onChange={handleChange}
+          onChange={props.onChange}
         >
           <MenuItem value="">
             <em>Any</em>

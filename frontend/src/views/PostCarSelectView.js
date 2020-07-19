@@ -35,7 +35,7 @@ const PostCarSelectView = (props) => {
     <div className={classes.root}>
       <center>
         {carPost.map((spec, index) => (
-          <PostCarInput label={spec.label} key={index} values={spec.values} />
+          <PostCarInput label={spec.label} key={index} values={spec.values} onChange={props.onChange}/>
         ))}
       </center>
     </div>

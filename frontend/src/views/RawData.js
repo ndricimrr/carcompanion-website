@@ -4,6 +4,7 @@ import React from "react";
 export let carPost = [
     {
       label: "Make",
+      name: "make",
       values: [
         {
           key: "alfa",
@@ -53,6 +54,7 @@ export let carPost = [
     },
     {
       label: "Model",
+      name: "model",
       values: [
         {
           key: "4C",
@@ -278,6 +280,7 @@ export let carPost = [
     },
     {
       label: "Year",
+      name: "year",
       values: [
         {
           key: "2020",
