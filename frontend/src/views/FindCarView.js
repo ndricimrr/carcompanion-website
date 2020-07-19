@@ -22,8 +22,10 @@ export class FindCarView extends React.Component {
         make: "",
         model: "",
         year: 0,
-        mileage: 0,
-        price: 0
+        mileageFrom: 0,
+        mileageTo: 0,
+        priceFrom: 0,
+        priceTo: 0
       },
       filteredCars: [],
       specsSet: false
@@ -50,11 +52,15 @@ export class FindCarView extends React.Component {
     if (this.state.specs.model != "")
       oldCars = oldCars.filter((car) => car.model == this.state.specs.model)
     if (this.state.specs.year != 0)
-      oldCars = oldCars.filter((car) => car.year == this.state.specs.year)
-    if (this.state.specs.mileage != 0)
-      oldCars = oldCars.filter((car) => car.mileage <= this.state.specs.mileage)
-    if (this.state.specs.price != 0)
-      oldCars = oldCars.filter((car) => car.price <= this.state.specs.price)
+      oldCars = oldCars.filter((car) => car.year <= this.state.specs.year)
+    if (this.state.specs.mileageFrom != 0)
+      oldCars = oldCars.filter((car) => this.state.specs.mileageFrom <= car.mileage)
+    if (this.state.specs.mileageTo != 0)
+      oldCars = oldCars.filter((car) => this.state.specs.mileageTo >= car.mileage)
+    if (this.state.specs.priceFrom != 0)
+      oldCars = oldCars.filter((car) => this.state.specs.priceFrom <= car.price)  
+    if (this.state.specs.priceTo != 0)
+      oldCars = oldCars.filter((car) => car.price <= this.state.specs.priceTo)
     await this.setState({
       filteredCars: oldCars
     });
@@ -62,10 +68,11 @@ export class FindCarView extends React.Component {
       specsSet: this.state.specs.make != "" 
                    || this.state.specs.model != "" 
                    || this.state.specs.year != 0 
-                   || this.state.specs.mileage != 0 
-                   || this.state.specs.price != 0
+                   || this.state.specs.mileageFrom != 0
+                   || this.state.specs.mileageTo != 0 
+                   || this.state.specs.priceFrom != 0
+                   || this.state.specs.priceTo != 0
     })
-    console.log("filtered", this.state.filteredCars)
   }
 
   componentWillMount() {
