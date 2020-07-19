@@ -20,12 +20,17 @@ const RequestSchema = new mongoose.Schema({
   accepted: {
     type: Boolean,
     required: true,
+    default: false,
+  },
+  meetingDate: {
+    type: Date,
+    required: true,
   },
   message: {
     type: String,
     required: true,
   },
-  carMake: {
+  contact: {
     type: String,
     required: true,
   },

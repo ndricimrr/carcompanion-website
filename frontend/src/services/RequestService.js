@@ -78,6 +78,21 @@ export default class RequestService {
     });
   }
 
+  static updateRequestStatus(status, id) {
+    return new Promise((resolve, reject) => {
+      HttpService.put(
+        `${this.baseURL()}/updatestatus/${id}`,
+        { accepted: status },
+        function (data) {
+          resolve(data);
+        },
+        function (textStatus) {
+          reject(textStatus);
+        }
+      );
+    });
+  }
+
   // create a request
   static createRequest(request) {
     return new Promise((resolve, reject) => {

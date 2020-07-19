@@ -14,6 +14,7 @@ import FreelancerService from "../services/FreelancerService";
 import Page from "../components/Page";
 import RequestService from "../services/RequestService";
 import UserService from "../services/UserService";
+import RequestDialog from "../components/RequestDialog";
 
 class FreelancerDescriptionView extends Component {
   constructor(props) {
@@ -126,15 +127,8 @@ class FreelancerDescriptionView extends Component {
               />
             </ListItem>
           </div>
-          {/* Button should send request to freelancer */}
           <center>
-            <Button
-              variant="contained"
-              onClick={this.sendRequest}
-              color="secondary"
-            >
-              Send request
-            </Button>
+            <RequestDialog match={this.props.match} type={"inspection"} />
           </center>
         </div>
       </Page>

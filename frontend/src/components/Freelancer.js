@@ -10,6 +10,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import StarIcon from "@material-ui/icons/Star";
 import { NavLink } from "react-router-dom";
+import mechanic from "../assets/freelancer.png";
 
 const useStyles = makeStyles((theme) => ({
   // Styles of elements
@@ -77,9 +78,9 @@ const Freelancer = (props) => {
     >
       <Card className={classes.root}>
         {/* Creating the bedge */}
-        <div className={classes.badge}>{freelanceData.badge}</div>
+        <div className={classes.badge}>{}</div>
         {/* Image of the card */}
-        <CardMedia className={classes.media} image={freelanceData.image} />
+        <CardMedia className={classes.media} image={mechanic} />
         {/* Freelancer details */}
         <CardContent>
           <center>
